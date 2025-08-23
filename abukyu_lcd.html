@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>阿武急車内案内表示器 (阪急風)</title>
+    <style>
+      [data-lang="kanji"] .kanji {
+        display: inline-block !important;
+      }
+      [data-lang="kana"] .kana {
+        display: inline-block !important;
+      }
+      [data-lang="en"] .en {
+        display: inline-block !important;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .panel {
+        width: 100%;
+        aspect-ratio: 32/9;
+        background: #deecf9;
+      }
+
+      header {
+        height: 6vw;
+      }
+
+      .header-bottom {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 6vw;
+        background: #266cb4;
+        color: #fff;
+      }
+
+      .header-top-shadow {
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.4));
+      }
+
+      .header-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 6vw;
+        background: linear-gradient(180deg, #3e98ee, #2573c6);
+        color: #fff;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 48vw) 0,
+          calc(100% - 44vw) 5.5vw,
+          100% 5.5vw,
+          100% 100%,
+          0 100%
+        );
+        gap: 1vw;
+      }
+
+      .header-top::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 5.75vw;
+        height: 0.25vw; /* 6vw - 5.75vw */
+        background: #70a5cf;
+      }
+
+      .train-type-box {
+        width: 19.5vw;
+        padding-block: 2px;
+        line-height: 1;
+        background: #333;
+        border-radius: 0 1vw 1vw 0;
+        box-shadow: inset 0 2px 0 0 #fff, inset -2px 0 0 0 #fff,
+          inset 0 -2px 0 0 #fff;
+        display: flex; /* Flexbox 有効化 */
+        justify-content: center; /* 横方向の中央寄せ */
+        align-items: center; /* 縦方向の中央寄せ */
+      }
+
+      .train-type {
+        text-align: center;
+        font-size: 3.75vw;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .dest {
+        display: flex;
+        gap: 1vw;
+        align-items: baseline;
+        font-size: 3.75vw;
+        font-weight: 800;
+      }
+
+      .dest small {
+        font-size: 2.5vw;
+        opacity: 0.95;
+      }
+
+      .header-next {
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+      }
+
+      .next-left {
+        padding: 0 0.5vw;
+        font-size: 2.5vw;
+        font-weight: 800;
+      }
+
+      .next-box {
+        width: 25.75vw;
+        border-radius: 1vw;
+        background: #fff;
+        box-shadow: 0px 0px 1px 1px #fff;
+        display: flex; /* Flexbox 有効化 */
+        justify-content: center; /* 横方向の中央寄せ */
+        align-items: center; /* 縦方向の中央寄せ */
+      }
+
+      .next-name {
+        padding-block: 2px;
+        line-height: 1;
+        font-size: 3.75vw;
+        font-weight: 800;
+        color: #1f2740;
+        white-space: nowrap;
+      }
+
+      .next-right {
+        width: 6vw;
+        padding: 0 0.5vw;
+        font-size: 2.5vw;
+        font-weight: 800;
+      }
+
+      .line {
+        position: absolute;
+        left: 4.5vw;
+        right: 4.5vw;
+        bottom: calc(100% - 22.5vw);
+        display: flex;
+        justify-content: space-between;
+        height: 2vw;
+        background: linear-gradient(#8fc3e4, #3b78b4);
+        border-radius: 1vw;
+      }
+
+      .station {
+        position: relative;
+        width: 2vw;
+        height: 2vw;
+        background: #fff;
+        border-radius: 1vw;
+        box-shadow: inset 0 0 0 2px #333;
+      }
+
+      .name.kanji,
+      .name.kana {
+        position: absolute;
+        bottom: calc(100%);
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+
+      .name.en {
+        position: absolute;
+        bottom: calc(100%);
+        left: 100%;
+        white-space: nowrap;
+      }
+
+      .name-inner.kanji {
+        writing-mode: vertical-rl;
+        font-size: 2.25vw;
+        font-weight: 700;
+        color: #111;
+      }
+
+      .name-inner.kana {
+        writing-mode: vertical-rl;
+        font-size: 2vw;
+        font-weight: 700;
+        color: #111;
+      }
+
+      .name-inner.en {
+        display: inline-block; /* ←回転対象をブロック化 */
+        font-size: 2vw;
+        font-weight: 700;
+        color: #111;
+        line-height: 1; /* ←高さのぶれ防止 */
+        white-space: nowrap;
+        transform: rotate(-75deg); /* 右下がり 45 なら左下がり */
+        transform-origin: bottom left; /* ←基準点を固定 */
+      }
+      .kanji,
+      .kana,
+      .en {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel" role="group" aria-label="案内パネル">
+      <header>
+        <div class="header-bottom">
+          <div class="header-next">
+            <div>
+              <div class="next-left kanji">つぎは</div>
+              <div class="next-left kana">つぎは</div>
+              <div class="next-left en">Next</div>
+            </div>
+            <div class="next-box">
+              <span class="next-name kanji" id="next-name-kanji"></span>
+              <span class="next-name kana" id="next-name-kana"></span>
+              <span class="next-name en" id="next-name-en"></span>
+            </div>
+            <div>
+              <div class="next-right kanji">です</div>
+              <div class="next-right kana">です</div>
+              <div class="next-right en"></div>
+            </div>
+          </div>
+        </div>
+        <div class="header-top-shadow">
+          <div class="header-top">
+            <div class="train-type-box">
+              <div class="train-type kanji" id="train-type-kanji"></div>
+              <div class="train-type kana" id="train-type-kana"></div>
+              <div class="train-type en" id="train-type-en"></div>
+            </div>
+            <div class="dest">
+              <small class="en">For</small>
+              <span class="kanji" id="dest-name-kanji"></span>
+              <span class="kana" id="dest-name-kana"></span>
+              <span class="en" id="dest-name-en"></span>
+              <small class="kanji">ゆき</small>
+              <small class="kana">ゆき</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="map-wrap">
+        <div class="line" id="line"></div>
+        <!-- 支線コネクタはJSで配置 -->
+      </div>
+    </div>
+
+    <script>
+      // 画像に近い駅並び（簡略）
+      const data = {
+        lineName: "阿武隈急行線",
+        trainType: "貸　切",
+        origin: "福島",
+        dest: "丸森",
+        next: "梁川",
+        stations: [
+          "福島",
+          "卸町",
+          "福島学院前",
+          "瀬上",
+          "向瀬上",
+          "高子",
+          "上保原",
+          "保原",
+          "大泉",
+          "二井田",
+          "新田",
+          "梁川",
+          "やながわ希望の森公園前",
+          "富野",
+          "兜",
+          "あぶくま",
+          "丸森",
+          "北丸森",
+          "南角田",
+          "角田",
+          "横倉",
+          "岡",
+          "東船岡",
+          "槻木",
+        ],
+        kana: {
+          "普　通": "ふつう",
+          "快　速": "かいそく",
+          "貸　切": "かしきり",
+          福島: "ふくしま",
+          卸町: "おろしまち",
+          福島学院前: "ふくしまがくいんまえ",
+          瀬上: "せのうえ",
+          向瀬上: "むかいせのうえ",
+          高子: "たかこ",
+          上保原: "かみほばら",
+          保原: "ほばら",
+          大泉: "おおいずみ",
+          二井田: "にいだ",
+          新田: "にった",
+          梁川: "やながわ",
+          やながわ希望の森公園前: "やながわきぼうのもりこうえんまえ",
+          富野: "とみの",
+          兜: "かぶと",
+          あぶくま: "あぶくま",
+          丸森: "まるもり",
+          北丸森: "きたまるもり",
+          南角田: "みなみかくだ",
+          角田: "かくだ",
+          横倉: "よこくら",
+          岡: "おか",
+          東船岡: "ひがしふなおか",
+          槻木: "つきのき",
+        },
+        en: {
+          "普　通": "Local",
+          "快　速": "Rapid",
+          "貸　切": "Chartered",
+          福島: "Fukushima",
+          卸町: "Oroshimachi",
+          福島学院前: "Fukushima Gakuin-mae",
+          瀬上: "Senoue",
+          向瀬上: "Mukaisenoue",
+          高子: "Takako",
+          上保原: "Kamihobara",
+          保原: "Hobara",
+          大泉: "Ōizumi",
+          二井田: "Niida",
+          新田: "Nitta",
+          梁川: "Yanagawa",
+          やながわ希望の森公園前: "Yanagawa Kibōnomori Kōen-mae",
+          富野: "Tomino",
+          兜: "Kabuto",
+          あぶくま: "Abukuma",
+          丸森: "Marumori",
+          北丸森: "Kita-Marumori",
+          南角田: "Minami-Kakuda",
+          角田: "Kakuda",
+          横倉: "Yokokura",
+          岡: "Oka",
+          東船岡: "Higashi-Funaoka",
+          槻木: "Tsukinoki",
+        },
+      };
+
+      document.getElementById("train-type-kanji").textContent = data.trainType;
+      document.getElementById("train-type-kana").textContent =
+        data.kana[data.trainType];
+      document.getElementById("train-type-en").textContent =
+        data.en[data.trainType];
+
+      document.getElementById("dest-name-kanji").textContent = data.dest;
+      document.getElementById("dest-name-kana").textContent =
+        data.kana[data.dest];
+      document.getElementById("dest-name-en").textContent = data.en[data.dest];
+
+      document.getElementById("next-name-kanji").textContent = data.next;
+      document.getElementById("next-name-kana").textContent =
+        data.kana[data.next];
+      document.getElementById("next-name-en").textContent = data.en[data.next];
+
+      // 駅のDOMを生成
+      const stopsEl = document.getElementById("line");
+
+      data.stations.forEach((name) => {
+        const s = document.createElement("div");
+        s.className = "station" + (name === data.next ? " next" : "");
+        s.dataset.name = name;
+
+        const nameElKanji = document.createElement("div");
+        nameElKanji.className = "name kanji";
+        nameElKanji.innerHTML = `<span class="name-inner kanji">${name}</span>`;
+        s.appendChild(nameElKanji);
+
+        const nameElKana = document.createElement("div");
+        nameElKana.className = "name kana";
+        nameElKana.innerHTML = `<span class="name-inner kana">${data.kana[name]}</span>`;
+        s.appendChild(nameElKana);
+
+        const nameElEn = document.createElement("div");
+        nameElEn.className = "name en";
+        nameElEn.innerHTML = `<span class="name-inner en">${data.en[name]}</span>`;
+        s.appendChild(nameElEn);
+
+        stopsEl.appendChild(s);
+      });
+
+      // 共通処理を関数化
+      const applyScaling = () => {
+        document.querySelectorAll(".name-inner").forEach((el) => {
+          const isEn = el.classList.contains("en");
+
+          if (isEn) {
+            const max = window.innerWidth * 0.13;
+            const actual = el.offsetWidth;
+            if (actual > max) {
+              const scale = max / actual;
+              el.style.transform = `rotate(-75deg) scaleX(${scale})`;
+            } else {
+              el.style.transform = `rotate(-75deg)`; // 元の回転だけに戻す
+            }
+            el.style.transformOrigin = "bottom left";
+          } else {
+            const max = window.innerWidth * 0.125;
+            const actual = el.offsetHeight;
+            if (actual > max) {
+              const scale = max / actual;
+              el.style.transform = `scaleY(${scale})`;
+            } else {
+              el.style.transform = "";
+            }
+            el.style.transformOrigin = "bottom center";
+          }
+        });
+        document.querySelectorAll(".train-type").forEach((el) => {
+          const max = window.innerWidth * 0.18;
+          const actual = el.offsetWidth;
+          if (actual > max) {
+            const scale = max / actual;
+            el.style.transform = `scaleX(${scale})`;
+            el.style.transformOrigin = "center";
+          } else {
+            el.style.transform = ""; // 短い場合は元に戻す
+          }
+        });
+
+        document.querySelectorAll(".dest").forEach((el) => {
+          const max = window.innerWidth * 0.325;
+          const actual = el.offsetWidth;
+          if (actual > max) {
+            const scale = max / actual;
+            el.style.transform = `scaleX(${scale})`;
+            el.style.transformOrigin = "left";
+          } else {
+            el.style.transform = ""; // 短い場合は元に戻す
+          }
+        });
+
+        document.querySelectorAll(".next-name").forEach((el) => {
+          const max = window.innerWidth * 0.25;
+          const actual = el.offsetWidth;
+          if (actual > max) {
+            const scale = max / actual;
+            el.style.transform = `scaleX(${scale})`;
+            el.style.transformOrigin = "center";
+          } else {
+            el.style.transform = ""; // 短い場合は元に戻す
+          }
+        });
+      };
+
+      const order = ["kanji", "kana", "en"];
+      let i = 0;
+      document.documentElement.setAttribute("data-lang", order[i]);
+      applyScaling();
+
+      setInterval(() => {
+        i = (i + 1) % order.length;
+        document.documentElement.setAttribute("data-lang", order[i]);
+        applyScaling();
+      }, 5000);
+    </script>
+  </body>
+</html>
