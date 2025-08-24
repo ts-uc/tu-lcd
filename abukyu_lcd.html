@@ -268,10 +268,6 @@
       /* ===================== データ ===================== */
       const data = {
         lineName: "阿武隈急行線",
-        trainType: "貸　切",
-        origin: "福島",
-        dest: "丸森",
-        next: "梁川",
         stations: [
           "福島",
           "卸町",
@@ -358,6 +354,13 @@
         },
       };
 
+      const status = {
+        trainType: "貸　切",
+        origin: "福島",
+        dest: "丸森",
+        next: "梁川",
+      }
+
       /* ===================== ヘルパ ===================== */
       const qs = (sel, root = document) => root.querySelector(sel);
       const qsa = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -395,22 +398,22 @@
 
       /* ===================== 初期テキスト反映 ===================== */
       setTexts({
-        "train-type-kanji": data.trainType,
-        "train-type-kana": data.kana[data.trainType],
-        "train-type-en": data.en[data.trainType],
-        "dest-name-kanji": data.dest,
-        "dest-name-kana": data.kana[data.dest],
-        "dest-name-en": data.en[data.dest],
-        "next-name-kanji": data.next,
-        "next-name-kana": data.kana[data.next],
-        "next-name-en": data.en[data.next],
+        "train-type-kanji": status.trainType,
+        "train-type-kana": data.kana[status.trainType],
+        "train-type-en": data.en[status.trainType],
+        "dest-name-kanji": status.dest,
+        "dest-name-kana": data.kana[status.dest],
+        "dest-name-en": data.en[status.dest],
+        "next-name-kanji": status.next,
+        "next-name-kana": data.kana[status.next],
+        "next-name-en": data.en[status.next],
       });
 
       /* ===================== 駅DOM生成 ===================== */
       const lineEl = qs("#line");
       for (const name of data.stations) {
         const s = document.createElement("div");
-        s.className = "station" + (name === data.next ? " next" : "");
+        s.className = "station" + (name === status.next ? " next" : "");
         s.dataset.name = name;
 
         const mk = (cls, inner) => {
