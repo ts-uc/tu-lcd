@@ -194,8 +194,6 @@ function updateDOMs() {
 }
 const rafUpdate = () => requestAnimationFrame(updateDOMs);
 
-rafUpdate();
-
 /* ===================== スケーリング ===================== */
 function applyScaling() {
   // 駅名（縦書きは高さを制限、英語は回転＋横幅を制限）
@@ -239,8 +237,6 @@ const rafApply = () => requestAnimationFrame(applyScaling);
 /* ===================== 言語切替 ===================== */
 const order = ["kanji", "kana", "en"];
 let idx = 0;
-document.documentElement.setAttribute("data-lang", order[idx]);
-rafApply();
 
 setInterval(() => {
   idx = (idx + 1) % order.length;
@@ -297,6 +293,42 @@ const trainTypeEl = document.getElementById("train-type-select");
 const currentStationEl = document.getElementById("current-station");
 const stopStationsEl = document.getElementById("stop-stations");
 
+// settings → フォームに反映する関数
+function applySettings() {
+  // 設置方向
+  if (settings.isInboundLeft) {
+    document.querySelector(
+      'input[name="layout-dir"][value="inbound-left"]'
+    ).checked = true;
+  } else {
+    document.querySelector(
+      'input[name="layout-dir"][value="inbound-right"]'
+    ).checked = true;
+  }
+
+  // 進行方向
+  if (settings.isInbound) {
+    document.querySelector(
+      'input[name="direction"][value="inbound"]'
+    ).checked = true;
+  } else {
+    document.querySelector(
+      'input[name="direction"][value="outbound"]'
+    ).checked = true;
+  }
+
+  // その他 select / input
+  routeEl.value = settings.route || "";
+  autoEl.value = settings.auto || "";
+  trainTypeEl.value = settings.trainType || "";
+  currentStationEl.value = settings.position || "";
+
+  // multiple select
+  Array.from(stopStationsEl.options).forEach((opt) => {
+    opt.selected = settings.stopStations.includes(opt.value);
+  });
+}
+
 // 値を更新する関数
 function updateSettings() {
   const layoutDirChecked = document.querySelector(
@@ -331,6 +363,16 @@ function updateSettings() {
 [routeEl, autoEl, trainTypeEl, currentStationEl, stopStationsEl].forEach((el) =>
   el.addEventListener("change", updateSettings)
 );
+
+/* ===================== ページ読み込み時処理 ===================== */
+
+// ページ読み込み後に初期値を反映
+document.addEventListener("DOMContentLoaded", () => {
+  applySettings();
+  rafUpdate();
+  document.documentElement.setAttribute("data-lang", order[idx]);
+  rafApply();
+});
 
 /* ===================== リサイズ対応（軽量化） ===================== */
 let resizeTid = 0;
