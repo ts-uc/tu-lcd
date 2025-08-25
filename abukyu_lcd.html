@@ -265,6 +265,10 @@
       <div class="line-panel" id="line-panel">
         <div class="line" id="line"></div>
       </div>
+      <div class="settings-panel" id="settings-panel">
+        <h2>設定</h2>
+        <p>ここに各種設定項目を配置できます。</p>
+      </div>
     </main>
 
     <script>
@@ -483,6 +487,18 @@
         document.documentElement.setAttribute("data-lang", order[idx]);
         rafApply();
       }, 5000);
+
+      /* ===================== 設定画面表示切替 ===================== */
+      const settings = document.getElementById("settings-panel");
+      const lineView = document.getElementById("line-panel");
+      document
+        .querySelector(".train-type-box")
+        .addEventListener("dblclick", () => {
+          const showingSettings = settings.style.display === "block";
+          settings.style.display = showingSettings ? "none" : "block";
+          lineView.style.display = showingSettings ? "flex" : "none";
+          rafApply();
+        });
 
       /* ===================== リサイズ対応（軽量化） ===================== */
       let resizeTid = 0;
