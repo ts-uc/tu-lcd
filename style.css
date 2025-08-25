@@ -1,0 +1,212 @@
+/* ===== 言語表示切替（最優先） ===== */
+[data-lang="kanji"] .kanji {
+  display: inline-block !important;
+}
+[data-lang="kana"] .kana {
+  display: inline-block !important;
+}
+[data-lang="en"] .en {
+  display: inline-block !important;
+}
+
+/* 既定は非表示（次点優先） */
+.kanji,
+.kana,
+.en {
+  display: none !important;
+}
+
+/* ===== 共通 ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 32/9;
+  overflow: hidden;
+}
+header {
+  height: 6vw;
+}
+main {
+  height: 100%;
+}
+
+/* 下段帯 */
+.header-bottom {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 6vw;
+  background: #266cb4;
+  color: #fff;
+}
+
+/* 上段（影用ラッパ） */
+.header-top-shadow {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.4));
+}
+
+.header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  width: 100%;
+  height: 6vw;
+  color: #fff;
+  background: linear-gradient(180deg, #3e98ee, #2573c6);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 48vw) 0,
+    calc(100% - 44vw) 5.5vw,
+    100% 5.5vw,
+    100% 100%,
+    0 100%
+  );
+}
+.header-top::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.75vw;
+  height: 0.25vw;
+  background: #70a5cf; /* 6vw - 5.75vw */
+}
+
+/* 種別 */
+.train-type-box {
+  width: 19.5vw;
+  padding-block: 2px;
+  line-height: 1;
+  background: #333;
+  border-radius: 0 1vw 1vw 0;
+  box-shadow: inset 0 2px 0 0 #fff, inset -2px 0 0 0 #fff, inset 0 -2px 0 0 #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.train-type {
+  text-align: center;
+  font-size: 3.75vw;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* 行先 */
+.dest {
+  display: flex;
+  gap: 1vw;
+  align-items: baseline;
+  font-size: 3.75vw;
+  font-weight: 800;
+}
+.dest small {
+  font-size: 2.5vw;
+  opacity: 0.95;
+}
+
+/* 次駅表示 */
+.header-next {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+.next-left,
+.next-right {
+  padding: 0 0.5vw;
+  font-size: 2.5vw;
+  font-weight: 800;
+}
+.next-right {
+  width: 6vw;
+}
+.next-box {
+  width: 25.75vw;
+  border-radius: 1vw;
+  background: #fff;
+  box-shadow: 0 0 1px 1px #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.next-name {
+  padding-block: 2px;
+  line-height: 1;
+  font-size: 3.75vw;
+  font-weight: 800;
+  color: #1f2740;
+  white-space: nowrap;
+}
+
+/* 路線 */
+.line-panel {
+  height: 100%;
+  background: #deecf9;
+}
+.line {
+  position: absolute;
+  left: 4.5vw;
+  right: 4.5vw;
+  bottom: calc(100% - 22.5vw);
+  display: flex;
+  justify-content: space-between;
+  height: 2vw;
+  background: linear-gradient(#8fc3e4, #3b78b4);
+  border-radius: 1vw;
+}
+.station {
+  position: relative;
+  width: 2vw;
+  height: 2vw;
+  background: #fff;
+  border-radius: 1vw;
+  box-shadow: inset 0 0 0 2px #333;
+}
+
+/* 駅名のベース位置 */
+.name.kanji,
+.name.kana {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.name.en {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  white-space: nowrap;
+}
+
+/* 駅名の見た目（中身） */
+.name-inner {
+  font-weight: 700;
+  color: #111;
+  line-height: 1;
+  white-space: nowrap;
+}
+.name-inner.kanji {
+  writing-mode: vertical-rl;
+  font-size: 2.25vw;
+}
+.name-inner.kana {
+  writing-mode: vertical-rl;
+  font-size: 2vw;
+}
+.name-inner.en {
+  display: inline-block;
+  font-size: 2vw;
+  transform-origin: bottom left;
+  transform: rotate(-75deg);
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>車内案内表示器 (阪急風)</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-bottom">
+        <div class="header-next">
+          <div>
+            <div class="next-left kanji">つぎは</div>
+            <div class="next-left kana">つぎは</div>
+            <div class="next-left en">Next</div>
+          </div>
+          <div class="next-box">
+            <span class="next-name kanji" id="next-name-kanji"></span>
+            <span class="next-name kana" id="next-name-kana"></span>
+            <span class="next-name en" id="next-name-en"></span>
+          </div>
+          <div>
+            <div class="next-right kanji">です</div>
+            <div class="next-right kana">です</div>
+            <div class="next-right en"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-top-shadow">
+        <div class="header-top">
+          <div class="train-type-box">
+            <div class="train-type kanji" id="train-type-kanji"></div>
+            <div class="train-type kana" id="train-type-kana"></div>
+            <div class="train-type en" id="train-type-en"></div>
+          </div>
+          <div class="dest">
+            <small class="en">For</small>
+            <span class="kanji" id="dest-name-kanji"></span>
+            <span class="kana" id="dest-name-kana"></span>
+            <span class="en" id="dest-name-en"></span>
+            <small class="kanji">ゆき</small>
+            <small class="kana">ゆき</small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="line-panel" id="line-panel">
+        <div class="line" id="line"></div>
+      </div>
+      <div class="settings-panel" id="settings-panel">
+        <h2>設定</h2>
+        <p>ここに各種設定項目を配置できます。</p>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
