@@ -92,7 +92,7 @@ const settings = {
   isInboundLeft: true,
   route: null,
   auto: null,
-  isInbound: true,
+  isInbound: false,
   trainType: "普　通",
   position: data.stations[0],
   stopStations: [...data.stations],
@@ -128,11 +128,11 @@ function setTexts(map) {
 /* ===================== DOM 更新 ===================== */
 function computeOrdered() {
   const stations = settings.isInbound
-    ? data.stations
-    : [...data.stations].reverse();
+    ? [...data.stations].reverse()
+    : data.stations;
   const stops = settings.isInbound
-    ? settings.stopStations
-    : [...settings.stopStations].reverse();
+    ? [...settings.stopStations].reverse()
+    : settings.stopStations;
   return { stations, stops };
 }
 
