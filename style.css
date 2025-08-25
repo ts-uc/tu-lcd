@@ -210,6 +210,21 @@ main {
   transform-origin: bottom left;
   transform: rotate(-75deg);
 }
+.name-inner.passed {
+  color: #888;
+}
+.name-inner.notstop {
+  color: #888;
+}
+.name-inner.notstop.kanji {
+  font-size: calc(2.25vw - 0.5vw);
+}
+.name-inner.notstop.kana {
+  font-size: calc(2vw - 0.5vw);
+}
+.name-inner.notstop.en {
+  font-size: calc(2vw - 0.5vw);
+}
 
 /* 設定画面 */
 /* 設定画面の2分割レイアウト */
