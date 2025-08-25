@@ -166,16 +166,31 @@ function updateDOMs() {
     "next-name-en": data.en[next],
   });
 
-  // 路線図（next は実計算の next を使用）
+  // 路線図
   const lineEl = qs("#line");
   lineEl.innerHTML = "";
 
   const stations = settings.isInboundLeft
     ? data.stations
     : [...data.stations].reverse();
-  for (const name of stations) {
+
+  const posIndex = stations.indexOf(settings.position);
+
+  for (let i = 0; i < stations.length; i++) {
+    const name = stations[i];
+
+    let cls = "";
+    if (name === next) {
+      cls += " next";
+    }
+    if (!settings.stopStations.includes(name)) {
+      cls += " notstop";
+    } else if (i <= posIndex) {
+      cls += " passed";
+    }
+
     const s = document.createElement("div");
-    s.className = "station" + (name === next ? " next" : "");
+    s.className = `station${cls}`;
     s.dataset.name = name;
 
     const mk = (cls, inner) => {
@@ -184,9 +199,9 @@ function updateDOMs() {
       d.innerHTML = `<span class="name-inner ${cls}">${inner ?? ""}</span>`;
       return d;
     };
-    s.appendChild(mk("kanji", name));
-    s.appendChild(mk("kana", data.kana[name]));
-    s.appendChild(mk("en", data.en[name]));
+    s.appendChild(mk(`kanji${cls}`, name));
+    s.appendChild(mk(`kana${cls}`, data.kana[name]));
+    s.appendChild(mk(`en${cls}`, data.en[name]));
     lineEl.appendChild(s);
   }
 }
