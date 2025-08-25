@@ -138,17 +138,39 @@ function setTexts(map) {
 /* ===================== DOM更新 ===================== */
 
 function updateDOMs() {
+  // 進行方向に応じて駅リストを整列
+  const orderedStations = settings.isInbound
+    ? data.stations
+    : [...data.stations].reverse();
+  const orderedStops = settings.isInbound
+    ? settings.stopStations
+    : [...settings.stopStations].reverse();
+
+  // 現在駅のインデックス
+  const posIndex = orderedStations.indexOf(settings.position);
+
+  // 次の停車駅を探す
+  let next = "";
+  for (let i = posIndex + 1; i < orderedStations.length; i++) {
+    if (orderedStops.includes(orderedStations[i])) {
+      next = orderedStations[i];
+      break;
+    }
+  }
+  // 終着駅
+  const dest = orderedStops[orderedStops.length - 1];
+
   // ヘッダー
   setTexts({
-    "train-type-kanji": trainStatus.trainType,
-    "train-type-kana": data.kana[trainStatus.trainType],
-    "train-type-en": data.en[trainStatus.trainType],
-    "dest-name-kanji": trainStatus.dest,
-    "dest-name-kana": data.kana[trainStatus.dest],
-    "dest-name-en": data.en[trainStatus.dest],
-    "next-name-kanji": trainStatus.next,
-    "next-name-kana": data.kana[trainStatus.next],
-    "next-name-en": data.en[trainStatus.next],
+    "train-type-kanji": settings.trainType,
+    "train-type-kana": data.kana[settings.trainType],
+    "train-type-en": data.en[settings.trainType],
+    "dest-name-kanji": dest,
+    "dest-name-kana": data.kana[dest],
+    "dest-name-en": data.en[dest],
+    "next-name-kanji": next,
+    "next-name-kana": data.kana[next],
+    "next-name-en": data.en[next],
   });
   // 路線図
   const lineEl = qs("#line");
