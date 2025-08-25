@@ -359,7 +359,7 @@
         origin: "福島",
         dest: "丸森",
         next: "梁川",
-      }
+      };
 
       /* ===================== ヘルパ ===================== */
       const qs = (sel, root = document) => root.querySelector(sel);
@@ -373,7 +373,8 @@
       ) {
         if (!el) return;
         // レイアウト確定後のサイズ取得
-        const actual = axis.toLowerCase() === "y" ? el.offsetHeight : el.offsetWidth;
+        const actual =
+          axis.toLowerCase() === "y" ? el.offsetHeight : el.offsetWidth;
 
         if (actual > maxPx) {
           const scale = maxPx / actual;
