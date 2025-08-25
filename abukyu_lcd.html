@@ -28,15 +28,14 @@
       body {
         margin: 0;
         padding: 0;
-        overflow: hidden;
-      }
-      .panel {
-        width: 100%;
         aspect-ratio: 32/9;
-        background: #deecf9;
+        overflow: hidden;
       }
       header {
         height: 6vw;
+      }
+      main {
+        height: 100%;
       }
 
       /* 下段帯 */
@@ -158,6 +157,10 @@
       }
 
       /* 路線 */
+      .line-panel {
+        height: 100%;
+        background: #deecf9;
+      }
       .line {
         position: absolute;
         left: 4.5vw;
@@ -218,51 +221,51 @@
     </style>
   </head>
   <body>
-    <div class="panel" role="group" aria-label="案内パネル">
-      <header>
-        <div class="header-bottom">
-          <div class="header-next">
-            <div>
-              <div class="next-left kanji">つぎは</div>
-              <div class="next-left kana">つぎは</div>
-              <div class="next-left en">Next</div>
-            </div>
-            <div class="next-box">
-              <span class="next-name kanji" id="next-name-kanji"></span>
-              <span class="next-name kana" id="next-name-kana"></span>
-              <span class="next-name en" id="next-name-en"></span>
-            </div>
-            <div>
-              <div class="next-right kanji">です</div>
-              <div class="next-right kana">です</div>
-              <div class="next-right en"></div>
-            </div>
+    <header>
+      <div class="header-bottom">
+        <div class="header-next">
+          <div>
+            <div class="next-left kanji">つぎは</div>
+            <div class="next-left kana">つぎは</div>
+            <div class="next-left en">Next</div>
+          </div>
+          <div class="next-box">
+            <span class="next-name kanji" id="next-name-kanji"></span>
+            <span class="next-name kana" id="next-name-kana"></span>
+            <span class="next-name en" id="next-name-en"></span>
+          </div>
+          <div>
+            <div class="next-right kanji">です</div>
+            <div class="next-right kana">です</div>
+            <div class="next-right en"></div>
           </div>
         </div>
+      </div>
 
-        <div class="header-top-shadow">
-          <div class="header-top">
-            <div class="train-type-box">
-              <div class="train-type kanji" id="train-type-kanji"></div>
-              <div class="train-type kana" id="train-type-kana"></div>
-              <div class="train-type en" id="train-type-en"></div>
-            </div>
-            <div class="dest">
-              <small class="en">For</small>
-              <span class="kanji" id="dest-name-kanji"></span>
-              <span class="kana" id="dest-name-kana"></span>
-              <span class="en" id="dest-name-en"></span>
-              <small class="kanji">ゆき</small>
-              <small class="kana">ゆき</small>
-            </div>
+      <div class="header-top-shadow">
+        <div class="header-top">
+          <div class="train-type-box">
+            <div class="train-type kanji" id="train-type-kanji"></div>
+            <div class="train-type kana" id="train-type-kana"></div>
+            <div class="train-type en" id="train-type-en"></div>
+          </div>
+          <div class="dest">
+            <small class="en">For</small>
+            <span class="kanji" id="dest-name-kanji"></span>
+            <span class="kana" id="dest-name-kana"></span>
+            <span class="en" id="dest-name-en"></span>
+            <small class="kanji">ゆき</small>
+            <small class="kana">ゆき</small>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <div class="map-wrap">
+    <main>
+      <div class="line-panel" id="line-panel">
         <div class="line" id="line"></div>
       </div>
-    </div>
+    </main>
 
     <script>
       /* ===================== データ ===================== */
