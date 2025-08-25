@@ -169,7 +169,11 @@ function updateDOMs() {
   // 路線図（next は実計算の next を使用）
   const lineEl = qs("#line");
   lineEl.innerHTML = "";
-  for (const name of data.stations) {
+
+  const stations = settings.isInboundLeft
+    ? data.stations
+    : [...data.stations].reverse();
+  for (const name of stations) {
     const s = document.createElement("div");
     s.className = "station" + (name === next ? " next" : "");
     s.dataset.name = name;
