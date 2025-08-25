@@ -170,14 +170,12 @@ function updateDOMs() {
   const lineEl = qs("#line");
   lineEl.innerHTML = "";
 
-  const stations = settings.isInboundLeft
-    ? data.stations
-    : [...data.stations].reverse();
+  const posIndex = data.stations.indexOf(settings.position);
 
-  const posIndex = stations.indexOf(settings.position);
+  for (let i_tmp = 0; i_tmp < data.stations.length; i_tmp++) {
+    const i = settings.isInboundLeft ? i_tmp : data.stations.length - i_tmp - 1;
 
-  for (let i = 0; i < stations.length; i++) {
-    const name = stations[i];
+    const name = data.stations[i];
 
     let cls = "";
     if (name === next) {
