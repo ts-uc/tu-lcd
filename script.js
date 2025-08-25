@@ -87,6 +87,17 @@ const data = {
   },
 };
 
+/* ===================== 設定変数 ===================== */
+const settings = {
+  isInboundLeft: true,
+  route: null,
+  auto: null,
+  isInbound: true,
+  trainType: "普　通",
+  position: "",
+  stopStations: [],
+};
+
 const trainStatus = {
   trainType: "貸　切",
   origin: "福島",
@@ -216,12 +227,12 @@ setInterval(() => {
 }, 5000);
 
 /* ===================== 設定画面表示切替 ===================== */
-const settings = document.getElementById("settings-panel");
-const lineView = document.getElementById("line-panel");
+const elSettings = document.getElementById("settings-panel");
+const elLineView = document.getElementById("line-panel");
 document.querySelector(".train-type-box").addEventListener("dblclick", () => {
-  const showingSettings = settings.style.display === "block";
-  settings.style.display = showingSettings ? "none" : "block";
-  lineView.style.display = showingSettings ? "flex" : "none";
+  const showingSettings = elSettings.style.display === "block";
+  elSettings.style.display = showingSettings ? "none" : "block";
+  elLineView.style.display = showingSettings ? "flex" : "none";
   if (!showingSettings) populateSettingsOnce(); // 初回表示時に選択肢を構築
   rafApply();
 });
@@ -252,6 +263,54 @@ function populateSettingsOnce() {
   const ttSel = document.getElementById("train-type-select");
   ttSel.value = data.trainType;
 }
+
+/* ===================== 設定更新時の処理 ===================== */
+
+// 各要素を取得
+const layoutDirEls = document.querySelectorAll('input[name="layout-dir"]');
+const routeEl = document.getElementById("route-select");
+const autoEl = document.getElementById("auto-select");
+const directionEls = document.querySelectorAll('input[name="direction"]');
+const trainTypeEl = document.getElementById("train-type-select");
+const currentStationEl = document.getElementById("current-station");
+const stopStationsEl = document.getElementById("stop-stations");
+
+// 値を更新する関数
+function updateSettings() {
+  const layoutDirChecked = document.querySelector(
+    'input[name="layout-dir"]:checked'
+  );
+  settings.isInboundLeft =
+    layoutDirChecked && layoutDirChecked.value === "inbound-left";
+
+  const directionChecked = document.querySelector(
+    'input[name="direction"]:checked'
+  );
+  settings.isInbound = directionChecked && directionChecked.value === "inbound";
+
+  settings.route = routeEl.value;
+  settings.auto = autoEl.value;
+  settings.trainType = trainTypeEl.value;
+  settings.position = currentStationEl.value;
+
+  // multiple select は選択中の option を配列にする
+  settings.stopStations = Array.from(stopStationsEl.selectedOptions).map(
+    (opt) => opt.value
+  );
+
+  rafUpdate();
+}
+
+// イベントリスナーを追加
+[...layoutDirEls, ...directionEls].forEach((el) =>
+  el.addEventListener("change", updateSettings)
+);
+[routeEl, autoEl, trainTypeEl, currentStationEl, stopStationsEl].forEach((el) =>
+  el.addEventListener("change", updateSettings)
+);
+
+// 初期化
+updateSettings();
 
 /* ===================== リサイズ対応（軽量化） ===================== */
 let resizeTid = 0;
