@@ -87,7 +87,7 @@ const data = {
   },
 };
 
-const status = {
+const trainStatus = {
   trainType: "貸　切",
   origin: "福島",
   dest: "丸森",
@@ -126,22 +126,22 @@ function setTexts(map) {
 
 /* ===================== 初期テキスト反映 ===================== */
 setTexts({
-  "train-type-kanji": status.trainType,
-  "train-type-kana": data.kana[status.trainType],
-  "train-type-en": data.en[status.trainType],
-  "dest-name-kanji": status.dest,
-  "dest-name-kana": data.kana[status.dest],
-  "dest-name-en": data.en[status.dest],
-  "next-name-kanji": status.next,
-  "next-name-kana": data.kana[status.next],
-  "next-name-en": data.en[status.next],
+  "train-type-kanji": trainStatus.trainType,
+  "train-type-kana": data.kana[trainStatus.trainType],
+  "train-type-en": data.en[trainStatus.trainType],
+  "dest-name-kanji": trainStatus.dest,
+  "dest-name-kana": data.kana[trainStatus.dest],
+  "dest-name-en": data.en[trainStatus.dest],
+  "next-name-kanji": trainStatus.next,
+  "next-name-kana": data.kana[trainStatus.next],
+  "next-name-en": data.en[trainStatus.next],
 });
 
 /* ===================== 駅DOM生成 ===================== */
 const lineEl = qs("#line");
 for (const name of data.stations) {
   const s = document.createElement("div");
-  s.className = "station" + (name === status.next ? " next" : "");
+  s.className = "station" + (name === trainStatus.next ? " next" : "");
   s.dataset.name = name;
 
   const mk = (cls, inner) => {
