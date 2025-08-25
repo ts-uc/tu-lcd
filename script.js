@@ -87,7 +87,7 @@ const data = {
   },
 };
 
-/* ===================== 設定変数 ===================== */
+/* ===================== 設定変数（単一情報源） ===================== */
 const settings = {
   isInboundLeft: true,
   route: null,
@@ -98,13 +98,6 @@ const settings = {
   stopStations: [...data.stations],
 };
 
-const trainStatus = {
-  trainType: "貸　切",
-  origin: "福島",
-  dest: "丸森",
-  next: "梁川",
-};
-
 /* ===================== ヘルパ ===================== */
 const qs = (sel, root = document) => root.querySelector(sel);
 const qsa = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -113,19 +106,16 @@ const vw = (v) => window.innerWidth * (v / 100);
 /** 任意軸で max を超えた分だけ縮小（transform 前置にも対応） */
 function scaleToFit(el, { maxPx, axis = "x", origin = "center", prefix = "" }) {
   if (!el) return;
-  // レイアウト確定後のサイズ取得
-  const actual = axis.toLowerCase() === "y" ? el.offsetHeight : el.offsetWidth;
-
+  const a = axis.toLowerCase();
+  const actual = a === "y" ? el.offsetHeight : el.offsetWidth;
   if (actual > maxPx) {
     const scale = maxPx / actual;
-    const scaleStr =
-      axis.toLowerCase() === "y" ? `scaleY(${scale})` : `scaleX(${scale})`;
+    const scaleStr = a === "y" ? `scaleY(${scale})` : `scaleX(${scale})`;
     el.style.transform = `${prefix}${prefix ? " " : ""}${scaleStr}`;
-    el.style.transformOrigin = origin;
   } else {
-    el.style.transform = prefix; // 既定の transform のみに戻す
-    el.style.transformOrigin = origin;
+    el.style.transform = prefix;
   }
+  el.style.transformOrigin = origin;
 }
 
 function setTexts(map) {
@@ -135,30 +125,33 @@ function setTexts(map) {
   }
 }
 
-/* ===================== DOM更新 ===================== */
-
-function updateDOMs() {
-  // 進行方向に応じて駅リストを整列
-  const orderedStations = settings.isInbound
+/* ===================== DOM 更新 ===================== */
+function computeOrdered() {
+  const stations = settings.isInbound
     ? data.stations
     : [...data.stations].reverse();
-  const orderedStops = settings.isInbound
+  const stops = settings.isInbound
     ? settings.stopStations
     : [...settings.stopStations].reverse();
+  return { stations, stops };
+}
 
-  // 現在駅のインデックス
-  const posIndex = orderedStations.indexOf(settings.position);
-
-  // 次の停車駅を探す
+function computeNextDest() {
+  const { stations, stops } = computeOrdered();
+  const posIndex = stations.indexOf(settings.position);
   let next = "";
-  for (let i = posIndex + 1; i < orderedStations.length; i++) {
-    if (orderedStops.includes(orderedStations[i])) {
-      next = orderedStations[i];
+  for (let i = posIndex + 1; i < stations.length; i++) {
+    if (stops.includes(stations[i])) {
+      next = stations[i];
       break;
     }
   }
-  // 終着駅
-  const dest = orderedStops[orderedStops.length - 1];
+  const dest = stops[stops.length - 1] || "";
+  return { next, dest, orderedStations: stations };
+}
+
+function updateDOMs() {
+  const { next, dest, orderedStations } = computeNextDest();
 
   // ヘッダー
   setTexts({
@@ -172,18 +165,19 @@ function updateDOMs() {
     "next-name-kana": data.kana[next],
     "next-name-en": data.en[next],
   });
-  // 路線図
+
+  // 路線図（next は実計算の next を使用）
   const lineEl = qs("#line");
   lineEl.innerHTML = "";
   for (const name of data.stations) {
     const s = document.createElement("div");
-    s.className = "station" + (name === trainStatus.next ? " next" : "");
+    s.className = "station" + (name === next ? " next" : "");
     s.dataset.name = name;
 
     const mk = (cls, inner) => {
       const d = document.createElement("div");
       d.className = `name ${cls}`;
-      d.innerHTML = `<span class="name-inner ${cls}">${inner}</span>`;
+      d.innerHTML = `<span class="name-inner ${cls}">${inner ?? ""}</span>`;
       return d;
     };
     s.appendChild(mk("kanji", name));
@@ -196,10 +190,9 @@ const rafUpdate = () => requestAnimationFrame(updateDOMs);
 
 /* ===================== スケーリング ===================== */
 function applyScaling() {
-  // 駅名（縦書きは高さを制限、英語は回転＋横幅を制限）
+  // 駅名
   qsa(".name-inner").forEach((el) => {
     if (el.classList.contains("en")) {
-      // 既定回転を prefix に保持
       scaleToFit(el, {
         maxPx: vw(13),
         axis: "x",
@@ -207,37 +200,27 @@ function applyScaling() {
         prefix: "rotate(-75deg)",
       });
     } else {
-      scaleToFit(el, {
-        maxPx: vw(12.5),
-        axis: "y",
-        origin: "bottom center",
-      });
+      scaleToFit(el, { maxPx: vw(12.5), axis: "y", origin: "bottom center" });
     }
   });
-
   // 種別
   qsa(".train-type").forEach((el) => {
     scaleToFit(el, { maxPx: vw(18), axis: "x", origin: "center" });
   });
-
-  // 行先（全体ブロックを縮める）
+  // 行先
   qsa(".dest").forEach((el) => {
     scaleToFit(el, { maxPx: vw(32.5), axis: "x", origin: "left" });
   });
-
   // 次駅
   qsa(".next-name").forEach((el) => {
     scaleToFit(el, { maxPx: vw(25), axis: "x", origin: "center" });
   });
 }
-
-// レイアウトが変わる操作の直後に 1フレーム待って実行
 const rafApply = () => requestAnimationFrame(applyScaling);
 
 /* ===================== 言語切替 ===================== */
 const order = ["kanji", "kana", "en"];
 let idx = 0;
-
 setInterval(() => {
   idx = (idx + 1) % order.length;
   document.documentElement.setAttribute("data-lang", order[idx]);
@@ -245,46 +228,17 @@ setInterval(() => {
 }, 5000);
 
 /* ===================== 設定画面表示切替 ===================== */
+// ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
 const elSettings = document.getElementById("settings-panel");
 const elLineView = document.getElementById("line-panel");
 document.querySelector(".train-type-box").addEventListener("dblclick", () => {
   const showingSettings = elSettings.style.display === "block";
   elSettings.style.display = showingSettings ? "none" : "block";
   elLineView.style.display = showingSettings ? "flex" : "none";
-  if (!showingSettings) populateSettingsOnce(); // 初回表示時に選択肢を構築
   rafApply();
 });
 
-// --- 設定画面の選択肢を埋める ---
-let settingsPopulated = false;
-function populateSettingsOnce() {
-  if (settingsPopulated) return;
-  settingsPopulated = true;
-
-  // 現在地/直前駅
-  const curSel = document.getElementById("current-station");
-  curSel.innerHTML = data.stations
-    .map((s) => `<option value="${s}">${s}</option>`)
-    .join("");
-  // デフォルトを data.next か origin に寄せる
-  curSel.value = data.next ?? data.origin ?? data.stations[0];
-
-  // 停車駅（multiple）
-  const stopsSel = document.getElementById("stop-stations");
-  stopsSel.innerHTML = data.stations
-    .map((s) => `<option value="${s}">${s}</option>`)
-    .join("");
-
-  [...stopsSel.options].forEach((o) => (o.selected = true));
-
-  // 種別 初期値
-  const ttSel = document.getElementById("train-type-select");
-  ttSel.value = data.trainType;
-}
-
-/* ===================== 設定更新時の処理 ===================== */
-
-// 各要素を取得
+/* ===================== 設定フォーム要素参照 ===================== */
 const layoutDirEls = document.querySelectorAll('input[name="layout-dir"]');
 const routeEl = document.getElementById("route-select");
 const autoEl = document.getElementById("auto-select");
@@ -293,31 +247,19 @@ const trainTypeEl = document.getElementById("train-type-select");
 const currentStationEl = document.getElementById("current-station");
 const stopStationsEl = document.getElementById("stop-stations");
 
-// settings → フォームに反映する関数
+/* ===== settings → フォーム反映 ===== */
 function applySettings() {
   // 設置方向
-  if (settings.isInboundLeft) {
-    document.querySelector(
-      'input[name="layout-dir"][value="inbound-left"]'
-    ).checked = true;
-  } else {
-    document.querySelector(
-      'input[name="layout-dir"][value="inbound-right"]'
-    ).checked = true;
-  }
+  qs('input[name="layout-dir"][value="inbound-left"]').checked =
+    !!settings.isInboundLeft;
+  qs('input[name="layout-dir"][value="inbound-right"]').checked =
+    !settings.isInboundLeft;
 
   // 進行方向
-  if (settings.isInbound) {
-    document.querySelector(
-      'input[name="direction"][value="inbound"]'
-    ).checked = true;
-  } else {
-    document.querySelector(
-      'input[name="direction"][value="outbound"]'
-    ).checked = true;
-  }
+  qs('input[name="direction"][value="inbound"]').checked = !!settings.isInbound;
+  qs('input[name="direction"][value="outbound"]').checked = !settings.isInbound;
 
-  // その他 select / input
+  // その他
   routeEl.value = settings.route || "";
   autoEl.value = settings.auto || "";
   trainTypeEl.value = settings.trainType || "";
@@ -329,34 +271,28 @@ function applySettings() {
   });
 }
 
-// 値を更新する関数
+/* ===== フォーム → settings 反映 ===== */
 function updateSettings() {
-  const layoutDirChecked = document.querySelector(
-    'input[name="layout-dir"]:checked'
-  );
-  settings.isInboundLeft =
-    layoutDirChecked && layoutDirChecked.value === "inbound-left";
+  const layoutDirChecked = qs('input[name="layout-dir"]:checked');
+  settings.isInboundLeft = layoutDirChecked?.value === "inbound-left";
 
-  const directionChecked = document.querySelector(
-    'input[name="direction"]:checked'
-  );
-  settings.isInbound = directionChecked && directionChecked.value === "inbound";
+  const directionChecked = qs('input[name="direction"]:checked');
+  settings.isInbound = directionChecked?.value === "inbound";
 
-  settings.route = routeEl.value;
-  settings.auto = autoEl.value;
-  settings.trainType = trainTypeEl.value;
-  settings.position = currentStationEl.value;
+  settings.route = routeEl.value || null;
+  settings.auto = autoEl.value || null;
+  settings.trainType = trainTypeEl.value || settings.trainType;
+  settings.position = currentStationEl.value || settings.position;
 
-  // multiple select は選択中の option を配列にする
   settings.stopStations = Array.from(stopStationsEl.selectedOptions).map(
-    (opt) => opt.value
+    (o) => o.value
   );
 
   rafUpdate();
   rafApply();
 }
 
-// イベントリスナーを追加
+// 変更監視
 [...layoutDirEls, ...directionEls].forEach((el) =>
   el.addEventListener("change", updateSettings)
 );
@@ -364,25 +300,39 @@ function updateSettings() {
   el.addEventListener("change", updateSettings)
 );
 
-/* ===================== ページ読み込み時処理 ===================== */
+/* ===================== 初期化 ===================== */
+/** フォームの選択肢はロード時に一度だけ構築（初期値は settings から applySettings で反映） */
+function buildFormOptionsOnce() {
+  // 現在地／直前駅
+  currentStationEl.innerHTML = data.stations
+    .map((s) => `<option value="${s}">${s}</option>`)
+    .join("");
 
-// ページ読み込み後に初期値を反映
+  // 停車駅（multiple）
+  stopStationsEl.innerHTML = data.stations
+    .map((s) => `<option value="${s}">${s}</option>`)
+    .join("");
+
+  // 種別の候補（既存の <option> を使う運用なら不要。必要なら以下を利用）
+  // 例: trainTypeEl.innerHTML = Object.keys(data.kana).slice(0,3).map(t => `<option value="${t}">${t}</option>`).join("");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  applySettings();
+  buildFormOptionsOnce(); // ←選択肢だけ作る（初期値はここでは入れない）
+  applySettings(); // ←初期値は settings を反映
   rafUpdate();
   document.documentElement.setAttribute("data-lang", order[idx]);
   rafApply();
 });
 
-/* ===================== リサイズ対応（軽量化） ===================== */
+/* ===================== リサイズ/フォントロード後調整 ===================== */
 let resizeTid = 0;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTid);
-  resizeTid = setTimeout(rafApply, 100); // 連打抑制
+  resizeTid = setTimeout(rafApply, 100);
 });
 
-// DOM完成後の最終調整（フォントロード後の差異吸収）
 window.addEventListener("load", () => {
   rafApply();
-  setTimeout(rafApply, 0); // もう1フレーム余裕を見る
+  setTimeout(rafApply, 0);
 });
