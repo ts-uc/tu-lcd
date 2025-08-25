@@ -94,8 +94,8 @@ const settings = {
   auto: null,
   isInbound: true,
   trainType: "普　通",
-  position: "",
-  stopStations: [],
+  position: data.stations[0],
+  stopStations: [...data.stations],
 };
 
 const trainStatus = {
@@ -321,6 +321,7 @@ function updateSettings() {
   );
 
   rafUpdate();
+  rafApply();
 }
 
 // イベントリスナーを追加
@@ -330,9 +331,6 @@ function updateSettings() {
 [routeEl, autoEl, trainTypeEl, currentStationEl, stopStationsEl].forEach((el) =>
   el.addEventListener("change", updateSettings)
 );
-
-// 初期化
-updateSettings();
 
 /* ===================== リサイズ対応（軽量化） ===================== */
 let resizeTid = 0;
