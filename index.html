@@ -52,8 +52,93 @@
         <div class="line" id="line"></div>
       </div>
       <div class="settings-panel" id="settings-panel">
-        <h2>設定</h2>
-        <p>ここに各種設定項目を配置できます。</p>
+        <div class="settings-grid">
+          <!-- 左画面 -->
+          <div class="settings-col">
+            <h3>表示設定</h3>
+            <div class="form-row">
+              <label>設置方向</label>
+              <fieldset>
+                <div class="choices">
+                  <label
+                    ><input
+                      type="radio"
+                      name="layout-dir"
+                      value="inbound-left"
+                      checked
+                    />
+                    上りが左</label
+                  >
+                  <label
+                    ><input
+                      type="radio"
+                      name="layout-dir"
+                      value="inbound-right"
+                    />
+                    上りが右</label
+                  >
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-row">
+              <label for="route-select">路線</label>
+              <select id="route-select" disabled>
+                <option>（未対応）</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="auto-select">自動表示</label>
+              <select id="auto-select" disabled>
+                <option>（未対応）</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>進行方向</label>
+              <fieldset>
+                <div class="choices">
+                  <label
+                    ><input type="radio" name="direction" value="inbound" />
+                    上り</label
+                  >
+                  <label
+                    ><input
+                      type="radio"
+                      name="direction"
+                      value="outbound"
+                      checked
+                    />
+                    下り</label
+                  >
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-row">
+              <label for="train-type-select">列車種別</label>
+              <select id="train-type-select">
+                <option value="普　通">普　通</option>
+                <option value="快　速">快　速</option>
+                <option value="貸　切">貸　切</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="current-station">現在地/直前駅</label>
+              <select id="current-station"></select>
+            </div>
+          </div>
+          <!-- 右画面 -->
+          <div class="settings-col">
+            <h3>停車駅</h3>
+            <div class="form-row" style="align-items: start">
+              <label for="stop-stations">全駅</label>
+              <select
+                id="stop-stations"
+                multiple
+                size="10"
+                style="width: 100%"
+              ></select>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 

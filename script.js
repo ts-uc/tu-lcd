@@ -215,8 +215,36 @@ document.querySelector(".train-type-box").addEventListener("dblclick", () => {
   const showingSettings = settings.style.display === "block";
   settings.style.display = showingSettings ? "none" : "block";
   lineView.style.display = showingSettings ? "flex" : "none";
+  if (!showingSettings) populateSettingsOnce(); // 初回表示時に選択肢を構築
   rafApply();
 });
+
+// --- 設定画面の選択肢を埋める ---
+let settingsPopulated = false;
+function populateSettingsOnce() {
+  if (settingsPopulated) return;
+  settingsPopulated = true;
+
+  // 現在地/直前駅
+  const curSel = document.getElementById("current-station");
+  curSel.innerHTML = data.stations
+    .map((s) => `<option value="${s}">${s}</option>`)
+    .join("");
+  // デフォルトを data.next か origin に寄せる
+  curSel.value = data.next ?? data.origin ?? data.stations[0];
+
+  // 停車駅（multiple）
+  const stopsSel = document.getElementById("stop-stations");
+  stopsSel.innerHTML = data.stations
+    .map((s) => `<option value="${s}">${s}</option>`)
+    .join("");
+
+  [...stopsSel.options].forEach((o) => (o.selected = true));
+
+  // 種別 初期値
+  const ttSel = document.getElementById("train-type-select");
+  ttSel.value = data.trainType;
+}
 
 /* ===================== リサイズ対応（軽量化） ===================== */
 let resizeTid = 0;
