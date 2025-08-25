@@ -193,6 +193,10 @@ function updateDOMs() {
     s.className = `station${cls}`;
     s.dataset.name = name;
 
+    const dot = document.createElement("div");
+    dot.className = `dot ${cls}`;
+    s.appendChild(dot);
+
     const mk = (cls, inner) => {
       const d = document.createElement("div");
       d.className = `name ${cls}`;
