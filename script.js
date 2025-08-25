@@ -124,37 +124,44 @@ function setTexts(map) {
   }
 }
 
-/* ===================== 初期テキスト反映 ===================== */
-setTexts({
-  "train-type-kanji": trainStatus.trainType,
-  "train-type-kana": data.kana[trainStatus.trainType],
-  "train-type-en": data.en[trainStatus.trainType],
-  "dest-name-kanji": trainStatus.dest,
-  "dest-name-kana": data.kana[trainStatus.dest],
-  "dest-name-en": data.en[trainStatus.dest],
-  "next-name-kanji": trainStatus.next,
-  "next-name-kana": data.kana[trainStatus.next],
-  "next-name-en": data.en[trainStatus.next],
-});
+/* ===================== DOM更新 ===================== */
 
-/* ===================== 駅DOM生成 ===================== */
-const lineEl = qs("#line");
-for (const name of data.stations) {
-  const s = document.createElement("div");
-  s.className = "station" + (name === trainStatus.next ? " next" : "");
-  s.dataset.name = name;
+function updateDOMs() {
+  // ヘッダー
+  setTexts({
+    "train-type-kanji": trainStatus.trainType,
+    "train-type-kana": data.kana[trainStatus.trainType],
+    "train-type-en": data.en[trainStatus.trainType],
+    "dest-name-kanji": trainStatus.dest,
+    "dest-name-kana": data.kana[trainStatus.dest],
+    "dest-name-en": data.en[trainStatus.dest],
+    "next-name-kanji": trainStatus.next,
+    "next-name-kana": data.kana[trainStatus.next],
+    "next-name-en": data.en[trainStatus.next],
+  });
+  // 路線図
+  const lineEl = qs("#line");
+  lineEl.innerHTML = "";
+  for (const name of data.stations) {
+    const s = document.createElement("div");
+    s.className = "station" + (name === trainStatus.next ? " next" : "");
+    s.dataset.name = name;
 
-  const mk = (cls, inner) => {
-    const d = document.createElement("div");
-    d.className = `name ${cls}`;
-    d.innerHTML = `<span class="name-inner ${cls}">${inner}</span>`;
-    return d;
-  };
-  s.appendChild(mk("kanji", name));
-  s.appendChild(mk("kana", data.kana[name]));
-  s.appendChild(mk("en", data.en[name]));
-  lineEl.appendChild(s);
+    const mk = (cls, inner) => {
+      const d = document.createElement("div");
+      d.className = `name ${cls}`;
+      d.innerHTML = `<span class="name-inner ${cls}">${inner}</span>`;
+      return d;
+    };
+    s.appendChild(mk("kanji", name));
+    s.appendChild(mk("kana", data.kana[name]));
+    s.appendChild(mk("en", data.en[name]));
+    lineEl.appendChild(s);
+  }
 }
+const rafUpdate = () => requestAnimationFrame(updateDOMs);
+
+rafUpdate();
 
 /* ===================== スケーリング ===================== */
 function applyScaling() {
