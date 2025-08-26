@@ -340,6 +340,12 @@ function tick() {
   document.documentElement.setAttribute("data-view", view);
   document.documentElement.setAttribute("data-lang", lang);
 
+  if (view == "name") {
+    document.getElementById("header-next").style.display = "none";
+  } else {
+    document.getElementById("header-next").style.display = "flex";
+  }
+
   rafApply?.(); // そのまま呼ぶ（未定義なら無視）
   idx = (idx + 1) % (views.length * langs.length);
 }
