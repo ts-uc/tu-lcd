@@ -153,8 +153,8 @@ function computeNextDest() {
 function updateDOMs() {
   const { next, dest, orderedStations } = computeNextDest();
 
-  // ヘッダー
   setTexts({
+    // ヘッダー
     "train-type-kanji": settings.trainType,
     "train-type-kana": data.kana[settings.trainType],
     "train-type-en": data.en[settings.trainType],
@@ -164,6 +164,11 @@ function updateDOMs() {
     "next-name-kanji": next,
     "next-name-kana": data.kana[next],
     "next-name-en": data.en[next],
+
+    // 駅名パネル
+    "name-panel-kanji": next,
+    "name-panel-kana": data.kana[next],
+    "name-panel-m17n": data.en[next],
   });
 
   // 路線図

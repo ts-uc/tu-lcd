@@ -36,10 +36,11 @@ header {
   height: 6vw;
 }
 main {
-  height: 100%;
+  height: calc(100% - 6vw);
 }
 .normal-panel {
   height: 100%;
+  width: 100%;
   background: #deecf9;
 }
 
@@ -164,6 +165,83 @@ main {
 /* 駅名表示 */
 .name-panel {
   height: 100%;
+  width: 100%;
+}
+
+.name-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  gap: 0 2vw;
+}
+
+#name-panel-kana,
+#name-panel-m17n {
+  padding-block: 0.2vw;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  font-size: 4vw;
+  font-weight: 700;
+  color: #223;
+  white-space: nowrap;
+}
+
+#name-panel-kanji {
+  padding-block: 0.2vw;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 0.2vw solid #999;
+  border-radius: 1vw;
+  box-shadow: inset 0 0 0.5vw rgba(0, 0, 0, 0.5);
+  font-size: 9vw;
+  font-weight: 700;
+  color: #223;
+  white-space: nowrap;
+}
+
+#name-panel-kanji-left {
+  padding-block: 0.2vw;
+  line-height: 1;
+  display: grid;
+  place-items: center end;
+  font-size: 5vw;
+  font-weight: 700;
+  color: #666;
+}
+
+#name-panel-kanji-right {
+  padding-block: 0.2vw;
+  line-height: 1;
+  display: grid;
+  place-items: center start;
+  font-size: 5vw;
+  font-weight: 700;
+  color: #666;
+}
+
+#name-panel-m17n-left {
+  padding-block: 0.2vw;
+  line-height: 1;
+  display: grid;
+  place-items: center end;
+  font-size: 3vw;
+  font-weight: 700;
+  color: #666;
+}
+
+#name-panel-m17n-right {
+  padding-block: 0.2vw;
+  line-height: 1;
+  display: grid;
+  place-items: center start;
+  font-size: 3vw;
+  font-weight: 700;
+  color: #666;
 }
 
 /* 路線 */
