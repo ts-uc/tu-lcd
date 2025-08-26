@@ -288,3 +288,22 @@ fieldset .choices {
   gap: 1rem;
   align-items: center;
 }
+
+.pos-arrow {
+  position: relative;
+  width: 2vw;
+}
+
+.pos-arrow.left {
+  position: relative;
+  height: 2vw;
+  width: 2vw;
+  background: red;
+}
+
+.pos-arrow.right {
+  position: relative;
+  height: 2vw;
+  width: 2vw;
+  background: red;
+}

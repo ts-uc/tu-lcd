@@ -2,22 +2,22 @@
 const data = {
   lineName: "阿武隈急行線",
   stations: [
-    "福島",
-    "卸町",
-    "福島学院前",
-    "瀬上",
-    "向瀬上",
-    "高子",
-    "上保原",
-    "保原",
-    "大泉",
-    "二井田",
-    "新田",
-    "梁川",
-    "やながわ希望の森公園前",
-    "富野",
-    "兜",
-    "あぶくま",
+    // "福島",
+    // "卸町",
+    // "福島学院前",
+    // "瀬上",
+    // "向瀬上",
+    // "高子",
+    // "上保原",
+    // "保原",
+    // "大泉",
+    // "二井田",
+    // "新田",
+    // "梁川",
+    // "やながわ希望の森公園前",
+    // "富野",
+    // "兜",
+    // "あぶくま",
     "丸森",
     "北丸森",
     "南角田",
@@ -205,6 +205,28 @@ function updateDOMs() {
     s.appendChild(mk(`kana${cls}`, data.kana[name]));
     s.appendChild(mk(`en${cls}`, data.en[name]));
     lineEl.appendChild(s);
+
+    const sIL = settings.isInboundLeft;
+    const sI = settings.isInbound;
+    const last = data.stations.length - 1;
+
+    if (!((sIL && i === last) || (!sIL && i === 0))) {
+      // 端では何もしない
+      const posArrow = document.createElement("div");
+      let cls = "pos-arrow";
+
+      // 右向き：表示の左＝上り かどうかと、進行が食い違うとき
+      if (sI !== sIL && i === posIndex) {
+        cls += " right";
+      }
+      // 左向き：表示の左＝上り と進行が一致するとき
+      else if (sI === sIL && i === posIndex + (sIL ? -1 : 1)) {
+        cls += " left";
+      }
+
+      posArrow.className = cls;
+      lineEl.appendChild(posArrow);
+    }
   }
 }
 const rafUpdate = () => requestAnimationFrame(updateDOMs);
