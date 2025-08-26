@@ -198,7 +198,9 @@ main {
 }
 
 #name-panel-kana,
-#name-panel-m17n {
+#name-panel-zh-cn,
+#name-panel-ko,
+#name-panel-en {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
