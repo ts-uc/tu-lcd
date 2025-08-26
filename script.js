@@ -266,6 +266,9 @@ function applyScaling() {
   qsa(".next-name").forEach((el) => {
     scaleToFit(el, { maxPx: vw(25), axis: "x", origin: "center" });
   });
+  qsa(".name-panel-name").forEach((el) => {
+    scaleToFit(el, { maxPx: vw(45), axis: "x", origin: "center" });
+  });
 }
 const rafApply = () => requestAnimationFrame(applyScaling);
 

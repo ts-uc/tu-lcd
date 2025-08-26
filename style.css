@@ -172,9 +172,29 @@ main {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   gap: 0 2vw;
+}
+
+.name-panel-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-panel-box-main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 0.2vw solid #999;
+  border-radius: 1vw;
+  box-shadow: inset 0 0 0.5vw rgba(0, 0, 0, 0.5);
 }
 
 #name-panel-kana,
@@ -194,10 +214,6 @@ main {
   line-height: 1;
   display: grid;
   place-items: center;
-  background: #fff;
-  border: 0.2vw solid #999;
-  border-radius: 1vw;
-  box-shadow: inset 0 0 0.5vw rgba(0, 0, 0, 0.5);
   font-size: 9vw;
   font-weight: 700;
   color: #223;
