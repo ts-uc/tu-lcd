@@ -30,6 +30,9 @@ header {
 main {
   height: 100%;
 }
+.normal-panel {
+  height: 100%;
+}
 
 /* 下段帯 */
 .header-bottom {
@@ -147,6 +150,12 @@ main {
   font-weight: 800;
   color: #1f2740;
   white-space: nowrap;
+}
+
+/* 駅名表示 */
+.name-panel {
+  height: 100%;
+  background: #deecf9;
 }
 
 /* 路線 */

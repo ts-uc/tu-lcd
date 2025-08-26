@@ -276,11 +276,11 @@ setInterval(() => {
 /* ===================== 設定画面表示切替 ===================== */
 // ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
 const elSettings = document.getElementById("settings-panel");
-const elLineView = document.getElementById("line-panel");
+const elNormal = document.getElementById("normal-panel");
 document.querySelector(".train-type-box").addEventListener("dblclick", () => {
   const showingSettings = elSettings.style.display === "block";
   elSettings.style.display = showingSettings ? "none" : "block";
-  elLineView.style.display = showingSettings ? "flex" : "none";
+  elNormal.style.display = showingSettings ? "block" : "none";
   rafApply();
 });
 
