@@ -172,9 +172,9 @@ main {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr) minmax(0, 2fr);
   grid-template-rows: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
-  gap: 0 2vw;
+  gap: 0 1vw;
 }
 
 .name-panel-box {
@@ -227,7 +227,7 @@ main {
   line-height: 1;
   display: grid;
   place-items: center end;
-  font-size: 5vw;
+  font-size: 4.5vw;
   font-weight: 700;
   color: #666;
 }
@@ -237,7 +237,7 @@ main {
   line-height: 1;
   display: grid;
   place-items: center start;
-  font-size: 5vw;
+  font-size: 4.5vw;
   font-weight: 700;
   color: #666;
 }

@@ -321,7 +321,7 @@ function applyScaling() {
     scaleToFit(el, { maxPx: vw(25), axis: "x", origin: "center" });
   });
   qsa(".name-panel-name").forEach((el) => {
-    scaleToFit(el, { maxPx: vw(45), axis: "x", origin: "center" });
+    scaleToFit(el, { maxPx: vw(50), axis: "x", origin: "center" });
   });
 }
 const rafApply = () => requestAnimationFrame(applyScaling);
