@@ -193,6 +193,37 @@ main {
   transform: translate(-50%, -50%);
 }
 
+/* 走行位置 */
+@keyframes redyellow {
+  0% {
+    background: red;
+  }
+  50% {
+    background: yellow;
+  }
+  100% {
+    background: red;
+  }
+}
+.pos-arrow {
+  position: relative;
+  width: 2vw;
+}
+.pos-arrow.left {
+  position: relative;
+  height: 2vw;
+  width: 2vw;
+  animation: redyellow 1s steps(1, start) infinite; /* 1秒周期で繰り返し */
+  clip-path: polygon(90% 10%, 50% 10%, 10% 50%, 50% 90%, 90% 90%, 50% 50%);
+}
+.pos-arrow.right {
+  position: relative;
+  height: 2vw;
+  width: 2vw;
+  animation: redyellow 1s steps(1, start) infinite; /* 1秒周期で繰り返し */
+  clip-path: polygon(10% 10%, 50% 10%, 90% 50%, 50% 90%, 10% 90%, 50% 50%);
+}
+
 /* 駅名のベース位置 */
 .name.kanji,
 .name.kana {
@@ -287,23 +318,4 @@ fieldset .choices {
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-.pos-arrow {
-  position: relative;
-  width: 2vw;
-}
-
-.pos-arrow.left {
-  position: relative;
-  height: 2vw;
-  width: 2vw;
-  background: red;
-}
-
-.pos-arrow.right {
-  position: relative;
-  height: 2vw;
-  width: 2vw;
-  background: red;
 }
