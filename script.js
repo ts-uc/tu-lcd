@@ -183,7 +183,10 @@ function updateDOMs() {
     }
     if (!settings.stopStations.includes(name)) {
       cls += " notstop";
-    } else if (i <= posIndex) {
+    } else if (
+      (!settings.isInbound && i <= posIndex) ||
+      (settings.isInbound && i >= posIndex)
+    ) {
       cls += " passed";
     }
 
