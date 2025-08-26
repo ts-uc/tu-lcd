@@ -265,13 +265,26 @@ function applyScaling() {
 const rafApply = () => requestAnimationFrame(applyScaling);
 
 /* ===================== 言語切替 ===================== */
-const order = ["kanji", "kana", "en"];
+// 表示対象と、言語の順序
+const views = ["name", "line"];
+const langs = ["kanji", "kana", "en"];
+
 let idx = 0;
-setInterval(() => {
-  idx = (idx + 1) % order.length;
-  document.documentElement.setAttribute("data-lang", order[idx]);
-  rafApply();
-}, 5000);
+function tick() {
+  const view = views[Math.floor(idx / langs.length) % views.length];
+  const lang = langs[idx % langs.length];
+
+  // 2つの属性を更新
+  document.documentElement.setAttribute("data-view", view);
+  document.documentElement.setAttribute("data-lang", lang);
+
+  rafApply?.(); // そのまま呼ぶ（未定義なら無視）
+  idx = (idx + 1) % (views.length * langs.length);
+}
+
+// 初回反映 & 5秒ごとに更新
+tick();
+setInterval(tick, 5000);
 
 /* ===================== 設定画面表示切替 ===================== */
 // ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
@@ -367,7 +380,8 @@ document.addEventListener("DOMContentLoaded", () => {
   buildFormOptionsOnce(); // ←選択肢だけ作る（初期値はここでは入れない）
   applySettings(); // ←初期値は settings を反映
   rafUpdate();
-  document.documentElement.setAttribute("data-lang", order[idx]);
+  document.documentElement.setAttribute("data-view", views[0]);
+  document.documentElement.setAttribute("data-lang", langs[0]);
   rafApply();
 });
 

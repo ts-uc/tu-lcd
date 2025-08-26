@@ -1,4 +1,4 @@
-/* ===== 言語表示切替（最優先） ===== */
+/* ===== 順次表示切替（最優先） ===== */
 [data-lang="kanji"] .kanji {
   display: inline-block !important;
 }
@@ -8,11 +8,19 @@
 [data-lang="en"] .en {
   display: inline-block !important;
 }
+[data-view="name"] .name-panel {
+  display: inline-block !important;
+}
+[data-view="line"] .line-panel {
+  display: inline-block !important;
+}
 
 /* 既定は非表示（次点優先） */
 .kanji,
 .kana,
-.en {
+.en,
+.name-panel,
+.line-panel {
   display: none !important;
 }
 
@@ -32,6 +40,7 @@ main {
 }
 .normal-panel {
   height: 100%;
+  background: #deecf9;
 }
 
 /* 下段帯 */
@@ -155,13 +164,11 @@ main {
 /* 駅名表示 */
 .name-panel {
   height: 100%;
-  background: #deecf9;
 }
 
 /* 路線 */
 .line-panel {
   height: 100%;
-  background: #deecf9;
 }
 .line {
   position: absolute;
