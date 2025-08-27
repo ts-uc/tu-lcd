@@ -227,7 +227,7 @@ function updateDOMs() {
   });
 
   // 路線図
-  const lineEl = qs("#line");
+  const lineEl = qs("#m-line");
   lineEl.innerHTML = "";
 
   const posIndex = data.stations.indexOf(settings.position);
@@ -251,17 +251,17 @@ function updateDOMs() {
     }
 
     const s = document.createElement("div");
-    s.className = `station${cls}`;
+    s.className = `m-station${cls}`;
     s.dataset.name = name;
 
     const dot = document.createElement("div");
-    dot.className = `dot ${cls}`;
+    dot.className = `m-dot ${cls}`;
     s.appendChild(dot);
 
     const mk = (cls, inner) => {
       const d = document.createElement("div");
-      d.className = `name ${cls}`;
-      d.innerHTML = `<span class="name-inner ${cls}">${inner ?? ""}</span>`;
+      d.className = `m-name-box ${cls}`;
+      d.innerHTML = `<span class="m-name ${cls}">${inner ?? ""}</span>`;
       return d;
     };
     s.appendChild(mk(`kanji${cls}`, name));
@@ -276,7 +276,7 @@ function updateDOMs() {
     if (!((sIL && i === last) || (!sIL && i === 0))) {
       // 端では何もしない
       const posArrow = document.createElement("div");
-      let cls = "pos-arrow";
+      let cls = "m-pos-arrow";
 
       // 右向き：表示の左＝上り かどうかと、進行が食い違うとき
       if (sI !== sIL && i === posIndex) {
@@ -297,7 +297,7 @@ const rafUpdate = () => requestAnimationFrame(updateDOMs);
 /* ===================== スケーリング ===================== */
 function applyScaling() {
   // 駅名
-  qsa(".name-inner").forEach((el) => {
+  qsa(".m-name").forEach((el) => {
     if (el.classList.contains("en")) {
       scaleToFit(el, {
         maxPx: vw(13),
@@ -329,7 +329,7 @@ const rafApply = () => requestAnimationFrame(applyScaling);
 
 /* ===================== 言語切替 ===================== */
 // 表示対象と、言語の順序
-const views = ["name", "line"];
+const views = ["name", "map"];
 const langs = ["kanji", "kana", "en"];
 
 let idx = 0;
