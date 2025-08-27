@@ -1,5 +1,5 @@
 import lineData from "./line_data.json" assert { type: "json" };
-import { rafApply } from "./scaling.js";
+import { applyScaling } from "./scaling.js";
 import { applySettings, getSettings, settingSelectors } from "./settings.js";
 import { updateDOMs } from "./dom_updater.js";
 
@@ -24,7 +24,7 @@ const rafUpdate = () =>
     updateDOMs(settings);
   });
 
-/* ===================== スケーリング ===================== */
+export const rafApply = () => requestAnimationFrame(applyScaling);
 
 /* ===================== 言語切替 ===================== */
 // 表示対象と、言語の順序

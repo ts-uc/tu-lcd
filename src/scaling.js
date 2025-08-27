@@ -16,7 +16,7 @@ function scaleToFit(el, { maxPx, axis = "x", origin = "center", prefix = "" }) {
   el.style.transformOrigin = origin;
 }
 
-function applyScaling() {
+export function applyScaling() {
   // 駅名
   qsa(".m-name").forEach((el) => {
     if (el.classList.contains("en")) {
@@ -46,5 +46,3 @@ function applyScaling() {
     scaleToFit(el, { maxPx: vw(50), axis: "x", origin: "center" });
   });
 }
-
-export const rafApply = () => requestAnimationFrame(applyScaling);
