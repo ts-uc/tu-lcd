@@ -3,6 +3,18 @@ const data = lineData.abukyu;
 
 const qs = (sel, root = document) => root.querySelector(sel);
 
+const type_kana = {
+  "普　通": "ふつう",
+  "快　速": "かいそく",
+  "貸　切": "かしきり",
+};
+
+const type_en = {
+  "普　通": "Local",
+  "快　速": "Rapid",
+  "貸　切": "Chartered",
+};
+
 function setTexts(map) {
   for (const [id, text] of Object.entries(map)) {
     const el = document.getElementById(id);
@@ -42,8 +54,8 @@ export function updateDOMs(settings) {
   setTexts({
     // ヘッダー
     "h-type-kanji": settings.trainType,
-    "h-type-kana": data.kana[settings.trainType],
-    "h-type-en": data.en[settings.trainType],
+    "h-type-kana": type_kana[settings.trainType],
+    "h-type-en": type_en[settings.trainType],
     "h-dest-kanji": dest,
     "h-dest-kana": data.kana[dest],
     "h-dest-en": data.en[dest],
