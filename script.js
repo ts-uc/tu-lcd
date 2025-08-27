@@ -219,11 +219,11 @@ function updateDOMs() {
     "h-next-c-en": data.en[next],
 
     // 駅名パネル
-    "name-panel-kanji": next,
-    "name-panel-kana": data.kana[next],
-    "name-panel-zh-cn": data.zhCn[next],
-    "name-panel-ko": data.ko[next],
-    "name-panel-en": data.en[next],
+    "n-c-kanji": next,
+    "n-c-kana": data.kana[next],
+    "n-c-zh-cn": data.zhCn[next],
+    "n-c-ko": data.ko[next],
+    "n-c-en": data.en[next],
   });
 
   // 路線図
@@ -321,7 +321,7 @@ function applyScaling() {
   qsa(".h-next-c").forEach((el) => {
     scaleToFit(el, { maxPx: vw(25), axis: "x", origin: "center" });
   });
-  qsa(".name-panel-name").forEach((el) => {
+  qsa(".n-c").forEach((el) => {
     scaleToFit(el, { maxPx: vw(50), axis: "x", origin: "center" });
   });
 }

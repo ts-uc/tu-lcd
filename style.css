@@ -8,7 +8,7 @@
 [data-lang="en"] .en {
   display: inline-block !important;
 }
-[data-view="name"] .name-panel {
+[data-view="name"] .n-panel {
   display: inline-block !important;
 }
 [data-view="line"] .line-panel {
@@ -19,7 +19,7 @@
 .kanji,
 .kana,
 .en,
-.name-panel,
+.n-panel,
 .line-panel {
   display: none !important;
 }
@@ -163,12 +163,12 @@ main {
 }
 
 /* 駅名表示 */
-.name-panel {
+.n-panel {
   height: 100%;
   width: 100%;
 }
 
-.name-grid {
+.n-grid {
   height: 100%;
   width: 100%;
   display: grid;
@@ -177,7 +177,8 @@ main {
   gap: 0 1vw;
 }
 
-.name-panel-box {
+.n-c-kana-box,
+.n-c-m17n-box {
   width: 100%;
   height: 100%;
   display: flex;
@@ -185,7 +186,7 @@ main {
   align-items: center;
 }
 
-.name-panel-box-main {
+.n-c-kanji-box {
   width: 100%;
   height: 100%;
   display: flex;
@@ -197,10 +198,10 @@ main {
   box-shadow: inset 0 0 0.5vw rgba(0, 0, 0, 0.5);
 }
 
-#name-panel-kana,
-#name-panel-zh-cn,
-#name-panel-ko,
-#name-panel-en {
+#n-c-kana,
+#n-c-zh-cn,
+#n-c-ko,
+#n-c-en {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -211,7 +212,7 @@ main {
   white-space: nowrap;
 }
 
-#name-panel-kanji {
+#n-c-kanji {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -222,7 +223,7 @@ main {
   white-space: nowrap;
 }
 
-#name-panel-kanji-left {
+#n-l-kanji {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -232,7 +233,7 @@ main {
   color: #666;
 }
 
-#name-panel-kanji-right {
+#n-r-kanji {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -242,7 +243,7 @@ main {
   color: #666;
 }
 
-#name-panel-m17n-left {
+#n-l-m17n-box {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -252,7 +253,7 @@ main {
   color: #666;
 }
 
-#name-panel-m17n-right {
+#n-r-m17n-box {
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
