@@ -208,15 +208,15 @@ function updateDOMs() {
 
   setTexts({
     // ヘッダー
-    "train-type-kanji": settings.trainType,
-    "train-type-kana": data.kana[settings.trainType],
-    "train-type-en": data.en[settings.trainType],
-    "dest-name-kanji": dest,
-    "dest-name-kana": data.kana[dest],
-    "dest-name-en": data.en[dest],
-    "next-name-kanji": next,
-    "next-name-kana": data.kana[next],
-    "next-name-en": data.en[next],
+    "h-type-kanji": settings.trainType,
+    "h-type-kana": data.kana[settings.trainType],
+    "h-type-en": data.en[settings.trainType],
+    "h-dest-kanji": dest,
+    "h-dest-kana": data.kana[dest],
+    "h-dest-en": data.en[dest],
+    "h-next-c-kanji": next,
+    "h-next-c-kana": data.kana[next],
+    "h-next-c-en": data.en[next],
 
     // 駅名パネル
     "name-panel-kanji": next,
@@ -310,7 +310,7 @@ function applyScaling() {
     }
   });
   // 種別
-  qsa(".train-type").forEach((el) => {
+  qsa(".h-type").forEach((el) => {
     scaleToFit(el, { maxPx: vw(18), axis: "x", origin: "center" });
   });
   // 行先
@@ -318,7 +318,7 @@ function applyScaling() {
     scaleToFit(el, { maxPx: vw(32.5), axis: "x", origin: "left" });
   });
   // 次駅
-  qsa(".next-name").forEach((el) => {
+  qsa(".h-next-c").forEach((el) => {
     scaleToFit(el, { maxPx: vw(25), axis: "x", origin: "center" });
   });
   qsa(".name-panel-name").forEach((el) => {
@@ -342,9 +342,9 @@ function tick() {
   document.documentElement.setAttribute("data-lang", lang);
 
   if (view == "name") {
-    document.getElementById("header-next").style.display = "none";
+    document.getElementById("h-next").style.display = "none";
   } else {
-    document.getElementById("header-next").style.display = "flex";
+    document.getElementById("h-next").style.display = "flex";
   }
 
   rafApply?.(); // そのまま呼ぶ（未定義なら無視）
@@ -359,7 +359,7 @@ setInterval(tick, 5000);
 // ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
 const elSettings = document.getElementById("settings-panel");
 const elNormal = document.getElementById("normal-panel");
-document.querySelector(".train-type-box").addEventListener("dblclick", () => {
+document.querySelector(".h-type-box").addEventListener("dblclick", () => {
   const showingSettings = elSettings.style.display === "block";
   elSettings.style.display = showingSettings ? "none" : "block";
   elNormal.style.display = showingSettings ? "block" : "none";
