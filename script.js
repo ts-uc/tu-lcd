@@ -147,6 +147,7 @@ const settings = {
   isInbound: false,
   trainType: "普　通",
   position: data.stations[0],
+  positionStatus: "stopping",
   stopStations: [...data.stations],
 };
 
@@ -372,6 +373,9 @@ const autoEl = document.getElementById("auto-select");
 const directionEls = document.querySelectorAll('input[name="direction"]');
 const trainTypeEl = document.getElementById("train-type-select");
 const currentStationEl = document.getElementById("current-station");
+const positionStatusEls = document.querySelectorAll(
+  'input[name="position-status"]'
+);
 const stopStationsEl = document.getElementById("stop-stations");
 
 /* ===== settings → フォーム反映 ===== */
@@ -392,6 +396,17 @@ function applySettings() {
   trainTypeEl.value = settings.trainType || "";
   currentStationEl.value = settings.position || "";
 
+  // 状態
+  if (settings.positionStatus != null) {
+    positionStatusEls.forEach((el) => {
+      el.checked = el.value === settings.positionStatus;
+    });
+  } else {
+    // 何も未選択なら先頭を既定に（任意）
+    const checked = qs('input[name="position-status"]:checked');
+    if (!checked && positionStatusEls[0]) positionStatusEls[0].checked = true;
+  }
+
   // multiple select
   Array.from(stopStationsEl.options).forEach((opt) => {
     opt.selected = settings.stopStations.includes(opt.value);
@@ -411,6 +426,9 @@ function updateSettings() {
   settings.trainType = trainTypeEl.value || settings.trainType;
   settings.position = currentStationEl.value || settings.position;
 
+  const posStatusChecked = qs('input[name="position-status"]:checked');
+  settings.positionStatus = posStatusChecked?.value ?? settings.positionStatus;
+
   settings.stopStations = Array.from(stopStationsEl.selectedOptions).map(
     (o) => o.value
   );
@@ -420,7 +438,7 @@ function updateSettings() {
 }
 
 // 変更監視
-[...layoutDirEls, ...directionEls].forEach((el) =>
+[...layoutDirEls, ...directionEls, ...positionStatusEls].forEach((el) =>
   el.addEventListener("change", updateSettings)
 );
 [routeEl, autoEl, trainTypeEl, currentStationEl, stopStationsEl].forEach((el) =>
