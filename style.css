@@ -45,7 +45,7 @@ main {
 }
 
 /* 下段帯 */
-.h-bottom {
+#h-bottom {
   position: fixed;
   z-index: 1;
   top: 0;
@@ -60,13 +60,13 @@ main {
 }
 
 /* 上段（影用ラッパ） */
-.h-top-shadow {
+#h-top-shadow {
   position: relative;
   z-index: 2;
   filter: drop-shadow(0.5vw 0.5vw 0.5vw rgba(0, 0, 0, 0.4));
 }
 
-.h-top {
+#h-top {
   position: fixed;
   top: 0;
   left: 0;
@@ -86,7 +86,7 @@ main {
     0 100%
   );
 }
-.h-top::before {
+#h-top::before {
   content: "";
   position: absolute;
   left: 0;
@@ -97,7 +97,7 @@ main {
 }
 
 /* 種別 */
-.h-type-box {
+#h-type-box {
   width: 19.5vw;
   padding-block: 0.2vw;
   line-height: 1;
@@ -117,20 +117,20 @@ main {
 }
 
 /* 行先 */
-.h-dest {
+#h-dest {
   display: flex;
   gap: 1vw;
   align-items: baseline;
   font-size: 3.75vw;
   font-weight: 800;
 }
-.h-dest small {
+#h-dest small {
   font-size: 2.5vw;
   opacity: 0.95;
 }
 
 /* 次駅表示 */
-.h-next {
+#h-next {
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
