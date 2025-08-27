@@ -192,6 +192,7 @@ function computeOrdered() {
 function computeNextDest() {
   const { stations, stops } = computeOrdered();
   const posIndex = stations.indexOf(settings.position);
+  const current = stations[posIndex];
   let next = "";
   for (let i = posIndex + 1; i < stations.length; i++) {
     if (stops.includes(stations[i])) {
@@ -200,11 +201,11 @@ function computeNextDest() {
     }
   }
   const dest = stops[stops.length - 1] || "";
-  return { next, dest, orderedStations: stations };
+  return { current, next, dest };
 }
 
 function updateDOMs() {
-  const { next, dest, orderedStations } = computeNextDest();
+  const { current, next, dest } = computeNextDest();
 
   setTexts({
     // ヘッダー
@@ -217,14 +218,61 @@ function updateDOMs() {
     "h-next-c-kanji": next,
     "h-next-c-kana": data.kana[next],
     "h-next-c-en": data.en[next],
-
-    // 駅名パネル
-    "n-c-kanji": next,
-    "n-c-kana": data.kana[next],
-    "n-c-zh-cn": data.zhCn[next],
-    "n-c-ko": data.ko[next],
-    "n-c-en": data.en[next],
   });
+
+  // 駅名パネル
+  if (settings.positionStatus == "next") {
+    setTexts({
+      "h-next-l-kanji": "つぎは",
+      "h-next-l-kana": "つぎは",
+      "h-next-l-en": "Next",
+      "n-c-kana": data.kana[next],
+      "n-l-kanji": "つぎは",
+      "n-c-kanji": next,
+      "n-r-kanji": "です",
+      "n-l-zh-cn": "下一站",
+      "n-c-zh-cn": data.zhCn[next],
+      "n-l-ko": "다음역은",
+      "n-c-ko": data.ko[next],
+      "n-r-ko": "입니다",
+      "n-l-en": "Next",
+      "n-c-en": data.en[next],
+    });
+  } else if (settings.positionStatus == "soon") {
+    setTexts({
+      "h-next-l-kanji": "まもなく",
+      "h-next-l-kana": "まもなく",
+      "h-next-l-en": "Soon",
+      "n-c-kana": data.kana[next],
+      "n-l-kanji": "まもなく",
+      "n-c-kanji": next,
+      "n-r-kanji": "です",
+      "n-l-zh-cn": "马上就到",
+      "n-c-zh-cn": data.zhCn[next],
+      "n-l-ko": "이번 역은",
+      "n-c-ko": data.ko[next],
+      "n-r-ko": "에 도착합니다",
+      "n-l-en": "Soon",
+      "n-c-en": data.en[next],
+    });
+  } else {
+    setTexts({
+      "h-next-l-kanji": "つぎは",
+      "h-next-l-kana": "つぎは",
+      "h-next-l-en": "Next",
+      "n-c-kana": data.kana[current],
+      "n-l-kanji": "",
+      "n-c-kanji": current,
+      "n-r-kanji": "",
+      "n-l-zh-cn": "",
+      "n-c-zh-cn": data.zhCn[current],
+      "n-l-ko": "",
+      "n-c-ko": data.ko[current],
+      "n-r-ko": "",
+      "n-l-en": "",
+      "n-c-en": data.en[current],
+    });
+  }
 
   // 路線図
   const lineEl = qs("#m-line");
@@ -341,7 +389,7 @@ function tick() {
   document.documentElement.setAttribute("data-view", view);
   document.documentElement.setAttribute("data-lang", lang);
 
-  if (view == "name") {
+  if (view == "name" && settings.positionStatus !== "stopping") {
     document.getElementById("h-next").style.display = "none";
   } else {
     document.getElementById("h-next").style.display = "flex";
