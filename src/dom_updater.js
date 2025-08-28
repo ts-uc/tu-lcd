@@ -153,15 +153,17 @@ export function updateDOMs(settings) {
     dot.className = `m-dot ${cls}`;
     s.appendChild(dot);
 
-    const mk = (cls, inner) => {
+    const mk = (lang, cls, inner) => {
       const d = document.createElement("div");
       d.className = `m-name-box ${cls}`;
-      d.innerHTML = `<span class="m-name ${cls}">${inner ?? ""}</span>`;
+      d.innerHTML = `<span ${
+        lang === "" ? "" : `lang=${lang} `
+      }class="m-name ${cls}">${inner ?? ""}</span>`;
       return d;
     };
-    s.appendChild(mk(`kanji${cls}`, name));
-    s.appendChild(mk(`kana${cls}`, data.kana[name]));
-    s.appendChild(mk(`en${cls}`, data.en[name]));
+    s.appendChild(mk("", `kanji${cls}`, name));
+    s.appendChild(mk("", `kana${cls}`, data.kana[name]));
+    s.appendChild(mk("en", `en${cls}`, data.en[name]));
     lineEl.appendChild(s);
 
     const sIL = settings.isInboundLeft;
