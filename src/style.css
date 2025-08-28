@@ -50,6 +50,10 @@ body {
 header {
   height: 6vw;
   white-space: nowrap;
+  font-family: sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 main {
   height: calc(100% - 6vw);
@@ -58,6 +62,29 @@ main {
   height: 100%;
   width: 100%;
   background: var(--bg);
+  font-family: sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+:lang(en) {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+:lang(zh) {
+  font-family: sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+:lang(ko) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* 下段帯 */
@@ -132,7 +159,6 @@ main {
 .h-type {
   text-align: center;
   font-size: 3.75vw;
-  font-weight: 700;
   color: #fff;
 }
 
@@ -144,7 +170,6 @@ main {
   gap: 1vw;
   align-items: baseline;
   font-size: 3.75vw;
-  font-weight: 800;
 }
 #h-dest small {
   font-size: 2.5vw;
@@ -172,7 +197,6 @@ main {
 .h-next-r {
   padding: 0 0.5vw;
   font-size: 2.5vw;
-  font-weight: 800;
 }
 .h-next-c-box {
   border-radius: 0.75vw;
@@ -186,7 +210,6 @@ main {
   padding-block: 0.2vw;
   line-height: 1;
   font-size: 3.75vw;
-  font-weight: 800;
   color: #1f2740;
 }
 
@@ -235,7 +258,6 @@ main {
   display: grid;
   place-items: center;
   font-size: 4vw;
-  font-weight: 700;
   color: #223;
   white-space: nowrap;
 }
@@ -246,7 +268,6 @@ main {
   display: grid;
   place-items: center;
   font-size: 9vw;
-  font-weight: 700;
   color: #223;
   white-space: nowrap;
 }
@@ -257,7 +278,6 @@ main {
   display: grid;
   place-items: center end;
   font-size: 4.5vw;
-  font-weight: 700;
   color: #666;
 }
 
@@ -267,7 +287,6 @@ main {
   display: grid;
   place-items: center start;
   font-size: 4.5vw;
-  font-weight: 700;
   color: #666;
 }
 
@@ -277,7 +296,6 @@ main {
   display: grid;
   place-items: center end;
   font-size: 3vw;
-  font-weight: 700;
   color: #666;
 }
 
@@ -287,7 +305,6 @@ main {
   display: grid;
   place-items: center start;
   font-size: 3vw;
-  font-weight: 700;
   color: #666;
 }
 
@@ -390,7 +407,6 @@ main {
 
 /* 駅名の見た目（中身） */
 .m-name {
-  font-weight: 700;
   color: #111;
   line-height: 1;
   white-space: nowrap;
@@ -452,7 +468,6 @@ main {
 }
 .form-row label {
   min-width: 9em;
-  font-weight: 600;
 }
 .form-row select {
   padding: 0.25rem 0.5rem;
