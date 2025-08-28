@@ -5,7 +5,7 @@
 
   --next: hsl(var(--h) 66% 46%);
   --dest-dark: hsl(var(--h) 71% 52%);
-  --dest-bright: hsl(var(--h) 93% 64%);
+  --dest-bright: hsl(var(--h) 100% 75%);
   --header-bottom: hsl(var(--h) 75% 72%);
   --bg: hsl(var(--h) 68% 93%);
   --map-light: hsl(var(--h) 82% 80%);
@@ -90,7 +90,13 @@ main {
   grid-template-columns: minmax(0, 19.5vw) minmax(0, 32vw) auto;
   gap: 0 1.3vw;
   color: #fff;
-  background: linear-gradient(180deg, var(--dest-bright), var(--dest-dark));
+  background: linear-gradient(
+    to right,
+    var(--dest-bright) 0%,
+    var(--dest-bright) 10%,
+    var(--dest-dark) 20%,
+    var(--dest-dark) 100%
+  );
   clip-path: polygon(
     0 0,
     calc(100% - 48vw) 0,
@@ -297,7 +303,13 @@ main {
   display: flex;
   justify-content: space-between;
   height: 2vw;
-  background: linear-gradient(var(--map-light), var(--map-dark));
+  background: linear-gradient(
+    var(--map-dark) 0%,
+    var(--map-light) 20%,
+    var(--map-light) 40%,
+    var(--map-dark) 80%,
+    var(--map-dark) 100%
+  );
   border-radius: 1vw;
 }
 .m-station {
