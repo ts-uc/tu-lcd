@@ -79,8 +79,8 @@ main {
   clip-path: polygon(
     0 0,
     calc(100% - 48vw) 0,
-    calc(100% - 44vw) 5.5vw,
-    100% 5.5vw,
+    calc(100% - 44vw) 5.4vw,
+    100% 5.4vw,
     100% 100%,
     0 100%
   );
@@ -90,8 +90,8 @@ main {
   position: absolute;
   left: 0;
   right: 0;
-  top: 5.75vw;
-  height: 0.25vw;
+  top: 5.8vw;
+  height: 0.2vw;
   background: #70a5cf; /* 6vw - 5.75vw */
 }
 
@@ -154,7 +154,7 @@ main {
   font-weight: 800;
 }
 .h-next-c-box {
-  border-radius: 1vw;
+  border-radius: 0.75vw;
   background: #fff;
   box-shadow: 0 0 0.1vw 0.1vw #fff;
   display: flex;
