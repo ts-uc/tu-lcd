@@ -2,6 +2,7 @@ import lineData from "./line_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling.js";
 import { applySettings, getSettings, settingSelectors } from "./settings.js";
 import { updateDOMs } from "./dom_updater.js";
+import { tick, resetTick } from "./tick.js";
 
 const data = lineData.abukyu;
 
@@ -26,33 +27,10 @@ const rafUpdate = () =>
 
 export const rafApply = () => requestAnimationFrame(applyScaling);
 
-/* ===================== 言語切替 ===================== */
-// 表示対象と、言語の順序
-const views = ["name", "map"];
-const langs = ["kanji", "kana", "en"];
-
-let idx = 0;
-function tick() {
-  const view = views[Math.floor(idx / langs.length) % views.length];
-  const lang = langs[idx % langs.length];
-
-  // 2つの属性を更新
-  document.documentElement.setAttribute("data-view", view);
-  document.documentElement.setAttribute("data-lang", lang);
-
-  if (view == "name" && settings.positionStatus !== "stopping") {
-    document.getElementById("h-next").style.display = "none";
-  } else {
-    document.getElementById("h-next").style.display = "flex";
-  }
-
-  rafApply?.(); // そのまま呼ぶ（未定義なら無視）
-  idx = (idx + 1) % (views.length * langs.length);
-}
-
 // 初回反映 & 5秒ごとに更新
-tick();
-setInterval(tick, 5000);
+setInterval(() => {
+  tick(settings);
+}, 5000);
 
 /* ===================== 設定画面表示切替 ===================== */
 // ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
@@ -100,9 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   buildFormOptionsOnce(); // ←選択肢だけ作る（初期値はここでは入れない）
   applySettings(settings); // ←初期値は settings を反映
   rafUpdate();
-  document.documentElement.setAttribute("data-view", views[0]);
-  document.documentElement.setAttribute("data-lang", langs[0]);
-  rafApply();
+  resetTick(settings);
 });
 
 /* ===================== リサイズ/フォントロード後調整 ===================== */
