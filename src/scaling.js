@@ -35,8 +35,8 @@ export function applyScaling() {
     scaleToFit(el, { maxPx: vw(18), axis: "x", origin: "center" });
   });
   // 行先
-  qsa(".dest").forEach((el) => {
-    scaleToFit(el, { maxPx: vw(32.5), axis: "x", origin: "left" });
+  qsa(".h-dest").forEach((el) => {
+    scaleToFit(el, { maxPx: vw(32), axis: "x", origin: "left" });
   });
   // 次駅
   qsa(".h-next-c").forEach((el) => {
