@@ -1,5 +1,4 @@
 import lineData from "./line_data.json" assert { type: "json" };
-const data = lineData.abukyu;
 
 const qs = (sel, root = document) => root.querySelector(sel);
 
@@ -24,6 +23,8 @@ function setTexts(map) {
 
 /* ===================== DOM 更新 ===================== */
 function computeOrdered(settings) {
+  const data = lineData[settings.line];
+
   const stations = settings.isInbound
     ? [...data.stations].reverse()
     : data.stations;
@@ -50,6 +51,8 @@ function computeNextDest(settings) {
 
 export function updateDOMs(settings) {
   const { current, next, dest } = computeNextDest(settings);
+
+  const data = lineData[settings.line];
 
   setTexts({
     // ヘッダー
