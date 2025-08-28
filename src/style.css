@@ -132,21 +132,28 @@ main {
 
 /* 次駅表示 */
 #h-next {
-  display: flex;
-  justify-content: flex-end;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 11vw) minmax(0, 26vw) minmax(0, 6.5vw);
+  gap: 0 0.5vw;
   align-items: baseline;
 }
+.h-next-l-box {
+  display: flex;
+  justify-content: right;
+}
+.h-next-r-box {
+  display: flex;
+  justify-content: left;
+}
+
 .h-next-l,
 .h-next-r {
   padding: 0 0.5vw;
   font-size: 2.5vw;
   font-weight: 800;
 }
-.h-next-r {
-  width: 6vw;
-}
 .h-next-c-box {
-  width: 25.75vw;
   border-radius: 1vw;
   background: #fff;
   box-shadow: 0 0 0.1vw 0.1vw #fff;

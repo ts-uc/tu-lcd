@@ -19,7 +19,7 @@ function update(settings, view, lang) {
   if (view == "name" && settings.positionStatus !== "stopping") {
     document.getElementById("h-next").style.display = "none";
   } else {
-    document.getElementById("h-next").style.display = "flex";
+    document.getElementById("h-next").style.display = "grid";
   }
 }
 
