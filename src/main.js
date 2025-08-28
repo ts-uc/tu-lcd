@@ -30,7 +30,7 @@ export const rafApply = () => requestAnimationFrame(applyScaling);
 // 初回反映 & 5秒ごとに更新
 setInterval(() => {
   tick(settings);
-}, 5000);
+}, 3000);
 
 /* ===================== 設定画面表示切替 ===================== */
 // ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
