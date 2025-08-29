@@ -141,9 +141,47 @@ function updateNamePanel(settings, lineData, stationNames) {
   }
 }
 
+// 方向矢印の表示種類を判定
+function getStationClass(settings, stationNames, i, posIndex, iName) {
+  const { current, next, dest } = stationNames;
+
+  if (!settings.stopStations.includes(iName)) {
+    return " notstop";
+  } else if (
+    (!settings.isInbound && i <= posIndex) ||
+    (settings.isInbound && i >= posIndex)
+  ) {
+    return " passed";
+  } else if (iName === next) {
+    return " next";
+  } else {
+    return "";
+  }
+}
+
+function getArrowClass(data, settings, i, posIndex) {
+  const atEdge =
+    (settings.isInboundLeft && i === data.stations.length - 1) ||
+    (!settings.isInboundLeft && i === 0);
+  if (atEdge) return null;
+
+  const isStopping = settings.positionStatus === "stopping";
+  if (isStopping) return "";
+
+  const isRightArrow =
+    settings.isInbound !== settings.isInboundLeft && i === posIndex;
+  if (isRightArrow) return " right";
+
+  const isLeftArrow =
+    settings.isInbound === settings.isInboundLeft &&
+    i === posIndex + (settings.isInboundLeft ? -1 : 1);
+  if (isLeftArrow) return " left";
+
+  return "";
+}
+
 export function updateDOMs(settings) {
   const stationNames = computeStationNames(settings);
-  const { current, next, dest } = stationNames;
   const data = lineData[settings.line];
 
   updateHeader(settings, data, stationNames);
@@ -153,67 +191,39 @@ export function updateDOMs(settings) {
   const lineEl = qs("#m-line");
   lineEl.innerHTML = "";
 
+  // 現在地駅の起点からの駅数
   const posIndex = data.stations.indexOf(settings.position);
 
   for (let i_tmp = 0; i_tmp < data.stations.length; i_tmp++) {
     const i = settings.isInboundLeft ? i_tmp : data.stations.length - i_tmp - 1;
 
-    const name = data.stations[i];
+    const iName = data.stations[i];
 
-    let cls = "";
-    if (name === next) {
-      cls += " next";
-    }
-    if (!settings.stopStations.includes(name)) {
-      cls += " notstop";
-    } else if (
-      (!settings.isInbound && i <= posIndex) ||
-      (settings.isInbound && i >= posIndex)
-    ) {
-      cls += " passed";
-    }
+    const cls = getStationClass(settings, stationNames, i, posIndex, iName);
 
-    const s = document.createElement("div");
-    s.className = `m-station${cls}`;
-    s.dataset.name = name;
+    lineEl.insertAdjacentHTML(
+      "beforeend",
+      `<div class="m-station${cls}" data-name="${iName}">
+        <div class="m-dot${cls}"></div>
+        <div class="m-name-box kanji${cls}">
+          <span class="m-name kanji${cls}">${iName}</span>
+        </div>
+        <div class="m-name-box kana${cls}">
+          <span class="m-name kana${cls}">${data.kana[iName]}</span>
+        </div>
+        <div class="m-name-box en${cls}">
+          <span lang="en" class="m-name en${cls}">${data.en[iName]}</span>
+        </div>
+      </div>`
+    );
 
-    const dot = document.createElement("div");
-    dot.className = `m-dot ${cls}`;
-    s.appendChild(dot);
-
-    const mk = (lang, cls, inner) => {
-      const d = document.createElement("div");
-      d.className = `m-name-box ${cls}`;
-      d.innerHTML = `<span ${
-        lang === "" ? "" : `lang=${lang} `
-      }class="m-name ${cls}">${inner ?? ""}</span>`;
-      return d;
-    };
-    s.appendChild(mk("", `kanji${cls}`, name));
-    s.appendChild(mk("", `kana${cls}`, data.kana[name]));
-    s.appendChild(mk("en", `en${cls}`, data.en[name]));
-    lineEl.appendChild(s);
-
-    const sIL = settings.isInboundLeft;
-    const sI = settings.isInbound;
-    const last = data.stations.length - 1;
-
-    if (!((sIL && i === last) || (!sIL && i === 0))) {
-      // 端では何もしない
-      const posArrow = document.createElement("div");
-      let cls = "m-pos-arrow";
-
-      // 右向き：表示の左＝上り かどうかと、進行が食い違うとき
-      if (sI !== sIL && i === posIndex) {
-        cls += " right";
-      }
-      // 左向き：表示の左＝上り と進行が一致するとき
-      else if (sI === sIL && i === posIndex + (sIL ? -1 : 1)) {
-        cls += " left";
-      }
-
-      posArrow.className = cls;
-      lineEl.appendChild(posArrow);
+    // 方向矢印を追加
+    const arrowClass = getArrowClass(data, settings, i, posIndex);
+    if (arrowClass != null) {
+      lineEl.insertAdjacentHTML(
+        "beforeend",
+        `<div class="m-pos-arrow${arrowClass}"></div>`
+      );
     }
   }
 }
