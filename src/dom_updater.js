@@ -34,7 +34,7 @@ function computeOrdered(settings) {
   return { stations, stops };
 }
 
-function computeNextDest(settings) {
+function computeStationNames(settings) {
   const { stations, stops } = computeOrdered(settings);
   const posIndex = stations.indexOf(settings.position);
   const current = stations[posIndex];
@@ -49,10 +49,8 @@ function computeNextDest(settings) {
   return { current, next, dest };
 }
 
-export function updateDOMs(settings) {
-  const { current, next, dest } = computeNextDest(settings);
-
-  const data = lineData[settings.line];
+function updateHeader(settings, lineData, stationNames) {
+  const { current, next, dest } = stationNames;
 
   setTexts({
     // ヘッダー
@@ -60,66 +58,96 @@ export function updateDOMs(settings) {
     "h-type-kana": type_kana[settings.trainType],
     "h-type-en": type_en[settings.trainType],
     "h-dest-kanji": dest,
-    "h-dest-kana": data.kana[dest],
-    "h-dest-en": data.en[dest],
+    "h-dest-kana": lineData.kana[dest],
+    "h-dest-en": lineData.en[dest],
     "h-next-c-kanji": next,
-    "h-next-c-kana": data.kana[next],
-    "h-next-c-en": data.en[next],
+    "h-next-c-kana": lineData.kana[next],
+    "h-next-c-en": lineData.en[next],
   });
 
-  // 駅名パネル
   if (settings.positionStatus == "next") {
     setTexts({
       "h-next-l-kanji": "つぎは",
       "h-next-l-kana": "つぎは",
       "h-next-l-en": "Next",
-      "n-c-kana": data.kana[next],
-      "n-l-kanji": "つぎは",
-      "n-c-kanji": next,
-      "n-r-kanji": "です",
-      "n-l-zh-cn": "下一站",
-      "n-c-zh-cn": data.zhCn[next],
-      "n-l-ko": "다음역은",
-      "n-c-ko": data.ko[next],
-      "n-r-ko": "입니다",
-      "n-l-en": "Next",
-      "n-c-en": data.en[next],
     });
   } else if (settings.positionStatus == "soon") {
     setTexts({
       "h-next-l-kanji": "まもなく",
       "h-next-l-kana": "まもなく",
       "h-next-l-en": "Soon",
-      "n-c-kana": data.kana[next],
-      "n-l-kanji": "まもなく",
-      "n-c-kanji": next,
-      "n-r-kanji": "です",
-      "n-l-zh-cn": "马上就到",
-      "n-c-zh-cn": data.zhCn[next],
-      "n-l-ko": "이번 역은",
-      "n-c-ko": data.ko[next],
-      "n-r-ko": "에 도착합니다",
-      "n-l-en": "Soon",
-      "n-c-en": data.en[next],
     });
   } else {
     setTexts({
       "h-next-l-kanji": "つぎは",
       "h-next-l-kana": "つぎは",
       "h-next-l-en": "Next",
-      "n-c-kana": data.kana[current],
+    });
+  }
+}
+
+function updateNamePanel(settings, lineData, stationNames) {
+  const { current, next, dest } = stationNames;
+
+  // 駅名パネル
+  if (settings.positionStatus == "next") {
+    setTexts({
+      "n-c-kana": lineData.kana[next],
+      "n-l-kanji": "つぎは",
+      "n-c-kanji": next,
+      "n-r-kanji": "です",
+      "n-l-zh-cn": "下一站",
+      "n-c-zh-cn": lineData.zhCn[next],
+      "n-l-ko": "다음역은",
+      "n-c-ko": lineData.ko[next],
+      "n-r-ko": "입니다",
+      "n-l-en": "Next",
+      "n-c-en": lineData.en[next],
+    });
+  } else if (settings.positionStatus == "soon") {
+    setTexts({
+      "h-next-l-kanji": "まもなく",
+      "h-next-l-kana": "まもなく",
+      "h-next-l-en": "Soon",
+      "n-c-kana": lineData.kana[next],
+      "n-l-kanji": "まもなく",
+      "n-c-kanji": next,
+      "n-r-kanji": "です",
+      "n-l-zh-cn": "马上就到",
+      "n-c-zh-cn": lineData.zhCn[next],
+      "n-l-ko": "이번 역은",
+      "n-c-ko": lineData.ko[next],
+      "n-r-ko": "에 도착합니다",
+      "n-l-en": "Soon",
+      "n-c-en": lineData.en[next],
+    });
+  } else {
+    setTexts({
+      "h-next-l-kanji": "つぎは",
+      "h-next-l-kana": "つぎは",
+      "h-next-l-en": "Next",
+      "n-c-kana": lineData.kana[current],
       "n-l-kanji": "",
       "n-c-kanji": current,
       "n-r-kanji": "",
       "n-l-zh-cn": "",
-      "n-c-zh-cn": data.zhCn[current],
+      "n-c-zh-cn": lineData.zhCn[current],
       "n-l-ko": "",
-      "n-c-ko": data.ko[current],
+      "n-c-ko": lineData.ko[current],
       "n-r-ko": "",
       "n-l-en": "",
-      "n-c-en": data.en[current],
+      "n-c-en": lineData.en[current],
     });
   }
+}
+
+export function updateDOMs(settings) {
+  const stationNames = computeStationNames(settings);
+  const { current, next, dest } = stationNames;
+  const data = lineData[settings.line];
+
+  updateHeader(settings, data, stationNames);
+  updateNamePanel(settings, data, stationNames);
 
   // 路線図
   const lineEl = qs("#m-line");
