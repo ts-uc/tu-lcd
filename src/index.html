@@ -150,27 +150,12 @@
               </select>
             </div>
             <div class="form-row">
-              <label>状態</label>
-              <fieldset>
-                <div class="choices">
-                  <label
-                    ><input type="radio" name="position-status" value="next" />
-                    つぎは</label
-                  >
-                  <label
-                    ><input type="radio" name="position-status" value="soon" />
-                    まもなく</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="position-status"
-                      value="stopping"
-                    />
-                    ただいま</label
-                  >
-                </div>
-              </fieldset>
+              <label for="position-status-select">状態</label>
+              <select id="position-status-select">
+                <option value="next">つぎは</option>
+                <option value="soon">まもなく</option>
+                <option value="stopping">ただいま</option>
+              </select>
             </div>
             <div class="form-row">
               <label for="current-station">現在地/<br />直前後</label>

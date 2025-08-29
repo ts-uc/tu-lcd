@@ -10,18 +10,16 @@ const layoutDirEls = document.querySelectorAll('input[name="layout-dir"]');
 const autoEl = document.getElementById("auto-select");
 const directionEls = document.querySelectorAll('input[name="direction"]');
 const trainTypeEl = document.getElementById("train-type-select");
+const positionStatusEl = document.getElementById("position-status-select");
 const currentStationEl = document.getElementById("current-station");
-const positionStatusEls = document.querySelectorAll(
-  'input[name="position-status"]'
-);
 const stopStationsEl = document.getElementById("stop-stations");
 
 export const settingSelectors = [
   ...layoutDirEls,
   ...directionEls,
-  ...positionStatusEls,
   autoEl,
   trainTypeEl,
+  positionStatusEl,
   currentStationEl,
   stopStationsEl,
 ];
@@ -95,9 +93,7 @@ export function onChangeLine(settings) {
   currentStationEl.value = settings.position || "";
   // 状態
   settings.positionStatus = "stopping";
-  positionStatusEls.forEach((el) => {
-    el.checked = el.value === settings.positionStatus;
-  });
+  positionStatusEl.value = settings.positionStatus || "";
   // 停車駅
   settings.stopStations = [...stations];
   Array.from(stopStationsEl.options).forEach((opt) => {
@@ -142,18 +138,8 @@ export function applySettings(settings) {
   lineEl.value = settings.line || "";
   autoEl.value = settings.auto || "";
   trainTypeEl.value = settings.trainType || "";
+  positionStatusEl.value = settings.positionStatus || "";
   currentStationEl.value = settings.position || "";
-
-  // 状態
-  if (settings.positionStatus != null) {
-    positionStatusEls.forEach((el) => {
-      el.checked = el.value === settings.positionStatus;
-    });
-  } else {
-    // 何も未選択なら先頭を既定に（任意）
-    const checked = qs('input[name="position-status"]:checked');
-    if (!checked && positionStatusEls[0]) positionStatusEls[0].checked = true;
-  }
 
   // multiple select
   Array.from(stopStationsEl.options).forEach((opt) => {
@@ -171,8 +157,7 @@ export function setSettings(settings) {
   settings.auto = autoEl.value || null;
   settings.trainType = trainTypeEl.value || "";
   settings.position = currentStationEl.value || "";
-  settings.positionStatus =
-    qs('input[name="position-status"]:checked')?.value ?? "";
+  settings.positionStatus = positionStatusEl.value || "";
   settings.stopStations = Array.from(stopStationsEl.selectedOptions).map(
     (o) => o.value
   );
@@ -243,9 +228,7 @@ export function moveNextStatus(settings) {
   } else {
     settings.positionStatus = "soon";
   }
-  positionStatusEls.forEach((el) => {
-    el.checked = el.value === settings.positionStatus;
-  });
+  positionStatusEl.value = settings.positionStatus || "";
   raf(settings);
   resetTick(settings);
 }
