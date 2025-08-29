@@ -374,25 +374,26 @@ main {
     background: red;
   }
 }
+.m-pos-arrow-box {
+  position: relative;
+  width: 2vw;
+}
 .m-pos-arrow {
   position: relative;
-  width: 2vw;
-}
-.m-pos-arrow.left {
-  position: relative;
   height: 2vw;
   width: 2vw;
-  animation: redyellow 1s steps(1, start) infinite; /* 1秒周期で繰り返し */
+  animation: redyellow 1s steps(1, start) infinite; /* 共通 */
   clip-path: polygon(90% 10%, 50% 10%, 10% 50%, 50% 90%, 90% 90%, 50% 50%);
 }
-.m-pos-arrow.right {
-  position: relative;
-  height: 2vw;
-  width: 2vw;
-  animation: redyellow 1s steps(1, start) infinite; /* 1秒周期で繰り返し */
-  clip-path: polygon(10% 10%, 50% 10%, 90% 50%, 50% 90%, 10% 90%, 50% 50%);
+
+/* 左右の反転だけ指定 */
+.m-pos-arrow.left {
+  transform: scaleX(1);
 }
 
+.m-pos-arrow.right {
+  transform: scaleX(-1);
+}
 /* 駅名のベース位置 */
 .m-name-box.kanji,
 .m-name-box.kana {

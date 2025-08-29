@@ -238,10 +238,17 @@ export function updateDOMs(settings) {
 
     // 方向矢印を追加
     const arrowClass = getArrowClass(data, settings, i, posIndex);
-    if (arrowClass != null) {
+    if (arrowClass === "") {
       lineEl.insertAdjacentHTML(
         "beforeend",
-        `<div class="m-pos-arrow${arrowClass}"></div>`
+        `<div class="m-pos-arrow-box"></div>`
+      );
+    } else if (arrowClass != null) {
+      lineEl.insertAdjacentHTML(
+        "beforeend",
+        `<div class="m-pos-arrow-box">
+          <div class="m-pos-arrow${arrowClass}"></div>
+        </div>`
       );
     }
   }
