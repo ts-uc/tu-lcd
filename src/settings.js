@@ -216,3 +216,36 @@ function hexToHsl(hex) {
   }
   return { h, s: s * 100, l: l * 100 };
 }
+
+function moveNextStation(settings) {
+  const stations = lineData[settings.line].stations;
+  let idx = stations.indexOf(settings.position);
+  if (settings.isInbound && idx > 0) {
+    settings.position = stations[idx - 1];
+    currentStationEl.value = settings.position || "";
+  }
+
+  if (!settings.isInbound && idx !== -1 && idx < stations.length - 1) {
+    settings.position = stations[idx + 1];
+    currentStationEl.value = settings.position || "";
+  }
+}
+
+export function moveNextStatus(settings) {
+  if (settings.positionStatus === "stopping") {
+    moveNextStation(settings);
+    settings.positionStatus = "next";
+  } else if (!settings.stopStations.includes(settings.position)) {
+    moveNextStation(settings);
+    settings.positionStatus = "next";
+  } else if (settings.positionStatus === "soon") {
+    settings.positionStatus = "stopping";
+  } else {
+    settings.positionStatus = "soon";
+  }
+  positionStatusEls.forEach((el) => {
+    el.checked = el.value === settings.positionStatus;
+  });
+  raf(settings);
+  resetTick(settings);
+}

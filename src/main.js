@@ -6,8 +6,8 @@ import {
   onPageLoad,
   settingSelectors,
   onChangeSettings,
+  moveNextStatus,
 } from "./settings.js";
-import { updateDOMs } from "./dom_updater.js";
 import { tick } from "./tick.js";
 import { onClickFsButton, updateLabel } from "./fullscreen.js";
 
@@ -41,6 +41,11 @@ document.querySelector("#h-type-box").addEventListener("dblclick", () => {
   elSettings.style.display = showingSettings ? "none" : "block";
   elNormal.style.display = showingSettings ? "block" : "none";
   rafApply();
+});
+
+// 駅名部分タップで次へ
+document.getElementById("normal-panel").addEventListener("click", () => {
+  moveNextStatus(settings);
 });
 
 /* ===================== 設定変更時 ===================== */
