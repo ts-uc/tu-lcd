@@ -65,7 +65,7 @@ export function onChangeLine(settings) {
 
   const stations = lineData[settings.line].stations;
 
-  // 現在地/直前駅 のoptionを追加
+  // 現在地/直前後 のoptionを追加
   currentStationEl.innerHTML = "";
   stations.forEach((station) => {
     currentStationEl.insertAdjacentHTML(

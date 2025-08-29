@@ -39,7 +39,13 @@ function computeStationNames(settings) {
   const posIndex = stations.indexOf(settings.position);
   const current = stations[posIndex];
   let next = "";
-  for (let i = posIndex + 1; i < stations.length; i++) {
+  let i;
+  if (settings.positionStatus === "stopping") {
+    i = posIndex + 1;
+  } else {
+    i = posIndex;
+  }
+  for (; i < stations.length; i++) {
     if (stops.includes(stations[i])) {
       next = stations[i];
       break;
@@ -147,37 +153,50 @@ function getStationClass(settings, stationNames, i, posIndex, iName) {
 
   if (!settings.stopStations.includes(iName)) {
     return " notstop";
+  } else if (settings.positionStatus === "stopping" && iName === current) {
+    return " stopping";
+  } else if (
+    (settings.positionStatus === "next" ||
+      settings.positionStatus === "soon") &&
+    iName === current
+  ) {
+    return " next";
   } else if (
     (!settings.isInbound && i <= posIndex) ||
     (settings.isInbound && i >= posIndex)
   ) {
     return " passed";
-  } else if (iName === next) {
-    return " next";
   } else {
     return "";
   }
 }
 
 function getArrowClass(data, settings, i, posIndex) {
-  const atEdge =
+  // 角にある場合
+  if (
     (settings.isInboundLeft && i === data.stations.length - 1) ||
-    (!settings.isInboundLeft && i === 0);
-  if (atEdge) return null;
+    (!settings.isInboundLeft && i === 0)
+  ) {
+    return null;
+  }
 
-  const isStopping = settings.positionStatus === "stopping";
-  if (isStopping) return "";
+  if (settings.positionStatus === "stopping") {
+    return "";
+  }
 
-  const isRightArrow =
-    settings.isInbound !== settings.isInboundLeft && i === posIndex;
-  if (isRightArrow) return " right";
-
-  const isLeftArrow =
-    settings.isInbound === settings.isInboundLeft &&
-    i === posIndex + (settings.isInboundLeft ? -1 : 1);
-  if (isLeftArrow) return " left";
-
-  return "";
+  if (settings.isInboundLeft) {
+    if (settings.isInbound) {
+      return i === posIndex ? " left" : "";
+    } else {
+      return i === posIndex - 1 ? " right" : "";
+    }
+  } else {
+    if (settings.isInbound) {
+      return i === posIndex + 1 ? " right" : "";
+    } else {
+      return i === posIndex ? " left" : "";
+    }
+  }
 }
 
 export function updateDOMs(settings) {
