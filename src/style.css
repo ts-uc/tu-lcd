@@ -380,12 +380,19 @@ main {
 }
 .m-pos-arrow {
   position: relative;
-  height: 2vw;
   width: 2vw;
-  animation: redyellow 1s steps(1, start) infinite; /* 共通 */
+  height: 2vw;
+  background: white;
   clip-path: polygon(90% 10%, 50% 10%, 10% 50%, 50% 90%, 90% 90%, 50% 50%);
 }
 
+.m-pos-arrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  animation: redyellow 1s steps(1, start) infinite; /* 共通 */
+  clip-path: polygon(78% 15%, 52% 15%, 17% 50%, 52% 85%, 78% 85%, 43% 50%);
+}
 /* 左右の反転だけ指定 */
 .m-pos-arrow.left {
   transform: scaleX(1);
