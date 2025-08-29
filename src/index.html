@@ -85,7 +85,6 @@
         <div class="settings-grid">
           <!-- 左画面 -->
           <div class="settings-col">
-            <h3>表示設定</h3>
             <div class="form-row">
               <label>設置方向</label>
               <fieldset>
@@ -119,6 +118,8 @@
                 <option>（未対応）</option>
               </select>
             </div>
+          </div>
+          <div class="settings-col">
             <div class="form-row">
               <label>進行方向</label>
               <fieldset>
@@ -143,7 +144,7 @@
               </select>
             </div>
             <div class="form-row">
-              <label for="current-station">現在地/直前駅</label>
+              <label for="current-station">現在地/<br />直前駅</label>
               <select id="current-station"></select>
             </div>
             <div class="form-row">
@@ -172,9 +173,8 @@
           </div>
           <!-- 右画面 -->
           <div class="settings-col">
-            <h3>停車駅</h3>
             <div class="form-row" style="align-items: start">
-              <label for="stop-stations">全駅</label>
+              <label for="stop-stations">停車駅</label>
               <select
                 id="stop-stations"
                 multiple
