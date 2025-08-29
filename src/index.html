@@ -92,27 +92,11 @@
               </button>
             </div>
             <div class="form-row">
-              <label>設置方向</label>
-              <fieldset>
-                <div class="choices">
-                  <label
-                    ><input
-                      type="radio"
-                      name="layout-dir"
-                      value="inbound-left"
-                    />
-                    上りが左</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="layout-dir"
-                      value="inbound-right"
-                    />
-                    上りが右</label
-                  >
-                </div>
-              </fieldset>
+              <label for="layout-dir-select">設置方向</label>
+              <select id="layout-dir-select">
+                <option value="inbound-left">上りが左</option>
+                <option value="inbound-right">下りが右</option>
+              </select>
             </div>
             <div class="form-row">
               <label for="line-select">路線</label>

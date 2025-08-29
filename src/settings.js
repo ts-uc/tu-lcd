@@ -6,7 +6,7 @@ import { updateDOMs } from "./dom_updater.js";
 /* ===================== 設定フォーム要素参照 ===================== */
 export const lineEl = document.getElementById("line-select");
 
-const layoutDirEls = document.querySelectorAll('input[name="layout-dir"]');
+const layoutDirEl = document.getElementById("layout-dir-select");
 const autoEl = document.getElementById("auto-select");
 const directionEl = document.getElementById("direction-select");
 const trainTypeEl = document.getElementById("train-type-select");
@@ -15,7 +15,7 @@ const currentStationEl = document.getElementById("current-station");
 const stopStationsEl = document.getElementById("stop-stations");
 
 export const settingSelectors = [
-  ...layoutDirEls,
+  layoutDirEl,
   autoEl,
   directionEl,
   trainTypeEl,
@@ -44,10 +44,7 @@ export function onPageLoad(settings) {
 
   // 設置方向
   settings.isInboundLeft = true;
-  qs('input[name="layout-dir"][value="inbound-left"]').checked =
-    !!settings.isInboundLeft;
-  qs('input[name="layout-dir"][value="inbound-right"]').checked =
-    !settings.isInboundLeft;
+  layoutDirEl.value = settings.isInboundLeft ? "inbound-left" : "inbound-right";
 
   // 路線
   settings.line = lineList[0].id;
@@ -124,17 +121,10 @@ const qs = (sel, root = document) => root.querySelector(sel);
 /* ===== settings → フォーム反映 ===== */
 export function applySettings(settings) {
   // 設置方向
-  qs('input[name="layout-dir"][value="inbound-left"]').checked =
-    !!settings.isInboundLeft;
-  qs('input[name="layout-dir"][value="inbound-right"]').checked =
-    !settings.isInboundLeft;
-
-  // 進行方向
-  directionEl.value = settings.isInbound ? "inbound" : "outbound";
-
-  // その他
+  layoutDirEl.value = settings.isInboundLeft ? "inbound-left" : "inbound-right";
   lineEl.value = settings.line || "";
   autoEl.value = settings.auto || "";
+  directionEl.value = settings.isInbound ? "inbound" : "outbound";
   trainTypeEl.value = settings.trainType || "";
   positionStatusEl.value = settings.positionStatus || "";
   currentStationEl.value = settings.position || "";
@@ -147,6 +137,7 @@ export function applySettings(settings) {
 
 /* ===== フォーム → settings 反映 ===== */
 export function setSettings(settings) {
+  settings.isInboundLeft = layoutDirEl === "inbound-left";
   settings.isInbound = directionEl.value === "inbound";
   settings.line = lineEl.value || null;
   settings.auto = autoEl.value || null;
