@@ -127,19 +127,11 @@
           </div>
           <div class="settings-col">
             <div class="form-row">
-              <label>進行方向</label>
-              <fieldset>
-                <div class="choices">
-                  <label
-                    ><input type="radio" name="direction" value="inbound" />
-                    上り</label
-                  >
-                  <label
-                    ><input type="radio" name="direction" value="outbound" />
-                    下り</label
-                  >
-                </div>
-              </fieldset>
+              <label for="direction-select">進行方向</label>
+              <select id="direction-select">
+                <option value="inbound">上り</option>
+                <option value="outbound">下り</option>
+              </select>
             </div>
             <div class="form-row">
               <label for="train-type-select">列車種別</label>

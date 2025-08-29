@@ -8,7 +8,7 @@ export const lineEl = document.getElementById("line-select");
 
 const layoutDirEls = document.querySelectorAll('input[name="layout-dir"]');
 const autoEl = document.getElementById("auto-select");
-const directionEls = document.querySelectorAll('input[name="direction"]');
+const directionEl = document.getElementById("direction-select");
 const trainTypeEl = document.getElementById("train-type-select");
 const positionStatusEl = document.getElementById("position-status-select");
 const currentStationEl = document.getElementById("current-station");
@@ -16,8 +16,8 @@ const stopStationsEl = document.getElementById("stop-stations");
 
 export const settingSelectors = [
   ...layoutDirEls,
-  ...directionEls,
   autoEl,
+  directionEl,
   trainTypeEl,
   positionStatusEl,
   currentStationEl,
@@ -83,8 +83,7 @@ export function onChangeLine(settings) {
 
   // 進行方向
   settings.isInbound = false;
-  qs('input[name="direction"][value="inbound"]').checked = !!settings.isInbound;
-  qs('input[name="direction"][value="outbound"]').checked = !settings.isInbound;
+  directionEl.value = settings.isInbound ? "inbound" : "outbound";
   // 列車種別
   settings.trainType = "普　通";
   trainTypeEl.value = settings.trainType || "";
@@ -131,8 +130,7 @@ export function applySettings(settings) {
     !settings.isInboundLeft;
 
   // 進行方向
-  qs('input[name="direction"][value="inbound"]').checked = !!settings.isInbound;
-  qs('input[name="direction"][value="outbound"]').checked = !settings.isInbound;
+  directionEl.value = settings.isInbound ? "inbound" : "outbound";
 
   // その他
   lineEl.value = settings.line || "";
@@ -149,10 +147,7 @@ export function applySettings(settings) {
 
 /* ===== フォーム → settings 反映 ===== */
 export function setSettings(settings) {
-  settings.isInboundLeft =
-    qs('input[name="layout-dir"]:checked')?.value === "inbound-left";
-  settings.isInbound =
-    qs('input[name="direction"]:checked')?.value === "inbound";
+  settings.isInbound = directionEl.value === "inbound";
   settings.line = lineEl.value || null;
   settings.auto = autoEl.value || null;
   settings.trainType = trainTypeEl.value || "";
