@@ -473,7 +473,8 @@ main {
 .form-row label {
   min-width: 4em;
 }
-.form-row select {
+.form-row select,
+.form-row button {
   padding: 0.25rem 0.5rem;
 }
 fieldset {
