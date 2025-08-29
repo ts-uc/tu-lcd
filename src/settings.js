@@ -43,6 +43,15 @@ export function onPageLoad(settings) {
   });
 
   // デフォルト値セット
+
+  // 設置方向
+  settings.isInboundLeft = true;
+  qs('input[name="layout-dir"][value="inbound-left"]').checked =
+    !!settings.isInboundLeft;
+  qs('input[name="layout-dir"][value="inbound-right"]').checked =
+    !settings.isInboundLeft;
+
+  // 路線
   settings.line = lineList[0].id;
   lineEl.value = settings.line || "";
 
@@ -74,9 +83,22 @@ export function onChangeLine(settings) {
     );
   });
 
+  // 進行方向
+  settings.isInbound = false;
+  qs('input[name="direction"][value="inbound"]').checked = !!settings.isInbound;
+  qs('input[name="direction"][value="outbound"]').checked = !settings.isInbound;
+  // 列車種別
+  settings.trainType = "普　通";
+  trainTypeEl.value = settings.trainType || "";
+  // 現在地
   settings.position = stations[0];
   currentStationEl.value = settings.position || "";
-
+  // 状態
+  settings.positionStatus = "stopping";
+  positionStatusEls.forEach((el) => {
+    el.checked = el.value === settings.positionStatus;
+  });
+  // 停車駅
   settings.stopStations = [...stations];
   Array.from(stopStationsEl.options).forEach((opt) => {
     opt.selected = settings.stopStations.includes(opt.value);
