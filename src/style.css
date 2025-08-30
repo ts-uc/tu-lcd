@@ -1,5 +1,4 @@
 /* ===== 色 ===== */
-
 :root {
   --h: 205;
 
@@ -23,12 +22,14 @@
 [data-lang="en"] .en {
   display: inline-block !important;
 }
+
 [data-view="name"] .n-panel {
   display: inline-block !important;
 }
 [data-view="map"] .m-panel {
   display: inline-block !important;
 }
+
 [data-setting="normal"] .normal-panel {
   display: inline-block !important;
 }
@@ -55,36 +56,40 @@ body {
   aspect-ratio: 32/9;
   overflow: hidden;
 }
+
 header {
+  display: block;
   height: 6vw;
   white-space: nowrap;
   font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
   font-weight: 700;
 }
+
 main {
   height: calc(100% - 6vw);
 }
+
 .normal-panel {
-  height: 100%;
   width: 100%;
+  height: 100%;
   background: var(--bg);
 }
 
+/* 言語別フォント */
 :lang(en) {
   font-family: "FrutigerNeueLTW1G-Medium", sans-serif;
   font-weight: 500;
 }
-
 :lang(zh) {
   font-family: sans-serif;
   font-weight: 400;
 }
-
 :lang(ko) {
   font-family: sans-serif;
   font-weight: 400;
 }
 
+/* ===== ヘッダー ===== */
 /* 下段帯 */
 #h-bottom {
   position: fixed;
@@ -92,12 +97,12 @@ main {
   top: 0;
   left: 0;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
   width: 100%;
   height: 6vw;
-  background: var(--next);
   color: #fff;
+  background: var(--next);
 }
 
 /* 上段（影用ラッパ） */
@@ -107,11 +112,12 @@ main {
   filter: drop-shadow(0.25vw 0.25vw 0.25vw rgba(0, 0, 0, 0.75));
 }
 
+/* 上段本体 */
 #h-top {
-  height: 6vw;
-  width: 100%;
-  align-items: center;
   display: grid;
+  align-items: center;
+  width: 100%;
+  height: 6vw;
   grid-template-columns: minmax(0, 19.5vw) minmax(0, 32vw) auto;
   gap: 0 1.3vw;
   color: #fff;
@@ -134,15 +140,18 @@ main {
 #h-top::before {
   content: "";
   position: absolute;
+  top: 5.8vw;
   left: 0;
   right: 0;
-  top: 5.8vw;
   height: 0.2vw;
   background: var(--header-bottom); /* 6vw - 5.75vw */
 }
 
 /* 種別 */
 #h-type-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 4.3vw;
   padding-block: 0.2vw;
   line-height: 1;
@@ -150,9 +159,6 @@ main {
   border-radius: 0 1vw 1vw 0;
   box-shadow: inset 0 0.2vw 0 0 #fff, inset -0.2vw 0 0 0 #fff,
     inset 0 -0.2vw 0 0 #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .h-type {
   text-align: center;
@@ -167,10 +173,10 @@ main {
 /* 行先 */
 #h-dest {
   display: flex;
+  align-items: baseline;
+  gap: 1vw;
   width: fit-content;
   height: fit-content;
-  gap: 1vw;
-  align-items: baseline;
   font-size: 3.75vw;
 }
 #h-dest small {
@@ -180,11 +186,11 @@ main {
 
 /* 次駅表示 */
 #h-next {
-  width: 100%;
   display: grid;
+  align-items: baseline;
+  width: 100%;
   grid-template-columns: auto minmax(0, 11vw) minmax(0, 26vw) minmax(0, 6.5vw);
   gap: 0 0.5vw;
-  align-items: baseline;
 }
 .h-next-l-box {
   display: flex;
@@ -200,13 +206,14 @@ main {
   padding: 0 0.5vw;
   font-size: 2.5vw;
 }
+
 .h-next-c-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0.75vw;
   background: #fff;
   box-shadow: 0 0 0.1vw 0.1vw #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .h-next-c {
   padding-block: 0.2vw;
@@ -215,18 +222,18 @@ main {
   color: #1f2740;
 }
 
-/* 駅名表示 */
+/* ===== 駅名表示（パネル） ===== */
 .n-panel {
+  width: 100%;
+  height: 100%;
   font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
   font-weight: 700;
-  height: 100%;
-  width: 100%;
 }
 
 .n-grid {
-  height: 100%;
-  width: 100%;
   display: grid;
+  width: 100%;
+  height: 100%;
   grid-template-columns: minmax(0, 2fr) minmax(0, 5fr) minmax(0, 2fr);
   grid-template-rows: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   gap: 0 1vw;
@@ -234,20 +241,21 @@ main {
 
 .n-c-kana-box,
 .n-c-m17n-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .n-c-kanji-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: #fff;
+  color: inherit;
   border: 0.2vw solid #999;
   border-radius: 1vw;
   box-shadow: inset 0 0 0.5vw rgba(0, 0, 0, 0.5);
@@ -257,67 +265,66 @@ main {
 #n-c-zh-cn,
 #n-c-ko,
 #n-c-en {
-  padding-block: 0.2vw;
-  line-height: 1;
   display: grid;
   place-items: center;
+  padding-block: 0.2vw;
+  line-height: 1;
   font-size: 3.75vw;
   color: #223;
   white-space: nowrap;
 }
 
 #n-c-kanji {
-  padding-block: 0.2vw;
-  line-height: 1;
   display: grid;
   place-items: center;
+  padding-block: 0.2vw;
+  line-height: 1;
   font-size: 9vw;
   color: #223;
   white-space: nowrap;
 }
 
 #n-l-kanji {
-  padding-block: 0.2vw;
-  line-height: 1;
   display: grid;
   place-items: center end;
+  padding-block: 0.2vw;
+  line-height: 1;
   font-size: 4.5vw;
   color: #666;
 }
-
 #n-r-kanji {
-  padding-block: 0.2vw;
-  line-height: 1;
   display: grid;
   place-items: center start;
+  padding-block: 0.2vw;
+  line-height: 1;
   font-size: 4.5vw;
   color: #666;
 }
 
 #n-l-m17n-box {
-  padding-block: 0.2vw;
-  line-height: 1;
   display: grid;
   place-items: center end;
-  font-size: 3vw;
-  color: #666;
-}
-
-#n-r-m17n-box {
   padding-block: 0.2vw;
   line-height: 1;
+  font-size: 3vw;
+  color: #666;
+}
+#n-r-m17n-box {
   display: grid;
   place-items: center start;
+  padding-block: 0.2vw;
+  line-height: 1;
   font-size: 3vw;
   color: #666;
 }
 
-/* 路線 */
+/* ===== 路線（マップ） ===== */
 .m-panel {
+  height: 100%;
   font-family: "I-OTF-UDゴ表示Pro M", sans-serif;
   font-weight: 500;
-  height: 100%;
 }
+
 .m-line {
   position: absolute;
   left: 4.5vw;
@@ -335,6 +342,7 @@ main {
   );
   border-radius: 1vw;
 }
+
 .m-station {
   position: relative;
   width: 2vw;
@@ -349,8 +357,8 @@ main {
   box-shadow: inset 0 0 0 0.2vw #333;
 }
 .m-dot.stopping {
-  box-shadow: inset 0 0 0 0.2vw #333, inset 0 0 0 0.4vw yellow;
   background: red;
+  box-shadow: inset 0 0 0 0.2vw #333, inset 0 0 0 0.4vw yellow;
 }
 .m-dot.next {
   background: yellow;
@@ -370,7 +378,7 @@ main {
   box-shadow: inset 0 0 0 0.2vw #888;
 }
 
-/* 走行位置 */
+/* ===== 走行位置（アニメ矢印） ===== */
 @keyframes redyellow {
   0% {
     background: red;
@@ -382,10 +390,12 @@ main {
     background: red;
   }
 }
+
 .m-pos-arrow-box {
   position: relative;
   width: 2vw;
 }
+
 .m-pos-arrow {
   position: relative;
   width: 2vw;
@@ -393,7 +403,6 @@ main {
   background: white;
   clip-path: polygon(90% 10%, 50% 10%, 10% 50%, 50% 90%, 90% 90%, 50% 50%);
 }
-
 .m-pos-arrow::before {
   content: "";
   position: absolute;
@@ -405,10 +414,11 @@ main {
 .m-pos-arrow.left {
   transform: scaleX(1);
 }
-
 .m-pos-arrow.right {
   transform: scaleX(-1);
 }
+
+/* ===== 駅名（ラベル） ===== */
 /* 駅名のベース位置 */
 .m-name-box.kanji,
 .m-name-box.kana {
@@ -427,8 +437,8 @@ main {
 
 /* 駅名の見た目（中身） */
 .m-name {
-  color: #111;
   line-height: 1;
+  color: #111;
   white-space: nowrap;
 }
 .m-name.kanji {
@@ -461,29 +471,32 @@ main {
   font-size: calc(2vw - 0.5vw);
 }
 
-/* 設定画面 */
+/* ===== 設定画面 ===== */
 .setting-panel {
   height: 100%;
 }
+
 .settings-grid {
   display: grid;
+  box-sizing: border-box; /* padding込みで100%に収める */
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1vw;
   padding: 1vw;
   height: 100%;
-  box-sizing: border-box; /* ←これでpadding込みで100%に収まる */
 }
+
 .settings-col {
   overflow: auto;
   padding: 0.5rem;
+  background: #fafafa;
   border: 0.1vw solid #ddd;
   border-radius: 0.5rem;
-  background: #fafafa;
 }
 .settings-col h3 {
   margin: 0.25rem 0 0.75rem;
   font-size: 1.1rem;
 }
+
 .form-row {
   display: flex;
   align-items: center;
@@ -497,6 +510,7 @@ main {
 .form-row button {
   padding: 0.25rem 0.5rem;
 }
+
 fieldset {
   border: 0;
   padding: 0;
@@ -504,8 +518,8 @@ fieldset {
 }
 fieldset .choices {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
 }
 
 /* ===== ダミー文字列 (フォント読込用) ===== */
