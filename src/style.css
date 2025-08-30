@@ -24,17 +24,17 @@
 }
 
 [data-view="name"] .n-panel {
-  display: inline-block !important;
+  display: flex !important;
 }
 [data-view="map"] .m-panel {
-  display: inline-block !important;
+  display: flex !important;
 }
 
 [data-setting="normal"] .normal-panel {
-  display: inline-block !important;
+  display: flex !important;
 }
 [data-setting="setting"] .setting-panel {
-  display: inline-block !important;
+  display: flex !important;
 }
 
 /* 既定は非表示（次点優先） */
