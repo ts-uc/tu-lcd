@@ -3,7 +3,7 @@ import { minify } from "html-minifier-terser";
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const outDir = "dist";
+const outDir = "public";
 await fs.mkdir(outDir, { recursive: true });
 
 const jsResult = await build({
@@ -37,8 +37,9 @@ const htmlMin = await minify(htmlRaw, {
   removeComments: true,
   removeRedundantAttributes: true,
   minifyCSS: false,
-  minifyJS: false
+  minifyJS: false,
 });
 
-await fs.writeFile(path.join(outDir, "index.html"), htmlMin, "utf8");
-console.log("✅ Built: dist/index.html");
+const outPath = path.join(outDir, "index.html");
+await fs.writeFile(outPath, htmlMin, "utf8");
+console.log(`✅ Built: ${outPath}`);
