@@ -33,17 +33,18 @@ setInterval(() => {
 }, 3000);
 
 /* ===================== 設定画面表示切替 ===================== */
-// ※ 初期値セット処理は削除（populateSettingsOnce も呼び出しもしない）
-const elSettings = document.getElementById("settings-panel");
-const elNormal = document.getElementById("normal-panel");
+
+document.documentElement.setAttribute("data-setting", "normal");
 document.querySelector("#h-type-box").addEventListener("dblclick", () => {
-  const showingSettings = elSettings.style.display === "block";
-  elSettings.style.display = showingSettings ? "none" : "block";
-  elNormal.style.display = showingSettings ? "block" : "none";
+  const mode =
+    document.documentElement.getAttribute("data-setting") === "normal"
+      ? "setting"
+      : "normal";
+  document.documentElement.setAttribute("data-setting", mode);
   rafApply();
 });
 
-// 駅名部分タップで次へ
+/* ===================== 駅送り ===================== */
 document.getElementById("normal-panel").addEventListener("click", () => {
   moveNextStatus(settings);
 });

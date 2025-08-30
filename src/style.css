@@ -29,13 +29,21 @@
 [data-view="map"] .m-panel {
   display: inline-block !important;
 }
+[data-setting="normal"] .normal-panel {
+  display: inline-block !important;
+}
+[data-setting="setting"] .setting-panel {
+  display: inline-block !important;
+}
 
 /* 既定は非表示（次点優先） */
 .kanji,
 .kana,
 .en,
 .n-panel,
-.m-panel {
+.m-panel,
+.normal-panel,
+.setting-panel {
   display: none !important;
 }
 
