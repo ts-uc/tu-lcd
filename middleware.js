@@ -1,10 +1,4 @@
-const next = () => {
-  const headers = new Headers();
-  headers.set("x-middleware-next", "1");
-  return new Response(null, {
-    headers,
-  });
-};
+import { next } from "@vercel/edge";
 
 export const config = {
   matcher: "/",
