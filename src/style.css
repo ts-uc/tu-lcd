@@ -58,10 +58,8 @@ body {
 header {
   height: 6vw;
   white-space: nowrap;
-  font-family: "I-OTF-UDゴ表示Pro B";
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
+  font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
+  font-weight: 700;
 }
 main {
   height: calc(100% - 6vw);
@@ -70,29 +68,21 @@ main {
   height: 100%;
   width: 100%;
   background: var(--bg);
-  font-family: "I-OTF-UDゴ表示Pro M", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
 }
 
 :lang(en) {
   font-family: "FrutigerNeueLTW1G-Medium", sans-serif;
-  font-weight: 600;
-  font-style: normal;
+  font-weight: 500;
 }
 
 :lang(zh) {
   font-family: sans-serif;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
 }
 
 :lang(ko) {
   font-family: sans-serif;
   font-weight: 400;
-  font-style: normal;
 }
 
 /* 下段帯 */
@@ -170,7 +160,8 @@ main {
   color: #fff;
 }
 .h-type.en {
-  font-family: "FrutigerNeueLTW1G-Bold";
+  font-family: "FrutigerNeueLTW1G-Bold", sans-serif;
+  font-weight: 700;
 }
 
 /* 行先 */
@@ -226,6 +217,8 @@ main {
 
 /* 駅名表示 */
 .n-panel {
+  font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
+  font-weight: 700;
   height: 100%;
   width: 100%;
 }
@@ -273,12 +266,7 @@ main {
   white-space: nowrap;
 }
 
-#n-c-kana {
-  font-family: "I-OTF-UDゴ表示Pro B";
-}
-
 #n-c-kanji {
-  font-family: "I-OTF-UDゴ表示Pro B";
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -289,7 +277,6 @@ main {
 }
 
 #n-l-kanji {
-  font-family: "I-OTF-UDゴ表示Pro B";
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -299,7 +286,6 @@ main {
 }
 
 #n-r-kanji {
-  font-family: "I-OTF-UDゴ表示Pro B";
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -328,6 +314,8 @@ main {
 
 /* 路線 */
 .m-panel {
+  font-family: "I-OTF-UDゴ表示Pro M", sans-serif;
+  font-weight: 500;
   height: 100%;
 }
 .m-line {
