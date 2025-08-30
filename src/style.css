@@ -499,3 +499,8 @@ fieldset .choices {
   gap: 1rem;
   align-items: center;
 }
+
+/* ===== ダミー文字列 (フォント読込用) ===== */
+.dummy {
+  display: none;
+}
