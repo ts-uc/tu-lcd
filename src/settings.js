@@ -137,7 +137,7 @@ export function applySettings(settings) {
 
 /* ===== フォーム → settings 反映 ===== */
 export function setSettings(settings) {
-  settings.isInboundLeft = layoutDirEl === "inbound-left";
+  settings.isInboundLeft = layoutDirEl.value === "inbound-left";
   settings.isInbound = directionEl.value === "inbound";
   settings.line = lineEl.value || null;
   settings.auto = autoEl.value || null;

@@ -50,7 +50,7 @@ body {
 header {
   height: 6vw;
   white-space: nowrap;
-  font-family: sans-serif;
+  font-family: "I-OTF-UDゴ表示Pro M", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
@@ -62,14 +62,14 @@ main {
   height: 100%;
   width: 100%;
   background: var(--bg);
-  font-family: sans-serif;
+  font-family: "I-OTF-UDゴ表示Pro M", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
 
 :lang(en) {
-  font-family: sans-serif;
+  font-family: "FrutigerNeueLTW1G-Medium", sans-serif;
   font-weight: 600;
   font-style: normal;
 }
@@ -82,7 +82,7 @@ main {
 }
 
 :lang(ko) {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -158,8 +158,12 @@ main {
 }
 .h-type {
   text-align: center;
+  font-family: "I-OTF-UDゴ表示Pro B";
   font-size: 3.75vw;
   color: #fff;
+}
+.h-type.en {
+  font-family: "FrutigerNeueLTW1G-Bold";
 }
 
 /* 行先 */
@@ -263,6 +267,7 @@ main {
 }
 
 #n-c-kanji {
+  font-family: "I-OTF-UDゴ表示Pro B";
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -273,6 +278,7 @@ main {
 }
 
 #n-l-kanji {
+  font-family: "I-OTF-UDゴ表示Pro B";
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -282,6 +288,7 @@ main {
 }
 
 #n-r-kanji {
+  font-family: "I-OTF-UDゴ表示Pro B";
   padding-block: 0.2vw;
   line-height: 1;
   display: grid;
@@ -503,4 +510,16 @@ fieldset .choices {
 /* ===== ダミー文字列 (フォント読込用) ===== */
 .dummy {
   display: none;
+}
+.dummy.ja-m {
+  font-family: "I-OTF-UDゴ表示Pro M";
+}
+.dummy.ja-b {
+  font-family: "I-OTF-UDゴ表示Pro B";
+}
+.dummy.en-m {
+  font-family: "FrutigerNeueLTW1G-Medium";
+}
+.dummy.en-b {
+  font-family: "FrutigerNeueLTW1G-Bold";
 }
