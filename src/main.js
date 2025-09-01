@@ -9,7 +9,6 @@ import {
   moveNextStatus,
 } from "./settings.js";
 import { tick } from "./tick.js";
-import { onClickFsButton, updateLabel } from "./fullscreen.js";
 
 /* ===================== 設定変数（単一情報源） ===================== */
 let settings = {
@@ -66,14 +65,6 @@ settingSelectors.forEach((el) =>
 document.addEventListener("DOMContentLoaded", () => {
   onPageLoad(settings);
 });
-
-/* ===================== 全画面表示 ===================== */
-
-const btn = document.getElementById("fs-btn");
-btn.addEventListener("click", onClickFsButton);
-document.addEventListener("fullscreenchange", updateLabel);
-document.addEventListener("webkitfullscreenchange", updateLabel);
-updateLabel();
 
 /* ===================== リサイズ/フォントロード後調整 ===================== */
 let resizeTid = 0;
