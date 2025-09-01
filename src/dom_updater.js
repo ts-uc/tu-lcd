@@ -234,15 +234,9 @@ export function updateDOMs(settings) {
       "beforeend",
       `<div class="m-station${cls}" data-name="${iName}">
         <div class="m-dot${cls}"></div>
-        <div class="m-name-box kanji${cls}">
-          <span class="m-name kanji${cls}">${iName}</span>
-        </div>
-        <div class="m-name-box kana${cls}">
-          <span class="m-name kana${cls}">${data.kana[iName]}</span>
-        </div>
-        <div class="m-name-box en${cls}">
-          <span lang="en" class="m-name en${cls}">${data.en[iName]}</span>
-        </div>
+        <span class="m-name kanji${cls}">${iName}</span>
+        <span class="m-name kana${cls}">${data.kana[iName]}</span>
+        <span lang="en" class="m-name en${cls}">${data.en[iName]}</span>
       </div>`
     );
 

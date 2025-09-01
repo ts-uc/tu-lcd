@@ -436,38 +436,29 @@ main {
 }
 
 /* ===== 駅名（ラベル） ===== */
-/* 駅名のベース位置 */
-.m-name-box.kanji,
-.m-name-box.kana {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-}
-.m-name-box.en {
-  position: absolute;
-  bottom: 100%;
-  left: 100%;
-  white-space: nowrap;
-}
-
 /* 駅名の見た目（中身） */
 .m-name {
+  position: absolute;
   line-height: 1;
   color: #111;
   white-space: nowrap;
 }
-.m-name.kanji {
+.m-name.kanji,
+.m-name.kana {
+  bottom: calc(100% + 0.5vw);
+  left: 50%;
+  transform: translateX(-50%);
   writing-mode: vertical-rl;
+}
+.m-name.kanji {
   font-size: 2.25vw;
 }
 .m-name.kana {
-  writing-mode: vertical-rl;
   font-size: 2vw;
 }
 .m-name.en {
-  display: inline-block;
+  bottom: calc(100% + 0.125vw);
+  left: 100%;
   font-size: 2vw;
   transform-origin: bottom left;
   transform: rotate(-75deg);

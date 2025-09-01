@@ -27,7 +27,12 @@ export function applyScaling() {
         prefix: "rotate(-75deg)",
       });
     } else {
-      scaleToFit(el, { maxPx: vw(12.5), axis: "y", origin: "bottom center" });
+      scaleToFit(el, {
+        maxPx: vw(12.5),
+        axis: "y",
+        origin: "bottom center",
+        prefix: "translateX(-50%)",
+      });
     }
   });
   // 種別
