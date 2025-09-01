@@ -2,9 +2,21 @@ import { build } from "esbuild";
 import { minify } from "html-minifier-terser";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const outDir = "public";
 await fs.mkdir(outDir, { recursive: true });
+
+// --- コミットハッシュ取得 ---
+let commitHash = process.env.VERCEL_GIT_COMMIT_SHA;
+if (!commitHash) {
+  try {
+    commitHash = execSync("git rev-parse --short HEAD").toString().trim();
+  } catch {
+    commitHash = "local"; // git がない場合のフォールバック
+  }
+}
+const CACHE_NAME = `hk-lcd-${commitHash}`;
 
 // --- JS ---
 const jsResult = await build({
@@ -60,7 +72,7 @@ async function loadAllFiles(dir) {
         const text = await fs.readFile(full, "utf8");
         result[full] = text;
       } catch {
-        // バイナリは無視（画像など）
+        // バイナリは無視
       }
     }
   }
@@ -82,7 +94,8 @@ const htmlRaw = tpl
   .replaceAll(
     "<!-- DUMMY_CHARS -->",
     `<div style="display:none">${dummyChars}</div>`
-  );
+  )
+  .replaceAll("%%CACHE_NAME%%", CACHE_NAME); // ← ここで埋め込む
 
 const htmlMin = await minify(htmlRaw, {
   collapseWhitespace: true,
@@ -95,4 +108,10 @@ const htmlMin = await minify(htmlRaw, {
 // --- 出力 ---
 const outPath = path.join(outDir, "index.html");
 await fs.writeFile(outPath, htmlMin, "utf8");
+
+// sw.js も出力（キャッシュ名を含む）
+const swSrc = await fs.readFile("src/sw.js", "utf8");
+const swOut = swSrc.replaceAll("%%CACHE_NAME%%", CACHE_NAME);
+await fs.writeFile(path.join(outDir, "sw.js"), swOut, "utf8");
+
 console.log(`✅ Built: ${outPath}`);
