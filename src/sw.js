@@ -1,5 +1,12 @@
 const CACHE_NAME = "hk-lcd-%%CACHE_NAME%%";
-const ASSETS = ["./", "./index.html", "./manifest.json", "./sw.js"];
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./sw.js",
+  "./icon-512.png",
+  "./icon-192.png",
+];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(ASSETS)));
