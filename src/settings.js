@@ -3,6 +3,7 @@ import typeData from "./type_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling";
 import { resetTick } from "./tick";
 import { updateDOMs } from "./dom_updater.js";
+import { setColors } from "./color.js";
 
 /* ===================== 設定フォーム要素参照 ===================== */
 export const lineEl = document.getElementById("line-select");
@@ -107,8 +108,7 @@ export function onChangeLine(settings) {
 
   // ラインカラー置き換え
   lineColor = lineData[settings.line].color;
-  const hsl = hexToHsl(lineColor);
-  document.documentElement.style.setProperty("--h", hsl.h);
+  setColors(lineColor);
 
   raf(settings);
   resetTick(settings);
@@ -156,45 +156,6 @@ export function setSettings(settings) {
   settings.stopStations = Array.from(stopStationsEl.selectedOptions).map(
     (o) => o.value
   );
-}
-
-function hexToHsl(hex) {
-  hex = hex.replace(/^#/, "");
-  if (hex.length === 3) {
-    hex = hex
-      .split("")
-      .map((c) => c + c)
-      .join("");
-  }
-  const r = parseInt(hex.substring(0, 2), 16) / 255;
-  const g = parseInt(hex.substring(2, 4), 16) / 255;
-  const b = parseInt(hex.substring(4, 6), 16) / 255;
-
-  const max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
-  let h,
-    s,
-    l = (max + min) / 2;
-
-  if (max === min) {
-    h = s = 0; // グレースケール
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-    }
-    h = Math.round(h * 60);
-  }
-  return { h, s: s * 100, l: l * 100 };
 }
 
 function moveNextStation(settings) {

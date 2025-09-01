@@ -1,7 +1,5 @@
 /* ===== 色 ===== */
-:root {
-  --h: 205;
-
+/* :root {
   --next: hsl(var(--h) 66% 46%);
   --dest-dark: hsl(var(--h) 71% 52%);
   --dest-bright: hsl(var(--h) 100% 75%);
@@ -12,7 +10,7 @@
   --disabled: hsl(var(--h) 48% 78%);
   --type-bg: #231816;
   --type-text: #ffffff;
-}
+} */
 
 /* ===== 順次表示切替（最優先） ===== */
 [data-lang="kanji"] .kanji {
