@@ -1,4 +1,4 @@
-const CACHE_NAME = "hk-lcd-%%CACHE_NAME%%";
+const CACHE_NAME = "%%CACHE_NAME%%";
 const ASSETS = [
   "./",
   "./index.html",
