@@ -5,7 +5,7 @@ const vw = (v) => window.innerWidth * (v / 100);
 function scaleToFit(el, { maxPx, axis = "x", origin = "center", prefix = "" }) {
   if (!el) return;
   const a = axis.toLowerCase();
-  const actual = a === "y" ? el.offsetHeight : el.offsetWidth;
+  const actual = a === "y" ? el.scrollHeight : el.scrollWidth;
   if (actual > maxPx) {
     const scale = maxPx / actual;
     const scaleStr = a === "y" ? `scaleY(${scale})` : `scaleX(${scale})`;
