@@ -407,23 +407,25 @@ main {
 
 .m-pos-arrow-box {
   position: relative;
-  width: 2.25vw;
-  height: 2.25vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 1.5vw;
 }
 
 .m-pos-arrow {
   position: relative;
-  width: 2.25vw;
-  height: 2.25vw;
+  width: 1.5vw;
+  height: 1.75vw;
   background: white;
-  clip-path: polygon(90% 10%, 50% 10%, 10% 50%, 50% 90%, 90% 90%, 50% 50%);
+  clip-path: polygon(100% 0%, 50% 0%, 0% 50%, 50% 100%, 100% 100%, 50% 50%);
 }
 .m-pos-arrow::before {
   content: "";
   position: absolute;
   inset: 0;
   animation: redyellow 1s steps(1, start) infinite; /* 共通 */
-  clip-path: polygon(78% 15%, 52% 15%, 17% 50%, 52% 85%, 78% 85%, 43% 50%);
+  clip-path: polygon(83% 7%, 52% 7%, 10% 50%, 52% 93%, 83% 93%, 41% 50%);
 }
 /* 左右の反転だけ指定 */
 .m-pos-arrow.left {
