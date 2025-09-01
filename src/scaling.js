@@ -16,6 +16,28 @@ function scaleToFit(el, { maxPx, axis = "x", origin = "center", prefix = "" }) {
   el.style.transformOrigin = origin;
 }
 
+function setSpacing(el, em) {
+  charLength = el.innerText.length;
+  if (charLength == 2) {
+    el.style.letterSpacing = `${em}em`;
+    el.style.paddingLeft = `${em}em`;
+  } else {
+    el.style.letterSpacing = "";
+    el.style.paddingLeft = "";
+  }
+}
+
+function setSpacingForStationNamel(el) {
+  charLength = el.innerText.length;
+  if (charLength == 2) {
+    el.style.letterSpacing = "0.3em";
+    el.style.bottom = "calc(100% + .5vw - 0.3em)";
+  } else {
+    el.style.letterSpacing = "";
+    el.style.bottom = "calc(100% + .5vw)";
+  }
+}
+
 export function applyScaling() {
   // 駅名
   qsa(".m-name").forEach((el) => {
@@ -27,6 +49,7 @@ export function applyScaling() {
         prefix: "rotate(-75deg)",
       });
     } else {
+      setSpacingForStationNamel(el);
       scaleToFit(el, {
         maxPx: vw(12.5),
         axis: "y",
@@ -37,6 +60,7 @@ export function applyScaling() {
   });
   // 種別
   qsa(".h-type").forEach((el) => {
+    setSpacing(el, 1);
     scaleToFit(el, { maxPx: vw(18), axis: "x", origin: "center" });
   });
   // 行先
@@ -45,9 +69,13 @@ export function applyScaling() {
   });
   // 次駅
   qsa(".h-next-c").forEach((el) => {
+    setSpacing(el, 0.3);
     scaleToFit(el, { maxPx: vw(25), axis: "x", origin: "center" });
   });
   qsa(".n-c").forEach((el) => {
     scaleToFit(el, { maxPx: vw(50), axis: "x", origin: "center" });
+  });
+  qsa("#n-c-kanji").forEach((el) => {
+    setSpacing(el, 0.3);
   });
 }
