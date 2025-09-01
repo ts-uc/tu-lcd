@@ -1,4 +1,5 @@
 import lineData from "./line_data.json" assert { type: "json" };
+import typeData from "./type_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling";
 import { resetTick } from "./tick";
 import { updateDOMs } from "./dom_updater.js";
@@ -37,6 +38,14 @@ export function onPageLoad(settings) {
     lineEl.insertAdjacentHTML(
       "beforeend",
       `<option value="${line.id}">${line.name}</option>`
+    );
+  });
+
+  const typeList = Object.keys(typeData);
+  typeList.forEach((typeName) => {
+    trainTypeEl.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${typeName}">${typeName}</option>`
     );
   });
 
@@ -82,7 +91,7 @@ export function onChangeLine(settings) {
   settings.isInbound = false;
   directionEl.value = settings.isInbound ? "inbound" : "outbound";
   // 列車種別
-  settings.trainType = "普　通";
+  settings.trainType = "普通";
   trainTypeEl.value = settings.trainType || "";
   // 現在地
   settings.position = stations[0];

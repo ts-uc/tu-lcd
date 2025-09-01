@@ -1,18 +1,19 @@
 import lineData from "./line_data.json" assert { type: "json" };
+import typeData from "./type_data.json" assert { type: "json" };
 
 const qs = (sel, root = document) => root.querySelector(sel);
 
-const type_kana = {
-  "普　通": "ふつう",
-  "快　速": "かいそく",
-  "貸　切": "かしきり",
-};
+// const type_kana = {
+//   "普　通": "ふつう",
+//   "快　速": "かいそく",
+//   "貸　切": "かしきり",
+// };
 
-const type_en = {
-  "普　通": "Local",
-  "快　速": "Rapid",
-  "貸　切": "Chartered",
-};
+// const type_en = {
+//   "普　通": "Local",
+//   "快　速": "Rapid",
+//   "貸　切": "Chartered",
+// };
 
 function setTexts(map) {
   for (const [id, text] of Object.entries(map)) {
@@ -60,9 +61,9 @@ function updateHeader(settings, lineData, stationNames) {
 
   setTexts({
     // ヘッダー
-    "h-type-kanji": settings.trainType,
-    "h-type-kana": type_kana[settings.trainType],
-    "h-type-en": type_en[settings.trainType],
+    "h-type-kanji": typeData[settings.trainType].kanji,
+    "h-type-kana": typeData[settings.trainType].kana,
+    "h-type-en": typeData[settings.trainType].en,
     "h-dest-kanji": dest,
     "h-dest-kana": lineData.kana[dest],
     "h-dest-en": lineData.en[dest],
@@ -90,6 +91,15 @@ function updateHeader(settings, lineData, stationNames) {
       "h-next-l-en": "Next",
     });
   }
+
+  document.documentElement.style.setProperty(
+    "--type-bg",
+    typeData[settings.trainType].bg
+  );
+  document.documentElement.style.setProperty(
+    "--type-text",
+    typeData[settings.trainType].text
+  );
 }
 
 function updateNamePanel(settings, lineData, stationNames) {
