@@ -189,8 +189,8 @@ main {
   display: grid;
   align-items: baseline;
   width: 100%;
-  grid-template-columns: auto minmax(0, 11vw) minmax(0, 26vw) minmax(0, 6.5vw);
-  gap: 0 0.5vw;
+  grid-template-columns: auto minmax(0, 11vw) minmax(0, 25.5vw) minmax(0, 6.5vw);
+  gap: 0 0.25vw;
 }
 .h-next-l-box {
   display: flex;
@@ -234,8 +234,8 @@ main {
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr) minmax(0, 2fr);
-  grid-template-rows: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 21fr) minmax(0, 60fr) minmax(0, 19fr);
+  grid-template-rows: minmax(0, 23fr) minmax(0, 50fr) minmax(0, 27fr);
   gap: 0 1vw;
 }
 
@@ -256,12 +256,21 @@ main {
   height: 100%;
   background: #fff;
   color: inherit;
-  border: 0.2vw solid #999;
+  border: 0.2vw solid var(--disabled);
   border-radius: 1vw;
-  box-shadow: inset 0 0 0.5vw rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0.5vw var(--disabled);
 }
 
-#n-c-kana,
+#n-c-kana {
+  display: grid;
+  place-items: center;
+  padding-block: 0.2vw;
+  line-height: 1;
+  font-size: 3.75vw;
+  color: #223;
+  white-space: nowrap;
+}
+
 #n-c-zh-cn,
 #n-c-ko,
 #n-c-en {
@@ -269,7 +278,7 @@ main {
   place-items: center;
   padding-block: 0.2vw;
   line-height: 1;
-  font-size: 3.75vw;
+  font-size: 4.5vw;
   color: #223;
   white-space: nowrap;
 }
@@ -289,7 +298,7 @@ main {
   place-items: center end;
   padding-block: 0.2vw;
   line-height: 1;
-  font-size: 4.5vw;
+  font-size: 4.25vw;
   color: #666;
 }
 #n-r-kanji {
@@ -297,7 +306,7 @@ main {
   place-items: center start;
   padding-block: 0.2vw;
   line-height: 1;
-  font-size: 4.5vw;
+  font-size: 4.25vw;
   color: #666;
 }
 
@@ -332,7 +341,7 @@ main {
   bottom: calc(100% - 22.5vw);
   display: flex;
   justify-content: space-between;
-  height: 2vw;
+  height: 2.25vw;
   background: linear-gradient(
     var(--map-dark) 0%,
     var(--map-light) 20%,
@@ -341,11 +350,13 @@ main {
     var(--map-dark) 100%
   );
   border-radius: 1vw;
+  box-shadow: 0px 0.25vw 0.5vw var(--disabled);
 }
 
 .m-station {
   position: relative;
-  width: 2vw;
+  display: flex;
+  flex: 0 0 2.25vw;
 }
 
 /* ドット */
@@ -393,13 +404,14 @@ main {
 
 .m-pos-arrow-box {
   position: relative;
-  width: 2vw;
+  width: 2.25vw;
+  height: 2.25vw;
 }
 
 .m-pos-arrow {
   position: relative;
-  width: 2vw;
-  height: 2vw;
+  width: 2.25vw;
+  height: 2.25vw;
   background: white;
   clip-path: polygon(90% 10%, 50% 10%, 10% 50%, 50% 90%, 90% 90%, 50% 50%);
 }
@@ -443,11 +455,11 @@ main {
 }
 .m-name.kanji {
   writing-mode: vertical-rl;
-  font-size: 2vw;
+  font-size: 2.25vw;
 }
 .m-name.kana {
   writing-mode: vertical-rl;
-  font-size: 1.75vw;
+  font-size: 2vw;
 }
 .m-name.en {
   display: inline-block;
