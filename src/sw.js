@@ -27,6 +27,16 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
-  if (e.request.method !== "GET") return; // 最小限のガード
-  e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));
+  if (e.request.method !== "GET") return;
+
+  e.respondWith(
+    fetch(e.request)
+      .then((response) => {
+        // 成功したレスポンスをキャッシュに保存（次回オフライン用）
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(e.request)) // ネットワーク失敗時はキャッシュ
+  );
 });
