@@ -85,11 +85,7 @@ console.log(hsvToHex(120, 1, 1)); // "#00ff00"
 
 function setColor(baseColor, propertyName, ratioS, ratioV) {
   const hsv = hexToHsv(baseColor);
-  const colorSet = hsvToHex(
-    hsv.h,
-    hsv.s * ratioS * (0.8 / hsv.s),
-    1 - (1 - hsv.v) * ratioV * (0.8 / hsv.s)
-  );
+  const colorSet = hsvToHex(hsv.h, hsv.s * ratioS, 1 - (1 - hsv.v) * ratioV);
   document.documentElement.style.setProperty(propertyName, colorSet);
 }
 
