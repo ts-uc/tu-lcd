@@ -120,11 +120,23 @@ function updateNamePanel(settings, lineData, stationNames) {
       "n-l-en": "Next",
       "n-c-en": lineData.en[next],
     });
+    if (settings.terminalDisp && next === dest) {
+      setTexts({
+        "n-r-kanji": "終点です",
+        "n-r-zh-cn": "終点站",
+        "n-r-ko": "종점",
+        "n-r-en": "Terminal",
+      });
+    } else {
+      setTexts({
+        "n-r-kanji": "です",
+        "n-r-zh-cn": "",
+        "n-r-ko": "입니다",
+        "n-r-en": "",
+      });
+    }
   } else if (settings.positionStatus == "soon") {
     setTexts({
-      "h-next-l-kanji": "まもなく",
-      "h-next-l-kana": "まもなく",
-      "h-next-l-en": "Soon",
       "n-c-kana": lineData.kana[next],
       "n-l-kanji": "まもなく",
       "n-c-kanji": next,
@@ -137,11 +149,23 @@ function updateNamePanel(settings, lineData, stationNames) {
       "n-l-en": "Soon",
       "n-c-en": lineData.en[next],
     });
+    if (settings.terminalDisp && next === dest) {
+      setTexts({
+        "n-r-kanji": "終点です",
+        "n-r-zh-cn": "終点站",
+        "n-r-ko": "종점",
+        "n-r-en": "Terminal",
+      });
+    } else {
+      setTexts({
+        "n-r-kanji": "です",
+        "n-r-zh-cn": "",
+        "n-r-ko": "입니다",
+        "n-r-en": "",
+      });
+    }
   } else {
     setTexts({
-      "h-next-l-kanji": "つぎは",
-      "h-next-l-kana": "つぎは",
-      "h-next-l-en": "Next",
       "n-c-kana": lineData.kana[current],
       "n-l-kanji": "",
       "n-c-kanji": current,
@@ -154,6 +178,21 @@ function updateNamePanel(settings, lineData, stationNames) {
       "n-l-en": "",
       "n-c-en": lineData.en[current],
     });
+    if (settings.terminalDisp && current === dest) {
+      setTexts({
+        "n-r-kanji": "終点です",
+        "n-r-zh-cn": "終点站",
+        "n-r-ko": "종점",
+        "n-r-en": "Terminal",
+      });
+    } else {
+      setTexts({
+        "n-r-kanji": "",
+        "n-r-zh-cn": "",
+        "n-r-ko": "",
+        "n-r-en": "",
+      });
+    }
   }
 }
 

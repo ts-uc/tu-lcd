@@ -15,6 +15,7 @@ const trainTypeEl = document.getElementById("train-type-select");
 const positionStatusEl = document.getElementById("position-status-select");
 const currentStationEl = document.getElementById("current-station");
 const stopStationsEl = document.getElementById("stop-stations");
+const terminalDispEl = document.getElementById("terminal-disp-select");
 
 export const settingSelectors = [
   layoutDirEl,
@@ -105,6 +106,8 @@ export function onChangeLine(settings) {
   Array.from(stopStationsEl.options).forEach((opt) => {
     opt.selected = settings.stopStations.includes(opt.value);
   });
+  settings.terminalDisp = true;
+  terminalDispEl.value = settings.terminalDisp ? "on" : "off";
 
   // ラインカラー置き換え
   lineColor = lineData[settings.line].color;
@@ -137,6 +140,7 @@ export function applySettings(settings) {
   trainTypeEl.value = settings.trainType || "";
   positionStatusEl.value = settings.positionStatus || "";
   currentStationEl.value = settings.position || "";
+  terminalDispEl.value = settings.terminalDisp ? "on" : "off";
 
   // multiple select
   Array.from(stopStationsEl.options).forEach((opt) => {
@@ -156,6 +160,7 @@ export function setSettings(settings) {
   settings.stopStations = Array.from(stopStationsEl.selectedOptions).map(
     (o) => o.value
   );
+  settings.terminalDisp = terminalDispEl.value === "on";
 }
 
 function moveNextStation(settings) {

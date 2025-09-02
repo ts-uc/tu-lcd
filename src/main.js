@@ -20,6 +20,7 @@ let settings = {
   position: "",
   positionStatus: "stopping",
   stopStations: null,
+  terminalDisp: true,
 };
 
 /* ===================== ヘルパ ===================== */
