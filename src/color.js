@@ -1,101 +1,130 @@
-// HEX (#000000) → HSV
-function hexToHsv(hex) {
-  // #を取り除く
-  hex = hex.replace(/^#/, "");
-  if (hex.length === 3) {
-    hex = hex
+// color.js — HEX ⇄ OKLCH 変換（OKLCHは {l, c, h} オブジェクト）
+
+const clamp01 = (x) => Math.min(1, Math.max(0, x));
+const rad = (deg) => (deg * Math.PI) / 180;
+const deg = (rad) => (rad * 180) / Math.PI;
+
+// --- sRGB companding ---
+const srgbToLinear = (c) =>
+  c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+const linearToSrgb = (c) =>
+  c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - 0.055;
+
+// --- HEX ⇄ RGB ---
+function hexToRgb(hex) {
+  let h = hex.replace(/^#/, "").trim();
+  if (h.length === 3)
+    h = h
       .split("")
       .map((c) => c + c)
       .join("");
-  }
-  const r = parseInt(hex.substring(0, 2), 16) / 255;
-  const g = parseInt(hex.substring(2, 4), 16) / 255;
-  const b = parseInt(hex.substring(4, 6), 16) / 255;
-
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const d = max - min;
-
-  let h = 0;
-  if (d !== 0) {
-    if (max === r) {
-      h = ((g - b) / d) % 6;
-    } else if (max === g) {
-      h = (b - r) / d + 2;
-    } else {
-      h = (r - g) / d + 4;
-    }
-    h *= 60;
-    if (h < 0) h += 360;
-  }
-
-  const s = max === 0 ? 0 : d / max;
-  const v = max;
-
-  return { h, s, v }; // h: 0–360, s: 0–1, v: 0–1
+  if (!/^[0-9a-fA-F]{6}$/.test(h)) throw new Error(`Invalid HEX: ${hex}`);
+  return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+}
+function rgbToHex([r, g, b]) {
+  const to2 = (n) => n.toString(16).padStart(2, "0");
+  return `#${to2(r)}${to2(g)}${to2(b)}`;
 }
 
-// HSV → HEX (#000000)
-function hsvToHex(h, s, v) {
-  const c = v * s;
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-  const m = v - c;
+// --- sRGB → OKLab ---
+function srgb01ToOklab([R, G, B]) {
+  const r = srgbToLinear(R);
+  const g = srgbToLinear(G);
+  const b = srgbToLinear(B);
 
-  let r = 0,
-    g = 0,
-    b = 0;
-  if (h >= 0 && h < 60) {
-    r = c;
-    g = x;
-    b = 0;
-  } else if (h >= 60 && h < 120) {
-    r = x;
-    g = c;
-    b = 0;
-  } else if (h >= 120 && h < 180) {
-    r = 0;
-    g = c;
-    b = x;
-  } else if (h >= 180 && h < 240) {
-    r = 0;
-    g = x;
-    b = c;
-  } else if (h >= 240 && h < 300) {
-    r = x;
-    g = 0;
-    b = c;
+  const l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b;
+  const m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b;
+  const s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+
+  const l_ = Math.cbrt(l);
+  const m_ = Math.cbrt(m);
+  const s_ = Math.cbrt(s);
+
+  const L = 0.2104542553 * l_ + 0.793617785 * m_ - 0.0040720468 * s_;
+  const a = 1.9779984951 * l_ - 2.428592205 * m_ + 0.4505937099 * s_;
+  const b2 = 0.0259040371 * l_ + 0.7827717662 * m_ - 0.808675766 * s_;
+  return [L, a, b2];
+}
+
+// --- OKLab → sRGB ---
+function oklabToSrgb01([L, a, b]) {
+  const l_ = L + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = L - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = L - 0.0894841775 * a - 1.291485548 * b;
+
+  const l = l_ ** 3;
+  const m = m_ ** 3;
+  const s = s_ ** 3;
+
+  let r = +4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s;
+  let g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
+  let b2 = -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s;
+
+  r = linearToSrgb(r);
+  g = linearToSrgb(g);
+  b2 = linearToSrgb(b2);
+
+  return [clamp01(r), clamp01(g), clamp01(b2)];
+}
+
+// --- OKLab ⇄ OKLCH ---
+const labToLch = ([L, a, b]) => {
+  const C = Math.hypot(a, b);
+  let H = deg(Math.atan2(b, a));
+  if (H < 0) H += 360;
+  return { l: L, c: C, h: H };
+};
+const lchToLab = ({ l, c, h }) => {
+  const a = c * Math.cos(rad(h));
+  const b = c * Math.sin(rad(h));
+  return [l, a, b];
+};
+
+// --- 公開API ---
+// HEX → OKLCH {l,c,h}
+function hexToOklch(hex) {
+  const [r8, g8, b8] = hexToRgb(hex);
+  const [R, G, B] = [r8, g8, b8].map((n) => n / 255);
+  const lab = srgb01ToOklab([R, G, B]);
+  return labToLch(lab);
+}
+
+// OKLCH {l,c,h} → HEX
+function oklchToHex({ l, c, h }) {
+  const lab = lchToLab({ l, c, h });
+  const [R, G, B] = oklabToSrgb01(lab);
+  const rgb = [R, G, B].map((x) => Math.round(x * 255));
+  return rgbToHex(rgb);
+}
+
+function setColor(baseColor, propertyName, l, ratioC) {
+  const baseOklch = hexToOklch(baseColor);
+  const c = baseOklch.c * ratioC;
+  const h = baseOklch.h;
+  if (CSS.supports("color", "oklch(0.5 0.2 $)")) {
+    document.documentElement.style.setProperty(
+      propertyName,
+      `oklch(${l} ${c} ${h})`
+    );
   } else {
-    r = c;
-    g = 0;
-    b = x;
+    document.documentElement.style.setProperty(
+      propertyName,
+      oklchToHex({
+        l: l,
+        c: c,
+        h: h,
+      })
+    );
   }
-
-  const R = Math.round((r + m) * 255);
-  const G = Math.round((g + m) * 255);
-  const B = Math.round((b + m) * 255);
-
-  return "#" + [R, G, B].map((v) => v.toString(16).padStart(2, "0")).join("");
-}
-
-// ==== 使用例 ====
-// HEX → HSV
-console.log(hexToHsv("#ff0000")); // { h: 0, s: 1, v: 1 }
-// HSV → HEX
-console.log(hsvToHex(120, 1, 1)); // "#00ff00"
-
-function setColor(baseColor, propertyName, ratioS, ratioV) {
-  const hsv = hexToHsv(baseColor);
-  const colorSet = hsvToHex(hsv.h, hsv.s * ratioS, 1 - (1 - hsv.v) * ratioV);
-  document.documentElement.style.setProperty(propertyName, colorSet);
 }
 
 export function setColors(baseColor) {
-  setColor(baseColor, "--next", 1, 1);
-  setColor(baseColor, "--dest-dark", 0.96, 0.58);
-  setColor(baseColor, "--dest-bright", 0.44, 0.13);
-  setColor(baseColor, "--header-bottom", 0.54, 0.29);
-  setColor(baseColor, "--bg", 0.1, 0.08);
-  setColor(baseColor, "--map-light", 0.41, 0.17);
-  setColor(baseColor, "--map-dark", 0.94, 1);
-  setColor(baseColor, "--disabled", 0.29, 0.5);
+  setColor(baseColor, "--next", 0.5886, 1);
+  setColor(baseColor, "--dest-dark", 0.6495, 1.08);
+  setColor(baseColor, "--dest-bright", 0.8051, 0.96);
+  setColor(baseColor, "--header-bottom", 0.7936, 0.672);
+  setColor(baseColor, "--bg", 0.9491, 0.1432);
+  setColor(baseColor, "--map-light", 0.8521, 0.5277);
+  setColor(baseColor, "--map-dark", 0.6076, 0.9314);
+  setColor(baseColor, "--disabled", 0.8247, 0.3605);
 }
