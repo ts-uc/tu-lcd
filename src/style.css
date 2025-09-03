@@ -231,8 +231,8 @@ main {
   height: 100%;
   font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
   font-weight: 700;
+  white-space: nowrap;
 }
-
 .n-grid {
   display: grid;
   width: 100%;
@@ -241,93 +241,63 @@ main {
   grid-template-rows: minmax(0, 23fr) minmax(0, 50fr) minmax(0, 27fr);
   gap: 0 1vw;
 }
-
-.n-c-kana-box,
-.n-c-m17n-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.n-c-kanji-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  color: inherit;
-  border: 0.2vw solid var(--disabled);
-  border-radius: 1vw;
-  box-shadow: inset 0 0 0.5vw var(--disabled);
-}
-
-#n-c-kana {
+#n-c-kana-box,
+#n-c-m17n-box {
   display: grid;
   place-items: center;
-  padding-block: 0.2vw;
-  line-height: 1;
-  font-size: 3.75vw;
   color: #223;
-  white-space: nowrap;
 }
-
-#n-c-zh-cn,
-#n-c-ko,
-#n-c-en {
-  display: grid;
-  place-items: center;
-  padding-block: 0.2vw;
-  line-height: 1;
-  font-size: 4.5vw;
-  color: #223;
-  white-space: nowrap;
-}
-
-#n-c-kanji {
-  display: grid;
-  place-items: center;
-  padding-block: 0.2vw;
-  line-height: 1;
-  font-size: 9vw;
-  color: #223;
-  white-space: nowrap;
-}
-
-#n-l-kanji {
-  display: grid;
-  place-items: center end;
-  padding-block: 0.2vw;
-  line-height: 1;
-  font-size: 4.25vw;
-  color: #666;
-}
-#n-r-kanji {
-  display: grid;
-  place-items: center start;
-  padding-block: 0.2vw;
-  line-height: 1;
-  font-size: 4.25vw;
-  color: #666;
-}
-
+#n-l-kanji-box,
 #n-l-m17n-box {
   display: grid;
   place-items: center end;
-  padding-block: 0.2vw;
-  line-height: 1;
-  font-size: 3vw;
   color: #666;
 }
+#n-r-kanji-box,
 #n-r-m17n-box {
   display: grid;
   place-items: center start;
-  padding-block: 0.2vw;
+  color: #666;
+}
+#n-c-kanji-box {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 0.2vw solid var(--disabled);
+  border-radius: 1vw;
+  box-shadow: inset 0 0 0.5vw var(--disabled);
+  color: #223;
+}
+
+#n-c-kana {
+  line-height: 1;
+  font-size: 3.75vw;
+}
+#n-c-kanji {
+  line-height: 1;
+  font-size: 9vw;
+}
+#n-l-kanji,
+#n-r-kanji {
+  line-height: 1;
+  font-size: 4.25vw;
+}
+#n-c-zh-cn,
+#n-c-ko,
+#n-c-en {
+  line-height: 1;
+  font-size: 4.5vw;
+}
+#n-l-zh-cn,
+#n-l-ko,
+#n-l-en,
+#n-r-zh-cn,
+#n-r-ko,
+#n-r-en {
   line-height: 1;
   font-size: 3vw;
-  color: #666;
 }
 
 /* ===== 路線（マップ） ===== */
