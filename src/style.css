@@ -156,7 +156,6 @@ main {
   align-items: center;
   justify-content: center;
   height: 4.3vw;
-  padding-block: 0.2vw;
   line-height: 1;
   background: var(--type-bg);
   border-radius: 0 1vw 1vw 0;
@@ -166,7 +165,7 @@ main {
 }
 .h-type {
   text-align: center;
-  font-size: 3.75vw;
+  font-size: 3.5vw;
   color: var(--type-text);
 }
 .h-type.en {
@@ -181,7 +180,7 @@ main {
   gap: 1vw;
   width: fit-content;
   height: fit-content;
-  font-size: 3.75vw;
+  font-size: 3.5vw;
 }
 #h-dest small {
   font-size: 2.5vw;
