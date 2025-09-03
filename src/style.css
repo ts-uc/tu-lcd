@@ -348,9 +348,9 @@ main {
   height: 2.25vw;
   background: linear-gradient(
     var(--m-0) 0%,
-    var(--m-22) 22.2%,
-    var(--m-56) 55.6%,
-    var(--m-89) 88.9%,
+    var(--m-27-2) 27.2%,
+    var(--m-54-5) 54.5%,
+    var(--m-81-8) 81.8%,
     var(--m-100) 100%
   );
   border-radius: 1vw;

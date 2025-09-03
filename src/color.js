@@ -129,10 +129,10 @@ export function setColors(baseColor) {
   setColor(baseColor, "--h-100", 0.6436, 0.9938);
   setColor(baseColor, "--header-bottom", 0.7936, 0.672);
   setColor(baseColor, "--bg", 0.9491, 0.1432);
-  setColor(baseColor, "--m-0", 0.7689, 0.54);
-  setColor(baseColor, "--m-22", 0.8516, 0.5015);
-  setColor(baseColor, "--m-56", 0.7167, 0.6355);
-  setColor(baseColor, "--m-89", 0.605, 1.01);
-  setColor(baseColor, "--m-100", 0.6023, 0.9345);
+  setColor(baseColor, "--m-0", 0.7022, 0.5285);
+  setColor(baseColor, "--m-27-2", 0.8516, 0.5015);
+  setColor(baseColor, "--m-54-5", 0.7167, 0.6355);
+  setColor(baseColor, "--m-81-8", 0.605, 1.01);
+  setColor(baseColor, "--m-100", 0.5519, 0.6895);
   setColor(baseColor, "--disabled", 0.8247, 0.3605);
 }
