@@ -120,11 +120,19 @@ function setColor(baseColor, propertyName, l, ratioC) {
 
 export function setColors(baseColor) {
   setColor(baseColor, "--next", 0.5886, 1);
-  setColor(baseColor, "--dest-dark", 0.6495, 1.08);
-  setColor(baseColor, "--dest-bright", 0.8051, 0.96);
+  setColor(baseColor, "--h-0", 0.7761, 0.8759);
+  setColor(baseColor, "--h-6-25", 0.8141, 0.8528);
+  setColor(baseColor, "--h-12-5", 0.7635, 0.879);
+  setColor(baseColor, "--h-18-75", 0.7133, 0.9553);
+  setColor(baseColor, "--h-25", 0.6486, 1.0469);
+  setColor(baseColor, "--h-50", 0.6486, 1.0469);
+  setColor(baseColor, "--h-100", 0.6436, 0.9938);
   setColor(baseColor, "--header-bottom", 0.7936, 0.672);
   setColor(baseColor, "--bg", 0.9491, 0.1432);
-  setColor(baseColor, "--map-light", 0.8521, 0.5277);
-  setColor(baseColor, "--map-dark", 0.6076, 0.9314);
+  setColor(baseColor, "--m-0", 0.7689, 0.54);
+  setColor(baseColor, "--m-22", 0.8516, 0.5015);
+  setColor(baseColor, "--m-56", 0.7167, 0.6355);
+  setColor(baseColor, "--m-89", 0.605, 1.01);
+  setColor(baseColor, "--m-100", 0.6023, 0.9345);
   setColor(baseColor, "--disabled", 0.8247, 0.3605);
 }

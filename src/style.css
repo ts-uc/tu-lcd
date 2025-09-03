@@ -123,10 +123,13 @@ main {
   color: #fff;
   background: linear-gradient(
     to right,
-    var(--dest-bright) 0%,
-    var(--dest-bright) 10%,
-    var(--dest-dark) 20%,
-    var(--dest-dark) 100%
+    var(--h-0) 0%,
+    var(--h-6-25) 6.25%,
+    var(--h-12-5) 12.5%,
+    var(--h-18-75) 18.75%,
+    var(--h-25) 25%,
+    var(--h-50) 50%,
+    var(--h-100) 100%
   );
   clip-path: polygon(
     0 0,
@@ -344,11 +347,11 @@ main {
   justify-content: space-between;
   height: 2.25vw;
   background: linear-gradient(
-    var(--map-dark) 0%,
-    var(--map-light) 20%,
-    var(--map-light) 40%,
-    var(--map-dark) 80%,
-    var(--map-dark) 100%
+    var(--m-0) 0%,
+    var(--m-22) 22.2%,
+    var(--m-56) 55.6%,
+    var(--m-89) 88.9%,
+    var(--m-100) 100%
   );
   border-radius: 1vw;
   box-shadow: 0px 0.25vw 0.5vw var(--disabled);
