@@ -53,20 +53,29 @@ html,
 body {
   margin: 0;
   padding: 0;
-  aspect-ratio: 32/9;
   overflow: hidden;
 }
 
+#screen {
+  display: grid;
+  grid-template-rows: minmax(0, 6vw) auto;
+  aspect-ratio: 32/9;
+}
+
 header {
-  display: block;
-  height: 6vw;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
   white-space: nowrap;
   font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
   font-weight: 700;
 }
 
 main {
-  height: calc(100% - 6vw);
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .normal-panel {
@@ -92,32 +101,34 @@ main {
 /* ===== ヘッダー ===== */
 /* 下段帯 */
 #h-bottom {
-  position: fixed;
+  position: absolute;
+  inset: 0; /* top/right/bottom/left: 0 と同じ */
   z-index: 1;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 100%;
-  height: 6vw;
   color: #fff;
   background: var(--next);
 }
 
-/* 上段（影用ラッパ） */
+/* 上段影ラッパ */
 #h-top-shadow {
-  position: relative;
+  position: absolute; /* 上位 relative 親いっぱいに広げる */
+  inset: 0; /* top:0; right:0; bottom:0; left:0; と同じ */
   z-index: 2;
   filter: drop-shadow(0.25vw 0.25vw 0.25vw rgba(0, 0, 0, 0.75));
 }
 
 /* 上段本体 */
 #h-top {
+  position: absolute; /* #h-top-shadow 内で広げる */
+  inset: 0;
+
   display: grid;
   align-items: center;
   width: 100%;
-  height: 6vw;
+  height: 100%;
+
   grid-template-columns: minmax(0, 19.5vw) minmax(0, 32vw) auto;
   gap: 0 1.3vw;
   color: #fff;
@@ -140,6 +151,7 @@ main {
     0 100%
   );
 }
+
 #h-top::before {
   content: "";
   position: absolute;
@@ -147,7 +159,7 @@ main {
   left: 0;
   right: 0;
   height: 0.2vw;
-  background: var(--header-bottom); /* 6vw - 5.75vw */
+  background: var(--header-bottom);
 }
 
 /* 種別 */
