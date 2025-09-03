@@ -54,12 +54,30 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  height: 100%; /* ← これを付ける（または body を min-height:100vh に） */
 }
 
+body {
+  min-height: 100vh; /* ビューポート全高を確保 */
+  display: flex;
+  justify-content: center; /* 左右中央 */
+  align-items: center; /* 上下中央 */
+  background: #333333; /* 外側の背景色 */
+}
+
+/* 画面（32:9）をビューポート内で最大にしつつ中央配置 */
 #screen {
   display: grid;
   grid-template-rows: minmax(0, 6vw) auto;
-  aspect-ratio: 32/9;
+  aspect-ratio: 32 / 9;
+
+  /* 幅固定をやめ、縦横どちらにもフィットさせる */
+  max-width: 100vw;
+  max-height: 100vh;
+
+  /* どちらの辺で決まっても比率維持でフィット（幅/高さのどちらかを主導に） */
+  width: min(100vw, calc(100vh * 32 / 9));
+  height: min(100vh, calc(100vw * 9 / 32));
 }
 
 header {
@@ -73,15 +91,16 @@ header {
 }
 
 main {
+  position: relative;
   display: flex;
   width: 100%;
   height: 100%;
+  background: var(--bg);
 }
 
 .normal-panel {
   width: 100%;
   height: 100%;
-  background: var(--bg);
 }
 
 /* 言語別フォント */
@@ -314,6 +333,7 @@ main {
 
 /* ===== 路線（マップ） ===== */
 .m-panel {
+  width: 100%;
   height: 100%;
   font-family: "I-OTF-UDゴ表示Pro B", sans-serif;
   font-weight: 700;
@@ -323,7 +343,7 @@ main {
   position: absolute;
   left: 4.5vw;
   right: 4.5vw;
-  bottom: calc(100% - 22.5vw);
+  bottom: 5.625vw;
   display: flex;
   justify-content: space-between;
   height: 2.25vw;
