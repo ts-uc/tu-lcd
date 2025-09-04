@@ -1,0 +1,3102 @@
+{
+  "くりでん平日": {
+    "trains": {
+      "1": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": false
+      },
+      "2": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": ["石越", "荒町", "若柳"],
+        "is_inbound": true
+      },
+      "5": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": false
+      },
+      "6": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": true
+      },
+      "9": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": false
+      },
+      "10": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": true
+      },
+      "11": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": false
+      },
+      "14": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": true
+      },
+      "15": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": false
+      },
+      "16": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": true
+      },
+      "19": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": false
+      },
+      "20": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": true
+      },
+      "23": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": ["石越", "荒町", "若柳"],
+        "is_inbound": false
+      },
+      "24": {
+        "line": "くりはら田園鉄道線",
+        "stop_stations": [
+          "石越",
+          "荒町",
+          "若柳",
+          "谷地畑",
+          "大岡小前",
+          "大岡",
+          "沢辺",
+          "津久毛",
+          "杉橋",
+          "鳥矢崎",
+          "栗駒",
+          "栗原田町",
+          "尾松",
+          "鶯沢",
+          "鶯沢工業高校前",
+          "細倉マインパーク前"
+        ],
+        "is_inbound": true
+      }
+    },
+    "diagram": {
+      "00:00:00": {
+        "train": "2",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "06:08:00": {
+        "train": "2",
+        "status": "next",
+        "name": "荒町"
+      },
+      "06:09:00": {
+        "train": "2",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "06:09:45": {
+        "train": "2",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "06:10:00": {
+        "train": "2",
+        "status": "next",
+        "name": "石越"
+      },
+      "06:12:15": {
+        "train": "2",
+        "status": "soon",
+        "name": "石越"
+      },
+      "06:13:00": {
+        "train": "2",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "06:14:00": {
+        "train": "1",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "06:26:00": {
+        "train": "1",
+        "status": "next",
+        "name": "荒町"
+      },
+      "06:28:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "06:28:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "06:29:00": {
+        "train": "1",
+        "status": "next",
+        "name": "若柳"
+      },
+      "06:30:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "06:30:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "06:31:00": {
+        "train": "1",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "06:33:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "06:33:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "06:34:00": {
+        "train": "1",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "06:35:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "06:35:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "06:36:00": {
+        "train": "1",
+        "status": "next",
+        "name": "大岡"
+      },
+      "06:37:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "06:37:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "06:38:00": {
+        "train": "1",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "06:43:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "06:43:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "06:44:00": {
+        "train": "1",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "06:48:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "06:48:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "06:49:00": {
+        "train": "1",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "06:51:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "06:51:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "06:52:00": {
+        "train": "1",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "06:53:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "06:53:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "06:54:00": {
+        "train": "1",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "06:56:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "06:56:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "06:57:00": {
+        "train": "1",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "06:58:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "06:58:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "06:59:00": {
+        "train": "1",
+        "status": "next",
+        "name": "尾松"
+      },
+      "07:00:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "07:00:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "07:01:00": {
+        "train": "1",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "07:04:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "07:04:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "07:05:00": {
+        "train": "1",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "07:08:00": {
+        "train": "1",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "07:08:45": {
+        "train": "1",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "07:09:00": {
+        "train": "1",
+        "status": "next",
+        "name": "細倉マインパーク前"
+      },
+      "07:12:15": {
+        "train": "1",
+        "status": "soon",
+        "name": "細倉マインパーク前"
+      },
+      "07:13:00": {
+        "train": "1",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "07:14:00": {
+        "train": "6",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "07:18:00": {
+        "train": "6",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "07:21:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "07:21:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "07:22:00": {
+        "train": "6",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "07:24:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "07:24:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "07:25:00": {
+        "train": "6",
+        "status": "next",
+        "name": "尾松"
+      },
+      "07:28:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "07:28:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "07:29:00": {
+        "train": "6",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "07:30:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "07:30:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "07:31:00": {
+        "train": "6",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "07:32:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "07:32:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "07:33:00": {
+        "train": "6",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "07:35:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "07:35:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "07:36:00": {
+        "train": "6",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "07:37:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "07:37:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "07:38:00": {
+        "train": "6",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "07:40:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "07:40:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "07:41:00": {
+        "train": "6",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "07:45:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "07:45:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "07:46:00": {
+        "train": "6",
+        "status": "next",
+        "name": "大岡"
+      },
+      "07:48:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "07:48:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "07:49:00": {
+        "train": "6",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "07:51:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "07:51:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "07:52:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "07:52:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "07:53:00": {
+        "train": "6",
+        "status": "next",
+        "name": "荒町"
+      },
+      "07:53:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "07:54:00": {
+        "train": "6",
+        "status": "next",
+        "name": "若柳"
+      },
+      "07:55:00": {
+        "train": "6",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "07:55:45": {
+        "train": "6",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "07:56:00": {
+        "train": "6",
+        "status": "next",
+        "name": "石越"
+      },
+      "07:58:15": {
+        "train": "6",
+        "status": "soon",
+        "name": "石越"
+      },
+      "07:59:00": {
+        "train": "6",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "08:00:00": {
+        "train": "5",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "08:36:00": {
+        "train": "5",
+        "status": "next",
+        "name": "荒町"
+      },
+      "08:38:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "08:38:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "08:39:00": {
+        "train": "5",
+        "status": "next",
+        "name": "若柳"
+      },
+      "08:40:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "08:40:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "08:41:00": {
+        "train": "5",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "08:43:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "08:43:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "08:44:00": {
+        "train": "5",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "08:45:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "08:45:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "08:46:00": {
+        "train": "5",
+        "status": "next",
+        "name": "大岡"
+      },
+      "08:47:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "08:47:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "08:48:00": {
+        "train": "5",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "08:53:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "08:53:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "08:54:00": {
+        "train": "5",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "08:58:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "08:58:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "08:59:00": {
+        "train": "5",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "09:01:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "09:01:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "09:02:00": {
+        "train": "5",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "09:03:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "09:03:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "09:04:00": {
+        "train": "5",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "09:06:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "09:06:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "09:07:00": {
+        "train": "5",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "09:08:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "09:08:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "09:09:00": {
+        "train": "5",
+        "status": "next",
+        "name": "尾松"
+      },
+      "09:10:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "09:10:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "09:11:00": {
+        "train": "5",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "09:14:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "09:14:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "09:15:00": {
+        "train": "5",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "09:18:00": {
+        "train": "5",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "09:18:45": {
+        "train": "5",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "09:19:00": {
+        "train": "5",
+        "status": "next",
+        "name": "細倉マインパーク前"
+      },
+      "09:22:15": {
+        "train": "5",
+        "status": "soon",
+        "name": "細倉マインパーク前"
+      },
+      "09:23:00": {
+        "train": "5",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "09:24:00": {
+        "train": "10",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "10:06:00": {
+        "train": "10",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "10:09:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "10:09:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "10:10:00": {
+        "train": "10",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "10:12:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "10:12:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "10:13:00": {
+        "train": "10",
+        "status": "next",
+        "name": "尾松"
+      },
+      "10:16:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "10:16:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "10:17:00": {
+        "train": "10",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "10:18:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "10:18:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "10:19:00": {
+        "train": "10",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "10:20:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "10:20:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "10:21:00": {
+        "train": "10",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "10:23:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "10:23:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "10:24:00": {
+        "train": "10",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "10:25:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "10:25:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "10:26:00": {
+        "train": "10",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "10:28:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "10:28:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "10:29:00": {
+        "train": "10",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "10:33:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "10:33:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "10:34:00": {
+        "train": "10",
+        "status": "next",
+        "name": "大岡"
+      },
+      "10:36:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "10:36:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "10:37:00": {
+        "train": "10",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "10:39:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "10:39:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "10:40:00": {
+        "train": "10",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "10:41:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "10:41:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "10:42:00": {
+        "train": "10",
+        "status": "next",
+        "name": "若柳"
+      },
+      "10:43:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "10:43:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "10:44:00": {
+        "train": "10",
+        "status": "next",
+        "name": "荒町"
+      },
+      "10:46:00": {
+        "train": "10",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "10:46:45": {
+        "train": "10",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "10:47:00": {
+        "train": "10",
+        "status": "next",
+        "name": "石越"
+      },
+      "10:49:15": {
+        "train": "10",
+        "status": "soon",
+        "name": "石越"
+      },
+      "10:50:00": {
+        "train": "10",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "10:51:00": {
+        "train": "9",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "12:23:00": {
+        "train": "9",
+        "status": "next",
+        "name": "荒町"
+      },
+      "12:25:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "12:25:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "12:26:00": {
+        "train": "9",
+        "status": "next",
+        "name": "若柳"
+      },
+      "12:27:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "12:27:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "12:28:00": {
+        "train": "9",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "12:30:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "12:30:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "12:31:00": {
+        "train": "9",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "12:32:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "12:32:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "12:33:00": {
+        "train": "9",
+        "status": "next",
+        "name": "大岡"
+      },
+      "12:34:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "12:34:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "12:35:00": {
+        "train": "9",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "12:40:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "12:40:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "12:41:00": {
+        "train": "9",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "12:45:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "12:45:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "12:46:00": {
+        "train": "9",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "12:48:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "12:48:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "12:49:00": {
+        "train": "9",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "12:50:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "12:50:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "12:51:00": {
+        "train": "9",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "12:53:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "12:53:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "12:54:00": {
+        "train": "9",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "12:55:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "12:55:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "12:56:00": {
+        "train": "9",
+        "status": "next",
+        "name": "尾松"
+      },
+      "12:57:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "12:57:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "12:58:00": {
+        "train": "9",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "13:01:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "13:01:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "13:02:00": {
+        "train": "9",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "13:05:00": {
+        "train": "9",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "13:05:45": {
+        "train": "9",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "13:06:00": {
+        "train": "9",
+        "status": "next",
+        "name": "細倉マインパーク前"
+      },
+      "13:09:15": {
+        "train": "9",
+        "status": "soon",
+        "name": "細倉マインパーク前"
+      },
+      "13:10:00": {
+        "train": "9",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "13:11:00": {
+        "train": "14",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "13:21:00": {
+        "train": "14",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "13:24:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "13:24:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "13:25:00": {
+        "train": "14",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "13:27:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "13:27:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "13:28:00": {
+        "train": "14",
+        "status": "next",
+        "name": "尾松"
+      },
+      "13:31:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "13:31:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "13:32:00": {
+        "train": "14",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "13:33:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "13:33:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "13:34:00": {
+        "train": "14",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "13:35:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "13:35:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "13:36:00": {
+        "train": "14",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "13:38:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "13:38:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "13:39:00": {
+        "train": "14",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "13:40:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "13:40:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "13:41:00": {
+        "train": "14",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "13:43:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "13:43:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "13:44:00": {
+        "train": "14",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "13:48:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "13:48:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "13:49:00": {
+        "train": "14",
+        "status": "next",
+        "name": "大岡"
+      },
+      "13:51:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "13:51:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "13:52:00": {
+        "train": "14",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "13:54:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "13:54:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "13:55:00": {
+        "train": "14",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "13:56:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "13:56:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "13:57:00": {
+        "train": "14",
+        "status": "next",
+        "name": "若柳"
+      },
+      "13:58:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "13:58:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "13:59:00": {
+        "train": "14",
+        "status": "next",
+        "name": "荒町"
+      },
+      "14:01:00": {
+        "train": "14",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "14:01:45": {
+        "train": "14",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "14:02:00": {
+        "train": "14",
+        "status": "next",
+        "name": "石越"
+      },
+      "14:04:15": {
+        "train": "14",
+        "status": "soon",
+        "name": "石越"
+      },
+      "14:05:00": {
+        "train": "14",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "14:06:00": {
+        "train": "11",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "14:20:00": {
+        "train": "11",
+        "status": "next",
+        "name": "荒町"
+      },
+      "14:22:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "14:22:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "14:23:00": {
+        "train": "11",
+        "status": "next",
+        "name": "若柳"
+      },
+      "14:24:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "14:24:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "14:25:00": {
+        "train": "11",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "14:27:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "14:27:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "14:28:00": {
+        "train": "11",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "14:29:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "14:29:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "14:30:00": {
+        "train": "11",
+        "status": "next",
+        "name": "大岡"
+      },
+      "14:31:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "14:31:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "14:32:00": {
+        "train": "11",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "14:35:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "14:35:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "14:36:00": {
+        "train": "11",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "14:39:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "14:39:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "14:40:00": {
+        "train": "11",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "14:42:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "14:42:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "14:43:00": {
+        "train": "11",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "14:44:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "14:44:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "14:45:00": {
+        "train": "11",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "14:47:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "14:47:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "14:48:00": {
+        "train": "11",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "14:49:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "14:49:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "14:50:00": {
+        "train": "11",
+        "status": "next",
+        "name": "尾松"
+      },
+      "14:52:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "14:52:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "14:53:00": {
+        "train": "11",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "14:55:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "14:55:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "14:56:00": {
+        "train": "11",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "14:59:00": {
+        "train": "11",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "14:59:45": {
+        "train": "11",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "15:00:00": {
+        "train": "11",
+        "status": "next",
+        "name": "細倉マインパーク前"
+      },
+      "15:03:15": {
+        "train": "11",
+        "status": "soon",
+        "name": "細倉マインパーク前"
+      },
+      "15:04:00": {
+        "train": "11",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "15:05:00": {
+        "train": "16",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "15:10:00": {
+        "train": "16",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "15:13:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "15:13:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "15:14:00": {
+        "train": "16",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "15:16:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "15:16:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "15:17:00": {
+        "train": "16",
+        "status": "next",
+        "name": "尾松"
+      },
+      "15:20:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "15:20:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "15:21:00": {
+        "train": "16",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "15:22:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "15:22:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "15:23:00": {
+        "train": "16",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "15:24:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "15:24:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "15:25:00": {
+        "train": "16",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "15:27:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "15:27:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "15:28:00": {
+        "train": "16",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "15:29:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "15:29:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "15:30:00": {
+        "train": "16",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "15:32:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "15:32:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "15:33:00": {
+        "train": "16",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "15:37:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "15:37:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "15:38:00": {
+        "train": "16",
+        "status": "next",
+        "name": "大岡"
+      },
+      "15:40:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "15:40:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "15:41:00": {
+        "train": "16",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "15:43:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "15:43:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "15:44:00": {
+        "train": "16",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "15:45:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "15:45:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "15:46:00": {
+        "train": "16",
+        "status": "next",
+        "name": "若柳"
+      },
+      "15:47:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "15:47:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "15:48:00": {
+        "train": "16",
+        "status": "next",
+        "name": "荒町"
+      },
+      "15:50:00": {
+        "train": "16",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "15:50:45": {
+        "train": "16",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "15:51:00": {
+        "train": "16",
+        "status": "next",
+        "name": "石越"
+      },
+      "15:53:15": {
+        "train": "16",
+        "status": "soon",
+        "name": "石越"
+      },
+      "15:54:00": {
+        "train": "16",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "15:55:00": {
+        "train": "15",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "16:24:00": {
+        "train": "15",
+        "status": "next",
+        "name": "荒町"
+      },
+      "16:26:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "16:26:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "16:27:00": {
+        "train": "15",
+        "status": "next",
+        "name": "若柳"
+      },
+      "16:28:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "16:28:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "16:29:00": {
+        "train": "15",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "16:31:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "16:31:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "16:32:00": {
+        "train": "15",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "16:33:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "16:33:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "16:34:00": {
+        "train": "15",
+        "status": "next",
+        "name": "大岡"
+      },
+      "16:35:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "16:35:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "16:36:00": {
+        "train": "15",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "16:41:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "16:41:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "16:42:00": {
+        "train": "15",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "16:46:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "16:46:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "16:47:00": {
+        "train": "15",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "16:49:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "16:49:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "16:50:00": {
+        "train": "15",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "16:51:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "16:51:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "16:52:00": {
+        "train": "15",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "16:54:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "16:54:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "16:55:00": {
+        "train": "15",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "16:56:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "16:56:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "16:57:00": {
+        "train": "15",
+        "status": "next",
+        "name": "尾松"
+      },
+      "16:58:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "16:58:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "16:59:00": {
+        "train": "15",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "17:02:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "17:02:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "17:03:00": {
+        "train": "15",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "17:06:00": {
+        "train": "15",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "17:06:45": {
+        "train": "15",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "17:07:00": {
+        "train": "15",
+        "status": "next",
+        "name": "細倉マインパーク前"
+      },
+      "17:10:15": {
+        "train": "15",
+        "status": "soon",
+        "name": "細倉マインパーク前"
+      },
+      "17:11:00": {
+        "train": "15",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "17:12:00": {
+        "train": "20",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "17:16:00": {
+        "train": "20",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "17:19:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "17:19:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "17:20:00": {
+        "train": "20",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "17:22:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "17:22:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "17:23:00": {
+        "train": "20",
+        "status": "next",
+        "name": "尾松"
+      },
+      "17:26:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "17:26:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "17:27:00": {
+        "train": "20",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "17:28:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "17:28:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "17:29:00": {
+        "train": "20",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "17:30:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "17:30:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "17:31:00": {
+        "train": "20",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "17:33:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "17:33:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "17:34:00": {
+        "train": "20",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "17:35:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "17:35:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "17:36:00": {
+        "train": "20",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "17:38:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "17:38:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "17:39:00": {
+        "train": "20",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "17:43:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "17:43:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "17:44:00": {
+        "train": "20",
+        "status": "next",
+        "name": "大岡"
+      },
+      "17:46:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "17:46:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "17:47:00": {
+        "train": "20",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "17:49:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "17:49:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "17:50:00": {
+        "train": "20",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "17:51:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "17:51:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "17:52:00": {
+        "train": "20",
+        "status": "next",
+        "name": "若柳"
+      },
+      "17:53:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "17:53:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "17:54:00": {
+        "train": "20",
+        "status": "next",
+        "name": "荒町"
+      },
+      "17:56:00": {
+        "train": "20",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "17:56:45": {
+        "train": "20",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "17:57:00": {
+        "train": "20",
+        "status": "next",
+        "name": "石越"
+      },
+      "17:59:15": {
+        "train": "20",
+        "status": "soon",
+        "name": "石越"
+      },
+      "18:00:00": {
+        "train": "20",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "18:01:00": {
+        "train": "19",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "18:30:00": {
+        "train": "19",
+        "status": "next",
+        "name": "荒町"
+      },
+      "18:32:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "18:32:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "18:33:00": {
+        "train": "19",
+        "status": "next",
+        "name": "若柳"
+      },
+      "18:34:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "18:34:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "18:35:00": {
+        "train": "19",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "18:37:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "18:37:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "18:38:00": {
+        "train": "19",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "18:39:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "18:39:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "18:40:00": {
+        "train": "19",
+        "status": "next",
+        "name": "大岡"
+      },
+      "18:41:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "18:41:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "18:42:00": {
+        "train": "19",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "18:47:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "18:47:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "18:48:00": {
+        "train": "19",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "18:52:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "18:52:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "18:53:00": {
+        "train": "19",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "18:55:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "18:55:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "18:56:00": {
+        "train": "19",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "18:57:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "18:57:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "18:58:00": {
+        "train": "19",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "19:00:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "19:00:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "19:01:00": {
+        "train": "19",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "19:02:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "19:02:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "19:03:00": {
+        "train": "19",
+        "status": "next",
+        "name": "尾松"
+      },
+      "19:04:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "19:04:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "19:05:00": {
+        "train": "19",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "19:08:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "19:08:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "19:09:00": {
+        "train": "19",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "19:12:00": {
+        "train": "19",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "19:12:45": {
+        "train": "19",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "19:13:00": {
+        "train": "19",
+        "status": "next",
+        "name": "細倉マインパーク前"
+      },
+      "19:16:15": {
+        "train": "19",
+        "status": "soon",
+        "name": "細倉マインパーク前"
+      },
+      "19:17:00": {
+        "train": "19",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "19:18:00": {
+        "train": "24",
+        "status": "stopping",
+        "name": "細倉マインパーク前"
+      },
+      "19:22:00": {
+        "train": "24",
+        "status": "next",
+        "name": "鶯沢工業高校前"
+      },
+      "19:25:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "鶯沢工業高校前"
+      },
+      "19:25:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "鶯沢工業高校前"
+      },
+      "19:26:00": {
+        "train": "24",
+        "status": "next",
+        "name": "鶯沢"
+      },
+      "19:28:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "鶯沢"
+      },
+      "19:28:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "鶯沢"
+      },
+      "19:29:00": {
+        "train": "24",
+        "status": "next",
+        "name": "尾松"
+      },
+      "19:32:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "尾松"
+      },
+      "19:32:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "尾松"
+      },
+      "19:33:00": {
+        "train": "24",
+        "status": "next",
+        "name": "栗原田町"
+      },
+      "19:34:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "栗原田町"
+      },
+      "19:34:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "栗原田町"
+      },
+      "19:35:00": {
+        "train": "24",
+        "status": "next",
+        "name": "栗駒"
+      },
+      "19:36:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "栗駒"
+      },
+      "19:36:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "栗駒"
+      },
+      "19:37:00": {
+        "train": "24",
+        "status": "next",
+        "name": "鳥矢崎"
+      },
+      "19:39:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "鳥矢崎"
+      },
+      "19:39:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "鳥矢崎"
+      },
+      "19:40:00": {
+        "train": "24",
+        "status": "next",
+        "name": "杉橋"
+      },
+      "19:41:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "杉橋"
+      },
+      "19:41:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "杉橋"
+      },
+      "19:42:00": {
+        "train": "24",
+        "status": "next",
+        "name": "津久毛"
+      },
+      "19:44:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "津久毛"
+      },
+      "19:44:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "津久毛"
+      },
+      "19:45:00": {
+        "train": "24",
+        "status": "next",
+        "name": "沢辺"
+      },
+      "19:49:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "沢辺"
+      },
+      "19:49:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "沢辺"
+      },
+      "19:50:00": {
+        "train": "24",
+        "status": "next",
+        "name": "大岡"
+      },
+      "19:52:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "大岡"
+      },
+      "19:52:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "大岡"
+      },
+      "19:53:00": {
+        "train": "24",
+        "status": "next",
+        "name": "大岡小前"
+      },
+      "19:55:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "大岡小前"
+      },
+      "19:55:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "大岡小前"
+      },
+      "19:56:00": {
+        "train": "24",
+        "status": "next",
+        "name": "谷地畑"
+      },
+      "19:57:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "谷地畑"
+      },
+      "19:57:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "谷地畑"
+      },
+      "19:58:00": {
+        "train": "24",
+        "status": "next",
+        "name": "若柳"
+      },
+      "19:59:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "19:59:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "若柳"
+      },
+      "20:00:00": {
+        "train": "24",
+        "status": "next",
+        "name": "荒町"
+      },
+      "20:02:00": {
+        "train": "24",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "20:02:45": {
+        "train": "24",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "20:03:00": {
+        "train": "24",
+        "status": "next",
+        "name": "石越"
+      },
+      "20:05:15": {
+        "train": "24",
+        "status": "soon",
+        "name": "石越"
+      },
+      "20:06:00": {
+        "train": "24",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "20:07:00": {
+        "train": "23",
+        "status": "stopping",
+        "name": "石越"
+      },
+      "20:20:00": {
+        "train": "23",
+        "status": "next",
+        "name": "荒町"
+      },
+      "20:22:00": {
+        "train": "23",
+        "status": "soon",
+        "name": "荒町"
+      },
+      "20:22:45": {
+        "train": "23",
+        "status": "stopping",
+        "name": "荒町"
+      },
+      "20:23:00": {
+        "train": "23",
+        "status": "next",
+        "name": "若柳"
+      },
+      "20:24:15": {
+        "train": "23",
+        "status": "soon",
+        "name": "若柳"
+      },
+      "20:25:00": {
+        "train": "23",
+        "status": "stopping",
+        "name": "若柳"
+      }
+    }
+  }
+}

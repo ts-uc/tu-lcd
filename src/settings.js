@@ -5,6 +5,7 @@ import { applyScaling } from "./scaling";
 import { resetTick } from "./tick";
 import { updateDOMs } from "./dom_updater.js";
 import { setColors } from "./color.js";
+import { onChangeAutoSettings } from "./change_auto.js";
 
 /* ===================== 設定フォーム要素参照 ===================== */
 export const autoEl = document.getElementById("auto-select");
@@ -96,7 +97,7 @@ export function onChangeAuto(settings) {
     terminalDispEl.disabled = true;
   }
 
-  // onChangeSettings(settings);
+  onChangeAutoSettings(settings);
 }
 
 // 路線変更時
