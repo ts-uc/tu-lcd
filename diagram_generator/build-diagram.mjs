@@ -88,7 +88,7 @@ function buildStopStations(obj, lineOrder) {
 
 const raw = await readFile(inputPath, "utf8");
 const inputObj = JSON.parse(raw);
-const trainMap = normalizeTrainMap(inputObj);
+const trainMap = normalizeTrainMap(inputObj.diagram);
 
 // diagram 対象にする列車
 const selectedTrains = selectedArg
@@ -108,6 +108,7 @@ const trainsOut = {};
 for (const id of selectedTrains) {
   if (!trainMap[id]) continue;
   trainsOut[id] = {
+    line: inputObj.line_name,
     stop_stations: buildStopStations(trainMap[id], lineOrder),
     is_inbound: Number(id) % 2 === 0,
   };
