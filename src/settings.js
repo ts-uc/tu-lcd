@@ -240,6 +240,10 @@ function moveNextStation(settings) {
 }
 
 export function moveNextStatus(settings) {
+  if (settings.auto !== "manual") {
+    return;
+  }
+
   if (settings.positionStatus === "stopping") {
     moveNextStation(settings);
     settings.positionStatus = "next";
