@@ -455,6 +455,9 @@ main {
   transform: translateX(-50%);
   writing-mode: vertical-rl;
 }
+.tcy {
+  text-combine-upright: all;
+}
 .m-name.kanji {
   font-size: 2.25vw;
 }

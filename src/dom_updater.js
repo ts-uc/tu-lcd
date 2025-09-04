@@ -248,6 +248,11 @@ function getArrowClass(data, settings, i, posIndex) {
   }
 }
 
+function addTcy(str) {
+  // 全角・半角数字を検出して <span class="tcy">…</span> に置き換える
+  return str.replace(/([0-9０-９]+)/g, '<span class="tcy">$1</span>');
+}
+
 export function updateDOMs(settings) {
   const stationNames = computeStationNames(settings);
   const data = lineData[settings.line];
@@ -273,8 +278,8 @@ export function updateDOMs(settings) {
       "beforeend",
       `<div class="m-station${cls}" data-name="${iName}">
         <div class="m-dot${cls}"></div>
-        <span class="m-name kanji${cls}">${iName}</span>
-        <span class="m-name kana${cls}">${data.kana[iName]}</span>
+        <span class="m-name kanji${cls}">${addTcy(iName)}</span>
+        <span class="m-name kana${cls}">${addTcy(data.kana[iName])}</span>
         <span lang="en" class="m-name en${cls}">${data.en[iName]}</span>
       </div>`
     );
