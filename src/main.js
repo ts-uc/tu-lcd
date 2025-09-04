@@ -7,6 +7,8 @@ import {
   settingSelectors,
   onChangeSettings,
   moveNextStatus,
+  autoEl,
+  onChangeAuto,
 } from "./settings.js";
 import { tick } from "./tick.js";
 
@@ -50,6 +52,10 @@ document.getElementById("normal-panel").addEventListener("click", () => {
 });
 
 /* ===================== 設定変更時 ===================== */
+
+autoEl.addEventListener("change", () => {
+  onChangeAuto(settings);
+});
 
 lineEl.addEventListener("change", () => {
   onChangeLine(settings);

@@ -1,15 +1,16 @@
 import lineData from "./line_data.json" assert { type: "json" };
 import typeData from "./type_data.json" assert { type: "json" };
+import diagramData from "./diagram_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling";
 import { resetTick } from "./tick";
 import { updateDOMs } from "./dom_updater.js";
 import { setColors } from "./color.js";
 
 /* ===================== 設定フォーム要素参照 ===================== */
+export const autoEl = document.getElementById("auto-select");
 export const lineEl = document.getElementById("line-select");
 
 const layoutDirEl = document.getElementById("layout-dir-select");
-const autoEl = document.getElementById("auto-select");
 const directionEl = document.getElementById("direction-select");
 const trainTypeEl = document.getElementById("train-type-select");
 const positionStatusEl = document.getElementById("position-status-select");
@@ -19,7 +20,6 @@ const terminalDispEl = document.getElementById("terminal-disp-select");
 
 export const settingSelectors = [
   layoutDirEl,
-  autoEl,
   directionEl,
   trainTypeEl,
   positionStatusEl,
@@ -29,6 +29,14 @@ export const settingSelectors = [
 
 // ページ読み込み時
 export function onPageLoad(settings) {
+  const diagramList = Object.keys(diagramData);
+  diagramList.forEach((diagramName) => {
+    autoEl.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${diagramName}">${diagramName}</option>`
+    );
+  });
+
   // line_data から辞書を作成
   const lineList = Object.entries(lineData).map(([id, obj]) => ({
     id,
@@ -52,6 +60,9 @@ export function onPageLoad(settings) {
   });
 
   // デフォルト値セット
+  // 自動
+  settings.auto = "manual";
+  autoEl.value = settings.auto || "manual";
 
   // 設置方向
   settings.isInboundLeft = true;
@@ -62,6 +73,30 @@ export function onPageLoad(settings) {
   lineEl.value = settings.line || "";
 
   onChangeLine(settings);
+}
+
+export function onChangeAuto(settings) {
+  settings.auto = autoEl.value || null;
+
+  if (settings.auto === "manual") {
+    lineEl.disabled = false;
+    directionEl.disabled = false;
+    trainTypeEl.disabled = false;
+    positionStatusEl.disabled = false;
+    currentStationEl.disabled = false;
+    stopStationsEl.disabled = false;
+    terminalDispEl.disabled = false;
+  } else {
+    lineEl.disabled = true;
+    directionEl.disabled = true;
+    trainTypeEl.disabled = true;
+    positionStatusEl.disabled = true;
+    currentStationEl.disabled = true;
+    stopStationsEl.disabled = true;
+    terminalDispEl.disabled = true;
+  }
+
+  // onChangeSettings(settings);
 }
 
 // 路線変更時
