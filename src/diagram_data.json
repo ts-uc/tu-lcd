@@ -2,7 +2,7 @@
   "くりでん平日": {
     "trains": {
       "1": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -24,12 +24,12 @@
         "is_inbound": false
       },
       "2": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": ["石越", "荒町", "若柳"],
         "is_inbound": true
       },
       "5": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -51,7 +51,7 @@
         "is_inbound": false
       },
       "6": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -73,7 +73,7 @@
         "is_inbound": true
       },
       "9": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -95,7 +95,7 @@
         "is_inbound": false
       },
       "10": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -117,7 +117,7 @@
         "is_inbound": true
       },
       "11": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -139,7 +139,7 @@
         "is_inbound": false
       },
       "14": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -161,7 +161,7 @@
         "is_inbound": true
       },
       "15": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -183,7 +183,7 @@
         "is_inbound": false
       },
       "16": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -205,7 +205,7 @@
         "is_inbound": true
       },
       "19": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -227,7 +227,7 @@
         "is_inbound": false
       },
       "20": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",
@@ -249,12 +249,12 @@
         "is_inbound": true
       },
       "23": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": ["石越", "荒町", "若柳"],
         "is_inbound": false
       },
       "24": {
-        "line": "くりはら田園鉄道線",
+        "line": "kuriden",
         "stop_stations": [
           "石越",
           "荒町",

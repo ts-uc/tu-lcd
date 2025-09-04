@@ -1,4 +1,5 @@
 import diagramData from "./diagram_data.json" assert { type: "json" };
+import { applySettings } from "./settings";
 
 let timers = []; // setTimeout ハンドル格納
 
@@ -22,8 +23,16 @@ function buildEvents(data) {
 }
 
 // 表示更新
-function applySettings(ev, settings) {
-  console.log(ev, settings);
+function applyAutoSettings(ev, settings) {
+  const train = diagramData[settings.auto].trains[ev.train];
+  console.log(train);
+  settings.line = train.line;
+  settings.isInbound = train.is_inbound;
+  settings.trainType = train.type || "普通";
+  settings.position = ev.name;
+  settings.positionStatus = ev.status;
+  settings.stopStations = train.stop_stations;
+  applySettings(settings);
 }
 
 // いま時刻に対して直近（過去）のイベントを適用
@@ -34,7 +43,7 @@ function applyLatestPast(events, settings) {
     if (ev.at <= now) last = ev;
     else break;
   }
-  if (last) applySettings(last, settings);
+  if (last) applyAutoSettings(last, settings);
 }
 
 // リアルタイムスケジュール開始
@@ -44,7 +53,7 @@ function startRealtime(events, settings) {
   for (const ev of events) {
     const delay = ev.at - now;
     if (delay >= 0) {
-      const h = setTimeout(() => applySettings(ev, settings), delay);
+      const h = setTimeout(() => applyAutoSettings(ev, settings), delay);
       timers.push(h);
     }
   }

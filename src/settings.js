@@ -79,6 +79,8 @@ export function onPageLoad(settings) {
 export function onChangeAuto(settings) {
   settings.auto = autoEl.value || null;
 
+  onChangeAutoSettings(settings);
+
   if (settings.auto === "manual") {
     lineEl.disabled = false;
     directionEl.disabled = false;
@@ -96,8 +98,6 @@ export function onChangeAuto(settings) {
     stopStationsEl.disabled = true;
     terminalDispEl.disabled = true;
   }
-
-  onChangeAutoSettings(settings);
 }
 
 // 路線変更時
@@ -168,6 +168,27 @@ const qs = (sel, root = document) => root.querySelector(sel);
 
 /* ===== settings → フォーム反映 ===== */
 export function applySettings(settings) {
+  console.log(settings);
+  const stations = lineData[settings.line].stations;
+
+  // 現在地/直前後 のoptionを追加
+  currentStationEl.innerHTML = "";
+  stations.forEach((station) => {
+    currentStationEl.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${station}">${station}</option>`
+    );
+  });
+
+  // 停車駅 の option を追加
+  stopStationsEl.innerHTML = "";
+  stations.forEach((station) => {
+    stopStationsEl.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${station}">${station}</option>`
+    );
+  });
+
   // 設置方向
   layoutDirEl.value = settings.isInboundLeft ? "inbound-left" : "inbound-right";
   lineEl.value = settings.line || "";
@@ -182,6 +203,11 @@ export function applySettings(settings) {
   Array.from(stopStationsEl.options).forEach((opt) => {
     opt.selected = settings.stopStations.includes(opt.value);
   });
+
+  lineColor = lineData[settings.line].color;
+  setColors(lineColor);
+  raf(settings);
+  resetTick(settings);
 }
 
 /* ===== フォーム → settings 反映 ===== */
