@@ -1,4 +1,365 @@
 {
+  "初恋＊れ〜るとりっぷファンミーティング号2": {
+    "trains": {
+      "9921M": {
+        "line": "abukyu",
+        "stop_stations": ["福島", "高子", "梁川"],
+        "is_inbound": false
+      },
+      "9923M": {
+        "line": "abukyu",
+        "stop_stations": ["梁川", "富野", "東船岡", "槻木"],
+        "is_inbound": false
+      },
+      "9922M": {
+        "line": "abukyu",
+        "stop_stations": ["福島", "瀬上", "梁川", "丸森", "東船岡", "槻木"],
+        "is_inbound": true
+      }
+    },
+    "diagram": {
+      "00:00:00": {
+        "train": "9921M",
+        "status": "stopping",
+        "name": "福島"
+      },
+      "10:25:00": {
+        "train": "9921M",
+        "status": "next",
+        "name": "卸町"
+      },
+      "10:35:45": {
+        "train": "9921M",
+        "status": "next",
+        "name": "福島学院前"
+      },
+      "10:36:30": {
+        "train": "9921M",
+        "status": "next",
+        "name": "瀬上"
+      },
+      "10:37:30": {
+        "train": "9921M",
+        "status": "next",
+        "name": "向瀬上"
+      },
+      "10:38:30": {
+        "train": "9921M",
+        "status": "next",
+        "name": "高子"
+      },
+      "10:39:15": {
+        "train": "9921M",
+        "status": "soon",
+        "name": "高子"
+      },
+      "10:40:00": {
+        "train": "9921M",
+        "status": "stopping",
+        "name": "高子"
+      },
+      "10:46:00": {
+        "train": "9921M",
+        "status": "next",
+        "name": "上保原"
+      },
+      "10:47:45": {
+        "train": "9921M",
+        "status": "next",
+        "name": "保原"
+      },
+      "10:49:00": {
+        "train": "9921M",
+        "status": "next",
+        "name": "大泉"
+      },
+      "10:50:00": {
+        "train": "9921M",
+        "status": "next",
+        "name": "二井田"
+      },
+      "10:51:30": {
+        "train": "9921M",
+        "status": "next",
+        "name": "新田"
+      },
+      "10:52:45": {
+        "train": "9921M",
+        "status": "next",
+        "name": "梁川"
+      },
+      "10:53:30": {
+        "train": "9921M",
+        "status": "soon",
+        "name": "梁川"
+      },
+      "10:54:15": {
+        "train": "9921M",
+        "status": "stopping",
+        "name": "梁川"
+      },
+      "10:55:15": {
+        "train": "9923M",
+        "status": "stopping",
+        "name": "梁川"
+      },
+      "13:09:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "やながわ希望の森公園前"
+      },
+      "13:11:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "富野"
+      },
+      "13:13:15": {
+        "train": "9923M",
+        "status": "soon",
+        "name": "富野"
+      },
+      "13:14:00": {
+        "train": "9923M",
+        "status": "stopping",
+        "name": "富野"
+      },
+      "13:17:15": {
+        "train": "9923M",
+        "status": "next",
+        "name": "兜"
+      },
+      "13:19:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "あぶくま"
+      },
+      "13:23:15": {
+        "train": "9923M",
+        "status": "next",
+        "name": "丸森"
+      },
+      "13:29:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "北丸森"
+      },
+      "13:31:15": {
+        "train": "9923M",
+        "status": "next",
+        "name": "南角田"
+      },
+      "13:33:30": {
+        "train": "9923M",
+        "status": "next",
+        "name": "角田"
+      },
+      "13:35:00": {
+        "train": "9923M",
+        "status": "next",
+        "name": "横倉"
+      },
+      "13:36:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "岡"
+      },
+      "13:38:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "東船岡"
+      },
+      "13:41:00": {
+        "train": "9923M",
+        "status": "soon",
+        "name": "東船岡"
+      },
+      "13:41:45": {
+        "train": "9923M",
+        "status": "stopping",
+        "name": "東船岡"
+      },
+      "13:44:45": {
+        "train": "9923M",
+        "status": "next",
+        "name": "槻木"
+      },
+      "13:47:45": {
+        "train": "9923M",
+        "status": "soon",
+        "name": "槻木"
+      },
+      "13:48:30": {
+        "train": "9923M",
+        "status": "stopping",
+        "name": "槻木"
+      },
+      "13:49:30": {
+        "train": "9922M",
+        "status": "stopping",
+        "name": "槻木"
+      },
+      "14:00:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "東船岡"
+      },
+      "14:03:30": {
+        "train": "9922M",
+        "status": "soon",
+        "name": "東船岡"
+      },
+      "14:04:15": {
+        "train": "9922M",
+        "status": "stopping",
+        "name": "東船岡"
+      },
+      "14:10:00": {
+        "train": "9922M",
+        "status": "next",
+        "name": "岡"
+      },
+      "14:13:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "横倉"
+      },
+      "14:15:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "角田"
+      },
+      "14:17:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "南角田"
+      },
+      "14:19:00": {
+        "train": "9922M",
+        "status": "next",
+        "name": "北丸森"
+      },
+      "14:21:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "丸森"
+      },
+      "14:22:30": {
+        "train": "9922M",
+        "status": "soon",
+        "name": "丸森"
+      },
+      "14:23:15": {
+        "train": "9922M",
+        "status": "stopping",
+        "name": "丸森"
+      },
+      "15:29:45": {
+        "train": "9922M",
+        "status": "next",
+        "name": "あぶくま"
+      },
+      "15:35:45": {
+        "train": "9922M",
+        "status": "next",
+        "name": "兜"
+      },
+      "15:39:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "富野"
+      },
+      "15:42:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "やながわ希望の森公園前"
+      },
+      "15:44:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "梁川"
+      },
+      "15:45:15": {
+        "train": "9922M",
+        "status": "soon",
+        "name": "梁川"
+      },
+      "15:46:00": {
+        "train": "9922M",
+        "status": "stopping",
+        "name": "梁川"
+      },
+      "15:48:45": {
+        "train": "9922M",
+        "status": "next",
+        "name": "新田"
+      },
+      "15:50:00": {
+        "train": "9922M",
+        "status": "next",
+        "name": "二井田"
+      },
+      "15:51:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "大泉"
+      },
+      "15:53:00": {
+        "train": "9922M",
+        "status": "next",
+        "name": "保原"
+      },
+      "15:54:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "上保原"
+      },
+      "15:55:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "高子"
+      },
+      "15:57:00": {
+        "train": "9922M",
+        "status": "next",
+        "name": "向瀬上"
+      },
+      "15:58:15": {
+        "train": "9922M",
+        "status": "soon",
+        "name": "瀬上"
+      },
+      "15:59:00": {
+        "train": "9922M",
+        "status": "stopping",
+        "name": "瀬上"
+      },
+      "16:05:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "福島学院前"
+      },
+      "16:06:30": {
+        "train": "9922M",
+        "status": "next",
+        "name": "卸町"
+      },
+      "16:07:15": {
+        "train": "9922M",
+        "status": "next",
+        "name": "福島"
+      },
+      "16:12:30": {
+        "train": "9922M",
+        "status": "soon",
+        "name": "福島"
+      },
+      "16:13:15": {
+        "train": "9922M",
+        "status": "stopping",
+        "name": "福島"
+      }
+    }
+  },
   "くりでん平日": {
     "trains": {
       "1": {
