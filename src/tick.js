@@ -6,11 +6,12 @@ const rafApplyScaling = () => requestAnimationFrame(applyScaling);
 const views = ["name", "map"];
 const langs = ["kanji", "kana", "en"];
 
-// tick用インデックス
-let idx = 0;
-
 // 表示更新
-function update(state, view, lang) {
+export function updateTick(state) {
+  // viewの値を計算
+  const view = views[Math.floor(state.idx / langs.length) % views.length];
+  const lang = langs[state.idx % langs.length];
+
   // 2つの属性を更新
   document.documentElement.setAttribute("data-view", view);
   document.documentElement.setAttribute("data-lang", lang);
@@ -28,17 +29,14 @@ function update(state, view, lang) {
 
 // tick初期化
 export function resetTick(state) {
-  idx = 0;
-  update(state, views[0], langs[0]);
+  state.idx = 0;
+  updateTick(state);
   rafApplyScaling?.();
 }
 
 // tick更新
 export function tick(state) {
-  const view = views[Math.floor(idx / langs.length) % views.length];
-  const lang = langs[idx % langs.length];
-
-  update(state, view, lang);
+  updateTick(state);
   rafApplyScaling?.();
-  idx = (idx + 1) % (views.length * langs.length);
+  state.idx++;
 }

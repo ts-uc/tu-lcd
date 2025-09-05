@@ -2,7 +2,7 @@ import lineData from "./line_data.json" assert { type: "json" };
 import typeData from "./type_data.json" assert { type: "json" };
 import diagramData from "./diagram_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling";
-import { resetTick } from "./tick";
+import { resetTick, updateTick } from "./tick";
 import { updateDOMs } from "./dom_updater.js";
 import { setColors } from "./color.js";
 import { onChangeAutoSettings } from "./change_auto.js";
@@ -169,6 +169,7 @@ const raf = (state) =>
   requestAnimationFrame(() => {
     updateDOMs(state);
     applyScaling();
+    updateTick(state);
   });
 
 export function onChangeSettings(state) {
