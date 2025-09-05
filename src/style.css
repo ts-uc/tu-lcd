@@ -228,11 +228,11 @@ main {
 }
 .h-next-l-box {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 }
 .h-next-r-box {
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
 }
 
 .h-next-l,
