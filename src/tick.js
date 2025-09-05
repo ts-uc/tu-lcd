@@ -10,13 +10,13 @@ const langs = ["kanji", "kana", "en"];
 let idx = 0;
 
 // 表示更新
-function update(settings, view, lang) {
+function update(state, view, lang) {
   // 2つの属性を更新
   document.documentElement.setAttribute("data-view", view);
   document.documentElement.setAttribute("data-lang", lang);
 
   // 「つぎは」または「まもなく」のときは、ヘッダーの次駅表示を消す
-  if (view == "name" && settings.positionStatus !== "stopping") {
+  if (view == "name" && state.settings.positionStatus !== "stopping") {
     document.getElementById("h-next").style.display = "none";
   } else {
     document.getElementById("h-next").style.display = "grid";
@@ -24,18 +24,18 @@ function update(settings, view, lang) {
 }
 
 // tick初期化
-export function resetTick(settings) {
+export function resetTick(state) {
   idx = 0;
-  update(settings, views[0], langs[0]);
+  update(state, views[0], langs[0]);
   rafApplyScaling?.();
 }
 
 // tick更新
-export function tick(settings) {
+export function tick(state) {
   const view = views[Math.floor(idx / langs.length) % views.length];
   const lang = langs[idx % langs.length];
 
-  update(settings, view, lang);
+  update(state, view, lang);
   rafApplyScaling?.();
   idx = (idx + 1) % (views.length * langs.length);
 }

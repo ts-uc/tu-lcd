@@ -23,7 +23,8 @@ function setTexts(map) {
 }
 
 /* ===================== DOM 更新 ===================== */
-function computeOrdered(settings) {
+function computeOrdered(state) {
+  const settings = state.settings;
   const data = lineData[settings.line];
 
   const stations = settings.isInbound
@@ -35,8 +36,9 @@ function computeOrdered(settings) {
   return { stations, stops };
 }
 
-function computeStationNames(settings) {
-  const { stations, stops } = computeOrdered(settings);
+function computeStationNames(state) {
+  const settings = state.settings;
+  const { stations, stops } = computeOrdered(state);
   const posIndex = stations.indexOf(settings.position);
   const current = stations[posIndex];
   let next = "";
@@ -56,7 +58,9 @@ function computeStationNames(settings) {
   return { current, next, dest };
 }
 
-function updateHeader(settings, lineData, stationNames) {
+function updateHeader(state, lineData, stationNames) {
+  const settings = state.settings;
+
   const { current, next, dest } = stationNames;
 
   setTexts({
@@ -102,7 +106,8 @@ function updateHeader(settings, lineData, stationNames) {
   );
 }
 
-function updateNamePanel(settings, lineData, stationNames) {
+function updateNamePanel(state, lineData, stationNames) {
+  const settings = state.settings;
   const { current, next, dest } = stationNames;
 
   // 駅名パネル
@@ -197,7 +202,8 @@ function updateNamePanel(settings, lineData, stationNames) {
 }
 
 // 方向矢印の表示種類を判定
-function getStationClass(settings, stationNames, i, posIndex, iName) {
+function getStationClass(state, stationNames, i, posIndex, iName) {
+  const settings = state.settings;
   const { current, next, dest } = stationNames;
 
   if (!settings.stopStations.includes(iName)) {
@@ -220,7 +226,8 @@ function getStationClass(settings, stationNames, i, posIndex, iName) {
   }
 }
 
-function getArrowClass(data, settings, i, posIndex) {
+function getArrowClass(data, state, i, posIndex) {
+  const settings = state.settings;
   // 角にある場合
   if (
     (settings.isInboundLeft && i === data.stations.length - 1) ||
@@ -253,12 +260,14 @@ function addTcy(str) {
   return str.replace(/([0-9０-９]+)/g, '<span class="tcy">$1</span>');
 }
 
-export function updateDOMs(settings) {
-  const stationNames = computeStationNames(settings);
+export function updateDOMs(state) {
+  const settings = state.settings;
+
+  const stationNames = computeStationNames(state);
   const data = lineData[settings.line];
 
-  updateHeader(settings, data, stationNames);
-  updateNamePanel(settings, data, stationNames);
+  updateHeader(state, data, stationNames);
+  updateNamePanel(state, data, stationNames);
 
   // 路線図
   const lineEl = qs("#m-line");
@@ -272,7 +281,7 @@ export function updateDOMs(settings) {
 
     const iName = data.stations[i];
 
-    const cls = getStationClass(settings, stationNames, i, posIndex, iName);
+    const cls = getStationClass(state, stationNames, i, posIndex, iName);
 
     lineEl.insertAdjacentHTML(
       "beforeend",
@@ -285,7 +294,7 @@ export function updateDOMs(settings) {
     );
 
     // 方向矢印を追加
-    const arrowClass = getArrowClass(data, settings, i, posIndex);
+    const arrowClass = getArrowClass(data, state, i, posIndex);
     if (arrowClass === "") {
       lineEl.insertAdjacentHTML(
         "beforeend",

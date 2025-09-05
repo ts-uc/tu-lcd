@@ -13,16 +13,18 @@ import {
 import { tick } from "./tick.js";
 
 /* ===================== 設定変数（単一情報源） ===================== */
-let settings = {
-  isInboundLeft: true,
-  line: null,
-  auto: null,
-  isInbound: false,
-  trainType: "普　通",
-  position: "",
-  positionStatus: "stopping",
-  stopStations: null,
-  terminalDisp: true,
+let state = {
+  settings: {
+    isInboundLeft: true,
+    line: null,
+    auto: null,
+    isInbound: false,
+    trainType: "普　通",
+    position: "",
+    positionStatus: "stopping",
+    stopStations: null,
+    terminalDisp: true,
+  },
 };
 
 /* ===================== ヘルパ ===================== */
@@ -31,7 +33,7 @@ export const rafApply = () => requestAnimationFrame(applyScaling);
 
 // 初回反映 & 5秒ごとに更新
 setInterval(() => {
-  tick(settings);
+  tick(state);
 }, 3000);
 
 /* ===================== 設定画面表示切替 ===================== */
@@ -48,29 +50,29 @@ document.querySelector("#h-type-box").addEventListener("dblclick", () => {
 
 /* ===================== 駅送り ===================== */
 document.getElementById("normal-panel").addEventListener("click", () => {
-  moveNextStatus(settings);
+  moveNextStatus(state);
 });
 
 /* ===================== 設定変更時 ===================== */
 
 autoEl.addEventListener("change", () => {
-  onChangeAuto(settings);
+  onChangeAuto(state);
 });
 
 lineEl.addEventListener("change", () => {
-  onChangeLine(settings);
+  onChangeLine(state);
 });
 
 settingSelectors.forEach((el) =>
   el.addEventListener("change", () => {
-    onChangeSettings(settings);
+    onChangeSettings(state);
   })
 );
 
 /* ===================== ページ読み込み時 ===================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  onPageLoad(settings);
+  onPageLoad(state);
 });
 
 /* ===================== リサイズ/フォントロード後調整 ===================== */

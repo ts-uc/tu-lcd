@@ -29,7 +29,7 @@ export const settingSelectors = [
 ];
 
 // ページ読み込み時
-export function onPageLoad(settings) {
+export function onPageLoad(state) {
   const diagramList = Object.keys(diagramData);
   diagramList.forEach((diagramName) => {
     autoEl.insertAdjacentHTML(
@@ -69,6 +69,8 @@ export function onPageLoad(settings) {
   });
 
   // デフォルト値セット
+  const settings = state.settings;
+
   // 自動
   settings.auto = "manual";
   autoEl.value = settings.auto || "manual";
@@ -81,13 +83,14 @@ export function onPageLoad(settings) {
   settings.line = lineList[0].id;
   lineEl.value = settings.line || "";
 
-  onChangeLine(settings);
+  onChangeLine(state);
 }
 
-export function onChangeAuto(settings) {
+export function onChangeAuto(state) {
+  const settings = state.settings;
   settings.auto = autoEl.value || null;
 
-  onChangeAutoSettings(settings);
+  onChangeAutoSettings(state);
 
   if (settings.auto === "manual") {
     lineEl.disabled = false;
@@ -109,7 +112,8 @@ export function onChangeAuto(settings) {
 }
 
 // 路線変更時
-export function onChangeLine(settings) {
+export function onChangeLine(state) {
+  const settings = state.settings;
   // 設定読み込み
   settings.line = lineEl.value || null;
 
@@ -157,26 +161,26 @@ export function onChangeLine(settings) {
   lineColor = lineData[settings.line].color;
   setColors(lineColor);
 
-  raf(settings);
-  resetTick(settings);
+  raf(state);
+  resetTick(state);
 }
 
-const raf = (settings) =>
+const raf = (state) =>
   requestAnimationFrame(() => {
-    updateDOMs(settings);
+    updateDOMs(state);
     applyScaling();
   });
 
-export function onChangeSettings(settings) {
-  setSettings(settings);
-  raf(settings);
+export function onChangeSettings(state) {
+  setSettings(state);
+  raf(state);
 }
 
 const qs = (sel, root = document) => root.querySelector(sel);
 
 /* ===== settings → フォーム反映 ===== */
-export function applySettings(settings) {
-  console.log(settings);
+export function applySettings(state) {
+  const settings = state.settings;
   const stations = lineData[settings.line].stations;
 
   // 現在地/直前後 のoptionを追加
@@ -214,12 +218,14 @@ export function applySettings(settings) {
 
   lineColor = lineData[settings.line].color;
   setColors(lineColor);
-  raf(settings);
-  resetTick(settings);
+  raf(state);
+  resetTick(state);
 }
 
 /* ===== フォーム → settings 反映 ===== */
-export function setSettings(settings) {
+export function setSettings(state) {
+  const settings = state.settings;
+
   settings.isInboundLeft = layoutDirEl.value === "inbound-left";
   settings.isInbound = directionEl.value === "inbound";
   settings.line = lineEl.value || null;
@@ -233,7 +239,9 @@ export function setSettings(settings) {
   settings.terminalDisp = terminalDispEl.value === "on";
 }
 
-function moveNextStation(settings) {
+function moveNextStation(state) {
+  const settings = state.settings;
+
   const stations = lineData[settings.line].stations;
   let idx = stations.indexOf(settings.position);
   if (settings.isInbound && idx > 0) {
@@ -247,7 +255,9 @@ function moveNextStation(settings) {
   }
 }
 
-export function moveNextStatus(settings) {
+export function moveNextStatus(state) {
+  const settings = state.settings;
+
   if (settings.auto !== "manual") {
     return;
   }
@@ -264,6 +274,6 @@ export function moveNextStatus(settings) {
     settings.positionStatus = "soon";
   }
   positionStatusEl.value = settings.positionStatus || "";
-  raf(settings);
-  resetTick(settings);
+  raf(state);
+  resetTick(state);
 }
