@@ -38,9 +38,9 @@ function computeOrdered(state) {
 
 function computeStationNames(state) {
   const settings = state.settings;
+  const info = state.info;
   const { stations, stops } = computeOrdered(state);
   const posIndex = stations.indexOf(settings.position);
-  const current = stations[posIndex];
   let next = "";
   let i;
   if (settings.positionStatus === "stopping") {
@@ -55,13 +55,15 @@ function computeStationNames(state) {
     }
   }
   const dest = stops[stops.length - 1] || "";
-  return { current, next, dest };
+
+  info.next = next;
+  info.dest = dest;
 }
 
-function updateHeader(state, lineData, stationNames) {
+function updateHeader(state, lineData) {
   const settings = state.settings;
-
-  const { current, next, dest } = stationNames;
+  const next = state.info.next;
+  const dest = state.info.dest;
 
   setTexts({
     // ヘッダー
@@ -106,9 +108,11 @@ function updateHeader(state, lineData, stationNames) {
   );
 }
 
-function updateNamePanel(state, lineData, stationNames) {
+function updateNamePanel(state, lineData) {
   const settings = state.settings;
-  const { current, next, dest } = stationNames;
+  const current = state.settings.position;
+  const next = state.info.next;
+  const dest = state.info.dest;
 
   // 駅名パネル
   if (settings.positionStatus == "next") {
@@ -202,9 +206,9 @@ function updateNamePanel(state, lineData, stationNames) {
 }
 
 // 方向矢印の表示種類を判定
-function getStationClass(state, stationNames, i, posIndex, iName) {
+function getStationClass(state, i, posIndex, iName) {
   const settings = state.settings;
-  const { current, next, dest } = stationNames;
+  const current = state.settings.position;
 
   if (!settings.stopStations.includes(iName)) {
     return " notstop";
@@ -263,11 +267,11 @@ function addTcy(str) {
 export function updateDOMs(state) {
   const settings = state.settings;
 
-  const stationNames = computeStationNames(state);
+  computeStationNames(state);
   const data = lineData[settings.line];
 
-  updateHeader(state, data, stationNames);
-  updateNamePanel(state, data, stationNames);
+  updateHeader(state, data);
+  updateNamePanel(state, data);
 
   // 路線図
   const lineEl = qs("#m-line");
@@ -281,7 +285,7 @@ export function updateDOMs(state) {
 
     const iName = data.stations[i];
 
-    const cls = getStationClass(state, stationNames, i, posIndex, iName);
+    const cls = getStationClass(state, i, posIndex, iName);
 
     lineEl.insertAdjacentHTML(
       "beforeend",

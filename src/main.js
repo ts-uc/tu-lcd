@@ -25,6 +25,10 @@ let state = {
     stopStations: null,
     terminalDisp: true,
   },
+  info: {
+    next: "",
+    dest: "",
+  },
 };
 
 /* ===================== ヘルパ ===================== */
