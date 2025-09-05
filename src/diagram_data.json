@@ -15,6 +15,21 @@
         "line": "abukyu",
         "stop_stations": ["福島", "瀬上", "梁川", "丸森", "東船岡", "槻木"],
         "is_inbound": true
+      },
+      "9921Mb": {
+        "line": "yanagawaRailYard",
+        "stop_stations": ["梁川車両基地", "梁川"],
+        "is_inbound": true
+      },
+      "9923Mb": {
+        "line": "yanagawaRailYard",
+        "stop_stations": ["梁川車両基地", "梁川"],
+        "is_inbound": false
+      },
+      "eve": {
+        "line": "eve",
+        "stop_stations": ["瀬上", "福島", "仙台", "若柳"],
+        "is_inbound": false
       }
     },
     "diagram": {
@@ -94,11 +109,41 @@
         "name": "梁川"
       },
       "10:54:15": {
-        "train": "9921M",
+        "train": "9921Mb",
         "status": "stopping",
         "name": "梁川"
       },
-      "10:55:15": {
+      "11:00:00": {
+        "train": "9921Mb",
+        "status": "next",
+        "name": "梁川車両基地"
+      },
+      "11:03:15": {
+        "train": "9921Mb",
+        "status": "soon",
+        "name": "梁川車両基地"
+      },
+      "11:04:00": {
+        "train": "9921Mb",
+        "status": "stopping",
+        "name": "梁川車両基地"
+      },
+      "11:05:00": {
+        "train": "9923Mb",
+        "status": "stopping",
+        "name": "梁川車両基地"
+      },
+      "13:00:00": {
+        "train": "9923Mb",
+        "status": "next",
+        "name": "梁川"
+      },
+      "13:03:15": {
+        "train": "9923Mb",
+        "status": "soon",
+        "name": "梁川"
+      },
+      "13:04:00": {
         "train": "9923M",
         "status": "stopping",
         "name": "梁川"
@@ -329,32 +374,22 @@
         "name": "瀬上"
       },
       "15:59:00": {
-        "train": "9922M",
+        "train": "eve",
         "status": "stopping",
         "name": "瀬上"
       },
       "16:05:30": {
-        "train": "9922M",
-        "status": "next",
-        "name": "福島学院前"
-      },
-      "16:06:30": {
-        "train": "9922M",
-        "status": "next",
-        "name": "卸町"
-      },
-      "16:07:15": {
-        "train": "9922M",
+        "train": "eve",
         "status": "next",
         "name": "福島"
       },
       "16:12:30": {
-        "train": "9922M",
+        "train": "eve",
         "status": "soon",
         "name": "福島"
       },
       "16:13:15": {
-        "train": "9922M",
+        "train": "eve",
         "status": "stopping",
         "name": "福島"
       }
