@@ -42,14 +42,22 @@ export function onPageLoad(settings) {
   const lineList = Object.entries(lineData).map(([id, obj]) => ({
     id,
     name: obj.lineName,
+    hidden: obj.hidden == true,
   }));
 
   // option を追加
   lineList.forEach((line) => {
-    lineEl.insertAdjacentHTML(
-      "beforeend",
-      `<option value="${line.id}">${line.name}</option>`
-    );
+    if (line.hidden) {
+      lineEl.insertAdjacentHTML(
+        "beforeend",
+        `<option disabled value="${line.id}">?????</option>`
+      );
+    } else {
+      lineEl.insertAdjacentHTML(
+        "beforeend",
+        `<option value="${line.id}">${line.name}</option>`
+      );
+    }
   });
 
   const typeList = Object.keys(typeData);
