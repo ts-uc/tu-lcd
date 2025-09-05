@@ -3,31 +3,37 @@
     "trains": {
       "9921M": {
         "line": "abukyu",
+        "type": "団体",
         "stop_stations": ["福島", "高子", "梁川"],
         "is_inbound": false
       },
       "9923M": {
         "line": "abukyu",
+        "type": "団体",
         "stop_stations": ["梁川", "富野", "東船岡", "槻木"],
         "is_inbound": false
       },
       "9922M": {
         "line": "abukyu",
+        "type": "団体",
         "stop_stations": ["福島", "瀬上", "梁川", "丸森", "東船岡", "槻木"],
         "is_inbound": true
       },
       "9921Mb": {
         "line": "yanagawaRailYard",
+        "type": "団体",
         "stop_stations": ["梁川車両基地", "梁川"],
         "is_inbound": true
       },
       "9923Mb": {
         "line": "yanagawaRailYard",
+        "type": "団体",
         "stop_stations": ["梁川車両基地", "梁川"],
         "is_inbound": false
       },
       "eve": {
         "line": "eve",
+        "type": "団体",
         "stop_stations": ["瀬上", "福島", "仙台", "若柳"],
         "is_inbound": false
       }
