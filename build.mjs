@@ -25,7 +25,7 @@ const jsResult = await build({
   minify: true,
   format: "iife",
   platform: "browser",
-  target: "es2018",
+  target: ["chrome71"],
   write: false,
 });
 
@@ -35,6 +35,7 @@ const cssResult = await build({
   bundle: true,
   minify: true,
   loader: { ".css": "css" },
+  target: ["chrome71"],
   write: false,
 });
 
