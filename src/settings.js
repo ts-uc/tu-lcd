@@ -263,10 +263,10 @@ export function moveNextStatus(state) {
   }
 
   if (settings.positionStatus === "stopping") {
-    moveNextStation(settings);
+    moveNextStation(state);
     settings.positionStatus = "next";
   } else if (!settings.stopStations.includes(settings.position)) {
-    moveNextStation(settings);
+    moveNextStation(state);
     settings.positionStatus = "next";
   } else if (settings.positionStatus === "soon") {
     settings.positionStatus = "stopping";
