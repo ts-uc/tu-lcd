@@ -16,7 +16,10 @@ function update(state, view, lang) {
   document.documentElement.setAttribute("data-lang", lang);
 
   // 「つぎは」または「まもなく」のときは、ヘッダーの次駅表示を消す
-  if (view == "name" && state.settings.positionStatus !== "stopping") {
+  if (
+    state.info.next === "" ||
+    (view == "name" && state.settings.positionStatus !== "stopping")
+  ) {
     document.getElementById("h-next").style.display = "none";
   } else {
     document.getElementById("h-next").style.display = "grid";
