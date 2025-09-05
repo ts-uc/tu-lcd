@@ -34,8 +34,8 @@
       "eve": {
         "line": "eve",
         "type": "団体",
-        "stop_stations": ["瀬上", "福島", "仙台", "若柳"],
-        "is_inbound": false
+        "stop_stations": ["若柳", "福島", "瀬上"],
+        "is_inbound": true
       }
     },
     "diagram": {
