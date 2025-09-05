@@ -76,6 +76,45 @@ function inferLineOrder(trainMap) {
   return order;
 }
 
+// 末尾（最終停車駅）を取得（pass は除外）
+function lastStoppedStation(tt) {
+  for (let i = tt.length - 1; i >= 0; i--) {
+    const it = tt[i];
+    if (it && it.name && it.pass !== true) return it.name;
+  }
+  return null;
+}
+
+// 路線順序の向きを「上り端 → 下り端」に統一する
+// 上り端＝偶数（上り）列車の終着として最頻出する駅
+function orientLineOrder(order, trainMap, selectedTrains) {
+  if (!order || order.length < 2) return order;
+
+  // 上り（偶数）列車の終着候補を集計
+  const freq = new Map();
+  const ids = selectedTrains?.length ? selectedTrains : Object.keys(trainMap);
+  for (const id of ids) {
+    if (!trainMap[id]) continue;
+    const numericId = parseInt(String(id).replace(/\D/g, ""), 10);
+    if (Number.isNaN(numericId) || numericId % 2 !== 0) continue; // 偶数のみ
+    const term = lastStoppedStation(trainMap[id].timetable || []);
+    if (!term) continue;
+    freq.set(term, (freq.get(term) || 0) + 1);
+  }
+
+  if (freq.size === 0) return order; // 判定材料がなければそのまま
+
+  // 最頻出の終着駅を上り端とみなす
+  const inboundTerminal = [...freq.entries()].sort((a, b) => b[1] - a[1])[0][0];
+
+  // その駅が order のどちらの端にあるかで向きを決める
+  if (order[0] === inboundTerminal) return order; // 既に「上り端 → 下り端」
+  if (order[order.length - 1] === inboundTerminal) return [...order].reverse();
+
+  // 端に見つからない（データ断片的など）場合はそのまま
+  return order;
+}
+
 function buildStopStations(obj, lineOrder) {
   const stops = obj.timetable
     .filter((t) => t && t.name && t.pass !== true)
@@ -98,19 +137,27 @@ const selectedTrains = selectedArg
       .filter(Boolean)
   : Object.keys(trainMap).sort((a, b) => Number(a) - Number(b));
 
-const lineOrder =
+// 路線順序の推定 → 上り向きに正規化
+let lineOrder =
   Array.isArray(LINE_ORDER) && LINE_ORDER.length
     ? LINE_ORDER
     : inferLineOrder(trainMap);
+lineOrder = orientLineOrder(lineOrder, trainMap, selectedTrains);
 
 // trains（←選択された列車だけ）
 const trainsOut = {};
 for (const id of selectedTrains) {
   if (!trainMap[id]) continue;
+
+  // 数字だけ抽出（例: "M23" → "23"）
+  const numericId = parseInt(String(id).replace(/\D/g, ""), 10);
+
   trainsOut[id] = {
     line: inputObj.line_name,
+    // ★ 常に「上り → 下り」の lineOrder に基づいて整列
     stop_stations: buildStopStations(trainMap[id], lineOrder),
-    is_inbound: Number(id) % 2 === 0,
+    // 数字が取れた場合は偶数判定、取れない場合は false などデフォルトに
+    is_inbound: !isNaN(numericId) ? numericId % 2 === 0 : false,
   };
 }
 
