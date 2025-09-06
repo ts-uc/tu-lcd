@@ -55,6 +55,21 @@
     "bg": "#0099ee",
     "text": "#FFFFFF"
   },
+  "新快速": {
+    "kanji": "新快速",
+    "kana": "しんかいそく",
+    "en": "Special Rapid",
+    "bg": "#0099ee",
+    "text": "#FFFFFF"
+  },
+  "超快速": {
+    "kanji": "超快速",
+    "kana": "ちょうかいそく",
+    "en": "Cho Rapid",
+    "bg": "#0099ee",
+    "text": "#FFFFFF"
+  },
+
   "通勤準急": {
     "kanji": "通勤準急",
     "kana": "つうきんじゅんきゅう",
