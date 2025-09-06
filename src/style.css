@@ -23,6 +23,16 @@
   display: inline-block !important;
 }
 
+[data-n-lang="zh-cn"] .n-zh-cn {
+  display: inline-block !important;
+}
+[data-n-lang="ko"] .n-ko {
+  display: inline-block !important;
+}
+[data-n-lang="en"] .n-en {
+  display: inline-block !important;
+}
+
 [data-view="name"] .n-panel {
   display: flex !important;
 }
@@ -41,6 +51,9 @@
 .kanji,
 .kana,
 .en,
+.n-zh-cn,
+.n-ko,
+.n-en,
 .n-panel,
 .m-panel,
 .normal-panel,

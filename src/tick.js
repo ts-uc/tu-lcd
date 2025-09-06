@@ -10,12 +10,12 @@ const langs = ["kanji", "kana", "en"];
 export function updateTick(state) {
   // viewの値を計算
   const tickDataList = [
-    { view: "name", lang: "kanji" },
-    { view: "name", lang: "kana" },
-    { view: "name", lang: "en" },
-    { view: "map", lang: "kanji" },
-    { view: "map", lang: "kana" },
-    { view: "map", lang: "en" },
+    { view: "name", lang: "kanji", nLang: "zh-cn" },
+    { view: "name", lang: "kana", nLang: "ko" },
+    { view: "name", lang: "en", nLang: "en" },
+    { view: "map", lang: "kanji", nLang: "zh-cn" },
+    { view: "map", lang: "kana", nLang: "ko" },
+    { view: "map", lang: "en", nLang: "en" },
   ];
 
   const tickData = tickDataList[state.tick.idx % tickDataList.length];
@@ -23,6 +23,7 @@ export function updateTick(state) {
   // 2つの属性を更新
   document.documentElement.setAttribute("data-view", tickData.view);
   document.documentElement.setAttribute("data-lang", tickData.lang);
+  document.documentElement.setAttribute("data-n-lang", tickData.nLang);
 
   // 「つぎは」または「まもなく」のときは、ヘッダーの次駅表示を消す
   if (
