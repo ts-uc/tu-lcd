@@ -52,6 +52,21 @@
   display: none !important;
 }
 
+.lcd-only header,
+.lcd-only main.container,
+.lcd-only footer {
+  display: none !important;
+}
+
+/* 単体表示のレイアウト：画面全体を使い、#lcd を縦中央・横は全幅に伸ばす */
+.lcd-only {
+  min-height: 100dvh;
+  display: grid;
+  align-items: center; /* 縦方向中央 */
+  justify-items: stretch; /* 横方向は伸ばす（中央寄せしない） */
+  overflow: hidden; /* はみ出し防止 */
+}
+
 /* ===== 共通 ===== */
 
 /* 画面（32:9）をビューポート内で最大にしつつ中央配置 */

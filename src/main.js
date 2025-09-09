@@ -45,15 +45,13 @@ setInterval(() => {
 
 /* ===================== 設定画面表示切替 ===================== */
 
-document.documentElement.setAttribute("data-setting", "normal");
-document.querySelector("#h-type-box").addEventListener("dblclick", () => {
-  const mode =
-    document.documentElement.getAttribute("data-setting") === "normal"
-      ? "setting"
-      : "normal";
-  document.documentElement.setAttribute("data-setting", mode);
-  rafApply();
-});
+document.getElementById("header-panel").addEventListener(
+  "dblclick",
+  () => {
+    document.body.classList.toggle("lcd-only");
+  },
+  { passive: true }
+);
 
 /* ===================== 駅送り ===================== */
 document.getElementById("main-panel").addEventListener("click", () => {
