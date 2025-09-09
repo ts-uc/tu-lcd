@@ -53,7 +53,7 @@
 }
 
 .lcd-only header,
-.lcd-only main.container,
+.lcd-only main,
 .lcd-only footer {
   display: none !important;
 }
@@ -65,6 +65,18 @@
   align-items: center; /* 縦方向中央 */
   justify-items: stretch; /* 横方向は伸ばす（中央寄せしない） */
   overflow: hidden; /* はみ出し防止 */
+}
+
+header,
+main,
+footer {
+  font-family: "I-OTF-UD丸ゴPro R", sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: "I-OTF-UD丸ゴPro B", sans-serif;
+  font-weight: 700;
 }
 
 /* ===== 共通 ===== */
@@ -497,6 +509,9 @@
 }
 .dummy.ja-b {
   font-family: "I-OTF-UDゴ表示Pro B";
+}
+.dummy.ja-m2 {
+  font-family: "I-OTF-UD丸ゴPro R";
 }
 .dummy.en-m {
   font-family: "FrutigerNeueLTW1G-Medium";
