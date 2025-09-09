@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>車内案内表示器 (阪急風)</title>
+    <title>HK-LCD | 阪急風LCDシミュレーター</title>
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <link rel="manifest" href="manifest.json" />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css"
+    />
     <!-- INLINE_CSS -->
     <script src="https://webfont.fontplus.jp/accessor/script/fontplus.js?BqAcgZtu9ws%3D&box=iYtAWDt17Pw%3D&aa=1&ab=1"></script>
   </head>
   <body>
+    <header class="container">
+      <hgroup>
+        <h1>HK-LCD</h1>
+        <p>阪急風LCDシミュレーター</p>
+      </hgroup>
+    </header>
+
     <div id="screen">
       <div id="header-panel">
         <div id="h-bottom">
@@ -98,44 +109,6 @@
             <!-- 左画面 -->
             <div class="settings-col">
               <div class="form-row">
-                <label for="layout-dir-select">設置方向</label>
-                <select id="layout-dir-select">
-                  <option value="inbound-left">上りが左</option>
-                  <option value="inbound-right">下りが右</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label for="auto-select">自動表示</label>
-                <select id="auto-select">
-                  <option value="manual">手動</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label for="line-select">路線</label>
-                <select id="line-select"></select>
-              </div>
-            </div>
-            <div class="settings-col">
-              <div class="form-row">
-                <label for="direction-select">進行方向</label>
-                <select id="direction-select">
-                  <option value="inbound">上り</option>
-                  <option value="outbound">下り</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label for="train-type-select">列車種別</label>
-                <select id="train-type-select"></select>
-              </div>
-              <div class="form-row">
-                <label for="position-status-select">状態</label>
-                <select id="position-status-select">
-                  <option value="next">つぎは</option>
-                  <option value="soon">まもなく</option>
-                  <option value="stopping">ただいま</option>
-                </select>
-              </div>
-              <div class="form-row">
                 <label for="current-station">現在地/<br />直前後</label>
                 <select id="current-station"></select>
               </div>
@@ -151,18 +124,95 @@
                   style="width: 100%"
                 ></select>
               </div>
-              <div class="form-row">
-                <label for="terminal-disp-select">終点表示</label>
-                <select id="terminal-disp-select">
-                  <option value="on">する</option>
-                  <option value="off">しない</option>
-                </select>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <main class="container">
+      <article id="form">
+        <form>
+          <div class="grid">
+            <label for="auto-select"
+              >自動表示
+              <select id="auto-select">
+                <option value="manual">手動</option>
+              </select>
+            </label>
+
+            <label for="line-select"
+              >路線
+              <select id="line-select"></select>
+            </label>
+            <div></div>
+          </div>
+
+          <div class="grid">
+            <label for="layout-dir-select"
+              >設置方向
+              <select id="layout-dir-select">
+                <option value="inbound-left">上りが左</option>
+                <option value="inbound-right">上りが右</option>
+              </select>
+            </label>
+            <label for="terminal-disp-select"
+              >終点表示
+              <select id="terminal-disp-select">
+                <option value="on">する</option>
+                <option value="off">しない</option>
+              </select>
+            </label>
+            <div></div>
+          </div>
+
+          <div class="grid">
+            <label for="direction-select"
+              >進行方向
+              <select id="direction-select">
+                <option value="inbound">上り</option>
+                <option value="outbound">下り</option>
+              </select>
+            </label>
+
+            <label for="train-type-select"
+              >列車種別
+              <select id="train-type-select"></select>
+            </label>
+
+            <label for="position-status-select"
+              >状態
+              <select id="position-status-select">
+                <option value="next">つぎは</option>
+                <option value="soon">まもなく</option>
+                <option value="stopping">ただいま</option>
+              </select>
+            </label>
+          </div>
+        </form>
+      </article>
+    </main>
+
+    <footer class="container">
+      <small>
+        © 2025 Nono Yuu (<a href="https://x.com/jp7wfp">@jp7wfp</a>)<br />
+        This website is released under the
+        <a
+          href="https://opensource.org/licenses/MIT"
+          target="_blank"
+          rel="noopener noreferrer"
+          >MIT License</a
+        >
+        ·
+        <a
+          href="https://github.com/ts-uc/hk-lcd"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Source on GitHub</a
+        >
+      </small>
+    </footer>
+
     <div class="dummy ja-m">
       <!-- DUMMY_CHARS -->
     </div>

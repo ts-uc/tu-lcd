@@ -62,21 +62,6 @@
 }
 
 /* ===== 共通 ===== */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%; /* ← これを付ける（または body を min-height:100vh に） */
-}
-
-body {
-  min-height: 100vh; /* ビューポート全高を確保 */
-  display: flex;
-  justify-content: center; /* 左右中央 */
-  align-items: center; /* 上下中央 */
-  background: #333333; /* 外側の背景色 */
-}
 
 /* 画面（32:9）をビューポート内で最大にしつつ中央配置 */
 #screen {
