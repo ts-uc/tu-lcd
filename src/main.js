@@ -56,7 +56,7 @@ document.querySelector("#h-type-box").addEventListener("dblclick", () => {
 });
 
 /* ===================== 駅送り ===================== */
-document.getElementById("normal-panel").addEventListener("click", () => {
+document.getElementById("main-panel").addEventListener("click", () => {
   moveNextStatus(state);
 });
 

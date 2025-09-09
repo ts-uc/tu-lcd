@@ -66,64 +66,39 @@
       </div>
 
       <div id="main-panel">
-        <div class="normal-panel" id="normal-panel">
-          <div class="m-panel" id="m-panel">
-            <div class="m-line" id="m-line"></div>
-          </div>
-          <div class="n-panel" id="n-panel">
-            <div class="n-grid">
-              <div></div>
-              <div id="n-c-kana-box">
-                <span class="n-c" id="n-c-kana"></span>
-              </div>
-              <div></div>
-              <div id="n-l-kanji-box">
-                <div id="n-l-kanji"></div>
-              </div>
-              <div id="n-c-kanji-box">
-                <span class="n-c" id="n-c-kanji"></span>
-              </div>
-              <div id="n-r-kanji-box">
-                <div id="n-r-kanji"></div>
-              </div>
-              <div id="n-l-m17n-box">
-                <span lang="zh" class="n-zh-cn" id="n-l-zh-cn"></span>
-                <span lang="ko" class="n-ko" id="n-l-ko"></span>
-                <span lang="en" class="n-en" id="n-l-en"></span>
-              </div>
-              <div id="n-c-m17n-box">
-                <span lang="zh" class="n-c n-zh-cn" id="n-c-zh-cn"></span>
-                <span lang="ko" class="n-c n-ko" id="n-c-ko"></span>
-                <span lang="en" class="n-c n-en" id="n-c-en"></span>
-              </div>
-              <div id="n-r-m17n-box">
-                <span lang="zh" class="n-zh-cn" id="n-r-zh-cn"></span>
-                <span lang="ko" class="n-ko" id="n-r-ko"></span>
-                <span lang="en" class="n-en" id="n-r-en"></span>
-              </div>
-            </div>
-          </div>
+        <div class="m-panel" id="m-panel">
+          <div class="m-line" id="m-line"></div>
         </div>
-        <div class="settings-panel" id="settings-panel">
-          <div class="settings-grid">
-            <!-- 左画面 -->
-            <div class="settings-col">
-              <div class="form-row">
-                <label for="current-station">現在地/<br />直前後</label>
-                <select id="current-station"></select>
-              </div>
+        <div class="n-panel" id="n-panel">
+          <div class="n-grid">
+            <div></div>
+            <div id="n-c-kana-box">
+              <span class="n-c" id="n-c-kana"></span>
             </div>
-            <!-- 右画面 -->
-            <div class="settings-col">
-              <div class="form-row" style="align-items: start">
-                <label for="stop-stations">停車駅</label>
-                <select
-                  id="stop-stations"
-                  multiple
-                  size="5"
-                  style="width: 100%"
-                ></select>
-              </div>
+            <div></div>
+            <div id="n-l-kanji-box">
+              <div id="n-l-kanji"></div>
+            </div>
+            <div id="n-c-kanji-box">
+              <span class="n-c" id="n-c-kanji"></span>
+            </div>
+            <div id="n-r-kanji-box">
+              <div id="n-r-kanji"></div>
+            </div>
+            <div id="n-l-m17n-box">
+              <span lang="zh" class="n-zh-cn" id="n-l-zh-cn"></span>
+              <span lang="ko" class="n-ko" id="n-l-ko"></span>
+              <span lang="en" class="n-en" id="n-l-en"></span>
+            </div>
+            <div id="n-c-m17n-box">
+              <span lang="zh" class="n-c n-zh-cn" id="n-c-zh-cn"></span>
+              <span lang="ko" class="n-c n-ko" id="n-c-ko"></span>
+              <span lang="en" class="n-c n-en" id="n-c-en"></span>
+            </div>
+            <div id="n-r-m17n-box">
+              <span lang="zh" class="n-zh-cn" id="n-r-zh-cn"></span>
+              <span lang="ko" class="n-ko" id="n-r-ko"></span>
+              <span lang="en" class="n-en" id="n-r-en"></span>
             </div>
           </div>
         </div>
@@ -188,6 +163,25 @@
                 <option value="stopping">ただいま</option>
               </select>
             </label>
+          </div>
+
+          <div class="grid">
+            <label for="current-station"
+              >現在地/直後駅
+              <select id="current-station"></select>
+            </label>
+
+            <label for="stop-stations"
+              >停車駅
+              <select
+                id="stop-stations"
+                multiple
+                size="5"
+                style="width: 100%"
+              ></select>
+            </label>
+
+            <div></div>
           </div>
         </form>
       </article>

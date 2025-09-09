@@ -40,13 +40,6 @@
   display: flex !important;
 }
 
-[data-setting="normal"] .normal-panel {
-  display: flex !important;
-}
-[data-setting="setting"] .settings-panel {
-  display: flex !important;
-}
-
 /* 既定は非表示（次点優先） */
 .kanji,
 .kana,
@@ -55,9 +48,7 @@
 .n-ko,
 .n-en,
 .n-panel,
-.m-panel,
-.normal-panel,
-.settings-panel {
+.m-panel {
   display: none !important;
 }
 
@@ -94,11 +85,6 @@
   width: 100%;
   height: 100%;
   background: var(--bg);
-}
-
-.normal-panel {
-  width: 100%;
-  height: 100%;
 }
 
 /* 言語別フォント */
@@ -486,57 +472,6 @@
 }
 
 /* ===== 設定画面 ===== */
-.settings-panel {
-  width: 100%;
-  height: 100%;
-}
-
-.settings-grid {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box; /* padding込みで100%に収める */
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1vw;
-  padding: 1vw;
-}
-
-.settings-col {
-  overflow: auto;
-  padding: 0.5rem;
-  background: #fafafa;
-  border: 0.1vw solid #ddd;
-  border-radius: 0.5rem;
-}
-.settings-col h3 {
-  margin: 0.25rem 0 0.75rem;
-  font-size: 1.1rem;
-}
-
-.form-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 0.5rem 0;
-}
-.form-row label {
-  min-width: 4em;
-}
-.form-row select,
-.form-row button {
-  padding: 0.25rem 0.5rem;
-}
-
-fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-fieldset .choices {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
 
 /* ===== ダミー文字列 (フォント読込用) ===== */
 .dummy {
