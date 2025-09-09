@@ -93,7 +93,7 @@ body {
   height: min(100vh, calc(100vw * 9 / 32));
 }
 
-header {
+#header-panel {
   position: relative;
   display: flex;
   width: 100%;
@@ -103,7 +103,7 @@ header {
   font-weight: 700;
 }
 
-main {
+#main-panel {
   position: relative;
   display: flex;
   width: 100%;
