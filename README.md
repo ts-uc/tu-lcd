@@ -1,4 +1,4 @@
-# hk-lcd
+# TU-LCD
 
 阪急電車の発車標を再現した Web アプリです。  
 PWA 対応で、スマートフォンやタブレットでもアプリのように利用できます。  
@@ -30,8 +30,8 @@ Vercel にデプロイして公開することを前提に作成されていま�
 
 ```bash
 # リポジトリを取得
-git clone https://github.com/yourname/hk-lcd.git
-cd hk-lcd
+git clone https://github.com/yourname/tu-lcd.git
+cd tu-lcd
 
 # 依存関係をインストール
 npm install

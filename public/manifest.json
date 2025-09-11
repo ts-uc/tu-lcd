@@ -1,6 +1,6 @@
 {
-  "name": "車内案内表示器 (阪急風)",
-  "short_name": "HK-LCD",
+  "name": "TU-LCD",
+  "short_name": "TU-LCD",
   "start_url": ".",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone"],

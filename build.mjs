@@ -16,7 +16,7 @@ if (!commitHash) {
     commitHash = "local"; // git がない場合のフォールバック
   }
 }
-const CACHE_NAME = `hk-lcd-${commitHash}`;
+const CACHE_NAME = `tu-lcd-${commitHash}`;
 
 // --- JS ---
 const jsResult = await build({
