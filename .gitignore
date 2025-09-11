@@ -1,6 +1,7 @@
 node_modules/
 public/index.html
 public/sw.js
+public/station.db
 .DS_Store
 memo.md
 .env

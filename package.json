@@ -13,6 +13,22 @@
     "serve": "^14.2.5"
   },
   "dependencies": {
-    "@vercel/edge": "^1.2.2"
-  }
+    "@vercel/edge": "^1.2.2",
+    "better-sqlite3": "^12.2.0",
+    "csv-parse": "^6.1.0"
+  },
+  "version": "1.0.0",
+  "description": "阪急電車の発車標を再現した Web アプリです。   PWA 対応で、スマートフォンやタブレットでもアプリのように利用できます。   Vercel にデプロイして公開することを前提に作成されています。",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ts-uc/tu-lcd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ts-uc/tu-lcd/issues"
+  },
+  "homepage": "https://github.com/ts-uc/tu-lcd#readme"
 }
