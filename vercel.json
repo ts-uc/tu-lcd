@@ -1,5 +1,0 @@
-{
-  "version": 2,
-  "buildCommand": "node build.mjs",
-  "routes": [{ "src": "/", "dest": "/index.html" }]
-}
