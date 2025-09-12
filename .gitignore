@@ -1,6 +1,5 @@
 node_modules/
-public/index.html
-public/sw.js
+public/
 .DS_Store
 memo.md
 .env
