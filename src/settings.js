@@ -1,6 +1,6 @@
-import lineData from "./line_data.json" assert { type: "json" };
-import typeData from "./type_data.json" assert { type: "json" };
-import diagramData from "./diagram_data.json" assert { type: "json" };
+import lineData from "./data/line_data.json" assert { type: "json" };
+import typeData from "./data/type_data.json" assert { type: "json" };
+import diagramData from "./data/diagram_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling";
 import { resetTick, updateTick } from "./tick";
 import { updateDOMs } from "./dom_updater.js";

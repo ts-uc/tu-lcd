@@ -1,4 +1,3 @@
-import lineData from "./line_data.json" assert { type: "json" };
 import { applyScaling } from "./scaling.js";
 import {
   lineEl,

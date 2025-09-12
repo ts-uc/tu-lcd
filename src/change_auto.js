@@ -1,4 +1,4 @@
-import diagramData from "./diagram_data.json" assert { type: "json" };
+import diagramData from "./data/diagram_data.json" assert { type: "json" };
 import { applySettings } from "./settings";
 
 let timers = []; // setTimeout ハンドル格納

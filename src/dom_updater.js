@@ -1,5 +1,5 @@
-import lineData from "./line_data.json" assert { type: "json" };
-import typeData from "./type_data.json" assert { type: "json" };
+import lineData from "./data/line_data.json" assert { type: "json" };
+import typeData from "./data/type_data.json" assert { type: "json" };
 
 const qs = (sel, root = document) => root.querySelector(sel);
 
