@@ -7,6 +7,9 @@ import { execSync } from "node:child_process";
 const outDir = "public";
 await fs.mkdir(outDir, { recursive: true });
 
+// --- static → public コピー ---
+await fs.cp("static", outDir, { recursive: true });
+
 // --- コミットハッシュ取得 ---
 let commitHash = process.env.VERCEL_GIT_COMMIT_SHA;
 if (!commitHash) {
