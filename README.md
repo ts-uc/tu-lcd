@@ -4,8 +4,8 @@
 PWA 対応で、スマートフォンやタブレットでもアプリのように利用できます。  
 Vercel にデプロイして公開することを前提に作成されています。
 
-![map_kuriden](./map_kuriden.png) <!-- スクショがある場合は差し替えてください -->
-![name_nagai](./name_nagai.png) <!-- スクショがある場合は差し替えてください -->
+![map_kuriden](./docs/images/map_kuriden.png) <!-- スクショがある場合は差し替えてください -->
+![name_nagai](./docs/images/name_nagai.png) <!-- スクショがある場合は差し替えてください -->
 
 ---
 
