@@ -64,9 +64,21 @@ export function buildDb() {
         .join(",")})`
     );
 
+    // --- DEFAULT カウンタ（テーブルごとにカラム単位で管理）---
+    const counters = Object.fromEntries(cols.map((c) => [c, 0]));
+
     db.transaction(() => {
-      for (const r of rows)
-        stmt.run(cols.map((c) => (r[c] === "" || r[c] == null ? null : r[c])));
+      for (const r of rows) {
+        const values = cols.map((c) => {
+          if (r[c] === "" || r[c] == null) return null;
+          if (r[c] === "DEFAULT") {
+            counters[c] += 1;
+            return counters[c];
+          }
+          return r[c];
+        });
+        stmt.run(values);
+      }
     })();
 
     console.log(`OK: ${f} -> ${table} (${rows.length} rows)`);
