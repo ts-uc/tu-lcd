@@ -505,9 +505,6 @@ h1 {
 .dummy {
   display: none;
 }
-.dummy.ja-m {
-  font-family: "I-OTF-UDゴ表示Pro M";
-}
 .dummy.ja-b {
   font-family: "I-OTF-UDゴ表示Pro B";
 }

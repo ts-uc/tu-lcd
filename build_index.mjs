@@ -29,7 +29,7 @@ export async function buildIndex(outDir) {
   const jsCode = jsResult.outputFiles[0].text;
   const cssCode = cssResult.outputFiles[0].text;
   // --- 全ファイルの文字をユニークに抽出 + エスケープ ---
-  const dummyChars = getDummyChars();
+  const dummyCharsJa = await getDummyChars();
   // --- HTML テンプレート処理 ---
   const tpl = await fs.readFile("src/index.html", "utf8");
   const htmlRaw = tpl
@@ -37,7 +37,7 @@ export async function buildIndex(outDir) {
     .replace("<!-- INLINE_JS -->", `<script>${jsCode}</script>`)
     .replaceAll(
       "<!-- DUMMY_CHARS -->",
-      `<div style="display:none">${dummyChars}</div>`
+      `<div style="display:none">${dummyCharsJa}</div>`
     ); // ← ここで埋め込む
 
   const htmlMin = await minify(htmlRaw, {
