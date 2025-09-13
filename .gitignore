@@ -1,4 +1,5 @@
 node_modules/
+station_data/
 public/
 .DS_Store
 memo.md
