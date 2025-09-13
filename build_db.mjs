@@ -1,11 +1,10 @@
-// load_csv_embedded.mjs
+// build_db.mjs
 import fs from "node:fs";
 import path from "node:path";
-import Database from "better-sqlite3";
 import { parse } from "csv-parse/sync";
+import sqlite3InitModule from "@sqlite.org/sqlite-wasm";
 
-// ====== 埋め込み設定 ======
-const DB = "public/station.db";
+const DB_PATH = "public/station.db";
 const SCHEMA = "schema.sql";
 const FILES = [
   "station_data/data/1!companies.csv",
@@ -16,74 +15,80 @@ const FILES = [
   "station_data/data/6!aliases.csv",
   "station_data/data/7!line_aliases.csv",
 ];
-// ==========================
 
-export function buildDb() {
-  if (fs.existsSync(DB)) {
-    fs.unlinkSync(DB);
-    console.log(`removed old ${DB}`);
-  }
+const tableNameFrom = (file) => {
+  const base = path.basename(file, path.extname(file)); // "1!companies"
+  const parts = base.split("!");
+  return parts.length > 1 ? parts[1] : parts[0];
+};
+const qIdent = (s) => `"${String(s).replaceAll('"', '""')}"`;
 
-  const db = new Database(DB);
-  db.pragma("journal_mode=WAL");
-  db.exec(fs.readFileSync(SCHEMA, "utf8"));
+export async function buildDb() {
+  if (fs.existsSync(DB_PATH)) fs.unlinkSync(DB_PATH);
 
-  const q = (s) => `"${String(s).replaceAll('"', '""')}"`;
+  const sqlite3 = await sqlite3InitModule(); // npm 版は wasm の場所解決が内蔵
+  const db = new sqlite3.oo1.DB(); // :memory:
+  try {
+    db.exec(fs.readFileSync(SCHEMA, "utf8"));
 
-  // ファイル名 → テーブル名 ("1!companies.csv" → "companies")
-  const tableNameFrom = (file) => {
-    const base = path.basename(file, path.extname(file)); // "1!companies"
-    const parts = base.split("!");
-    return parts.length > 1 ? parts[1] : parts[0]; // "companies"
-  };
+    const tableCols = (table) => {
+      const rows = [];
+      db.exec({
+        sql: `PRAGMA table_info(${qIdent(table)});`,
+        rowMode: "array",
+        callback: (ary) => rows.push(ary),
+      });
+      return rows.map((r) => r[1]); // name
+    };
 
-  for (const f of FILES) {
-    const table = tableNameFrom(f);
-    const rows = parse(fs.readFileSync(f), {
-      columns: true,
-      skip_empty_lines: true,
-    });
-    if (!rows.length) {
-      console.warn(`skip empty: ${f}`);
-      continue;
-    }
+    for (const f of FILES) {
+      const table = tableNameFrom(f);
+      const rows = parse(fs.readFileSync(f), {
+        columns: true,
+        skip_empty_lines: true,
+      });
+      if (!rows.length) continue;
 
-    const tcols = db
-      .prepare(`PRAGMA table_info(${q(table)});`)
-      .all()
-      .map((c) => c.name);
-    const cols = Object.keys(rows[0]).filter((c) => tcols.includes(c));
-    if (!cols.length) {
-      console.warn(`no matching columns: ${f} -> ${table}`);
-      continue;
-    }
+      const tcols = tableCols(table);
+      const cols = Object.keys(rows[0]).filter((c) => tcols.includes(c));
+      if (!cols.length) continue;
 
-    const stmt = db.prepare(
-      `INSERT INTO ${q(table)} (${cols.map(q).join(",")}) VALUES (${cols
-        .map(() => "?")
-        .join(",")})`
-    );
-
-    // --- DEFAULT カウンタ（テーブルごとにカラム単位で管理）---
-    const counters = Object.fromEntries(cols.map((c) => [c, 0]));
-
-    db.transaction(() => {
-      for (const r of rows) {
-        const values = cols.map((c) => {
-          if (r[c] === "" || r[c] == null) return null;
-          if (r[c] === "DEFAULT") {
-            counters[c] += 1;
-            return counters[c];
-          }
-          return r[c];
-        });
-        stmt.run(values);
+      db.exec("BEGIN");
+      try {
+        const placeholders = cols.map(() => "?").join(",");
+        const sql = `INSERT INTO ${qIdent(table)} (${cols
+          .map(qIdent)
+          .join(",")}) VALUES (${placeholders})`;
+        const stmt = db.prepare(sql);
+        for (const r of rows) {
+          stmt.bind(
+            cols.map((c) => (r[c] === "" || r[c] == null ? null : r[c]))
+          );
+          stmt.step();
+          stmt.reset();
+        }
+        stmt.finalize();
+        db.exec("COMMIT");
+      } catch (e) {
+        db.exec("ROLLBACK");
+        throw e;
       }
-    })();
+    }
 
-    console.log(`OK: ${f} -> ${table} (${rows.length} rows)`);
+    db.exec("VACUUM");
+
+    const bytes = sqlite3.capi.sqlite3_js_db_export(db);
+    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+    fs.writeFileSync(DB_PATH, bytes); // ← これで .db を作成
+    console.log(`wrote: ${DB_PATH} (${bytes.length} bytes)`);
+  } finally {
+    db.close();
   }
+}
 
-  db.exec("VACUUM");
-  db.close();
+if (import.meta.url === `file://${process.argv[1]}`) {
+  buildDb().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
 }
