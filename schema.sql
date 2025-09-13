@@ -18,12 +18,7 @@ BEGIN
         company_cd INTEGER primary key,
         rr_cd INTEGER NOT NULL,
         company_name text NOT NULL,
-        company_name_k text NOT NULL,
-        company_name_h text NOT NULL,
-        company_name_r text NOT NULL,
         company_name_en text NOT NULL,
-        company_name_full_en text NOT NULL,
-        company_url text,
         company_type INTEGER NOT NULL,
         e_status INTEGER NOT NULL,
         e_sort INTEGER NOT NULL
@@ -36,7 +31,6 @@ BEGIN
         line_name_k text NOT NULL,
         line_name_h text NOT NULL,
         line_name_r text NOT NULL DEFAULT '',
-        line_name_rn text NOT NULL DEFAULT '',
         line_name_zh text DEFAULT '',
         line_name_ko text DEFAULT '',
         line_color_c text NOT NULL,
@@ -65,7 +59,6 @@ BEGIN
         station_name text NOT NULL,
         station_name_k text NOT NULL,
         station_name_r text,
-        station_name_rn text,
         station_name_zh text,
         station_name_ko text,
         station_number1 text,
@@ -75,8 +68,6 @@ BEGIN
         three_letter_code text,
         line_cd INTEGER NOT NULL,
         pref_cd INTEGER NOT NULL,
-        post text NOT NULL,
-        address text NOT NULL,
         lon REAL NOT NULL,
         lat REAL NOT NULL,
         open_ymd text NOT NULL,
@@ -116,13 +107,6 @@ BEGIN
         alias_cd INTEGER NOT NULL,
         foreign key (station_cd) references stations(station_cd),
         foreign key (alias_cd) references aliases(id)
-    );
--- connections
-    CREATE TABLE IF NOT EXISTS connections (
-        id INTEGER NOT NULL,
-        station_cd1 INTEGER NOT NULL,
-        station_cd2 INTEGER NOT NULL,
-        distance REAL DEFAULT 0
     );
 -- indexes
     CREATE INDEX IF NOT EXISTS idx_line_aliases_alias_cd
