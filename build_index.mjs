@@ -35,10 +35,7 @@ export async function buildIndex(outDir) {
   const htmlRaw = tpl
     .replace("<!-- INLINE_CSS -->", `<style>${cssCode}</style>`)
     .replace("<!-- INLINE_JS -->", `<script>${jsCode}</script>`)
-    .replaceAll(
-      "<!-- DUMMY_CHARS -->",
-      `<div style="display:none">${dummyCharsJa}</div>`
-    ); // ← ここで埋め込む
+    .replaceAll("<!-- DUMMY_CHARS -->", dummyCharsJa); // ← ここで埋め込む
 
   const htmlMin = await minify(htmlRaw, {
     collapseWhitespace: true,
