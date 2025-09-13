@@ -1,6 +1,7 @@
 {
   "name": "tu-lcd",
   "compatibility_date": "2025-09-11",
+  "main": "worker/index.mjs",
   "assets": {
     "directory": "./public"
   },

@@ -5,3 +5,4 @@ public/
 memo.md
 .env
 .vercel
+.wrangler
