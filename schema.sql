@@ -52,6 +52,11 @@ BEGIN
         average_distance REAL DEFAULT 0,
         foreign key (company_cd) references companies(company_cd)
     );
+-- prefs
+    CREATE TABLE IF NOT EXISTS prefs (
+        pref_cd INTEGER primary key,
+        pref_name text NOT NULL
+    );
 -- stations
     CREATE TABLE IF NOT EXISTS stations (
         station_cd INTEGER primary key,
@@ -74,7 +79,8 @@ BEGIN
         close_ymd text NOT NULL,
         e_status INTEGER NOT NULL,
         e_sort INTEGER NOT NULL,
-        foreign key (line_cd) references lines(line_cd)
+        foreign key (line_cd) references lines(line_cd),
+        foreign key (pref_cd) references prefs(pref_cd)
     );
 -- types
     CREATE TABLE IF NOT EXISTS types (
