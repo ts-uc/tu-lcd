@@ -2,16 +2,18 @@
 import fs from "node:fs/promises";
 import sqlite3InitModule from "@sqlite.org/sqlite-wasm";
 
+const DB_PATH = "public/station.db";
+
 /**
  * public/station.db を読み込み、指定カラムで使われている全ての文字と
  * ひらがな/カタカナ/数字/ラテン/マクロン付き母音/「終点」を合算して
  * ユニークな並び（コードポイント順）の文字列で返す
  */
-export async function getDummyChars(dbPath = "public/station.db") {
+export async function getDummyChars() {
   const sqlite3 = await sqlite3InitModule(); // Nodeはインメモリ運用に対応
 
   // ---- DB をインメモリへデシリアライズ（WAL不可の点は公式通り）----
-  const fileBytes = new Uint8Array(await fs.readFile(dbPath));
+  const fileBytes = new Uint8Array(await fs.readFile(DB_PATH));
   const p = sqlite3.wasm.allocFromTypedArray(fileBytes);
   const db = new sqlite3.oo1.DB(); // :memory:
   const flags =

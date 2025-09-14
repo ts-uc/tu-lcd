@@ -4,10 +4,15 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { getDummyChars } from "./generate_dummy_font.mjs";
 
+const JS_ENTRY_PATH = "src/main.js";
+const CSS_ENTRY_PATH = "src/style.css";
+const HTML_ENTRY_PATH = "src/index.html";
+const HTML_OUT = "index.html";
+
 export async function buildIndex(outDir) {
   // --- JS ---
   const jsResult = await build({
-    entryPoints: ["src/main.js"],
+    entryPoints: [JS_ENTRY_PATH],
     bundle: true,
     minify: true,
     format: "iife",
@@ -18,7 +23,7 @@ export async function buildIndex(outDir) {
 
   // --- CSS ---
   const cssResult = await build({
-    entryPoints: ["src/style.css"],
+    entryPoints: [CSS_ENTRY_PATH],
     bundle: true,
     minify: true,
     loader: { ".css": "css" },
@@ -31,7 +36,7 @@ export async function buildIndex(outDir) {
   // --- 全ファイルの文字をユニークに抽出 + エスケープ ---
   const dummyCharsJa = await getDummyChars();
   // --- HTML テンプレート処理 ---
-  const tpl = await fs.readFile("src/index.html", "utf8");
+  const tpl = await fs.readFile(HTML_ENTRY_PATH, "utf8");
   const htmlRaw = tpl
     .replace("<!-- INLINE_CSS -->", `<style>${cssCode}</style>`)
     .replace("<!-- INLINE_JS -->", `<script>${jsCode}</script>`)
@@ -46,6 +51,6 @@ export async function buildIndex(outDir) {
   });
 
   // --- 出力 ---
-  const outPath = path.join(outDir, "index.html");
+  const outPath = path.join(outDir, HTML_OUT);
   await fs.writeFile(outPath, htmlMin, "utf8");
 }

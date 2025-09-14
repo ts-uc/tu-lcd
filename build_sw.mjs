@@ -2,6 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { execSync } from "node:child_process";
 
+const SW_ENTRY_PATH = "src/sw.js";
+const SW_OUT = "sw.js";
+
 export async function buildSw(outDir) {
   // --- コミットハッシュ取得 ---
   const commitHash = (() => {
@@ -15,7 +18,7 @@ export async function buildSw(outDir) {
   const CACHE_NAME = `tu-lcd-${commitHash}`;
 
   // sw.js も出力（キャッシュ名を含む）
-  const swSrc = await fs.readFile("src/sw.js", "utf8");
+  const swSrc = await fs.readFile(SW_ENTRY_PATH, "utf8");
   const swOut = swSrc.replaceAll("%%CACHE_NAME%%", CACHE_NAME);
-  await fs.writeFile(path.join(outDir, "sw.js"), swOut, "utf8");
+  await fs.writeFile(path.join(outDir, SW_OUT), swOut, "utf8");
 }
