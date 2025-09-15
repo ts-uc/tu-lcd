@@ -23,6 +23,25 @@ const tableNameFrom = (file) => {
 };
 const qIdent = (s) => `"${String(s).replaceAll('"', '""')}"`;
 
+// 追加：全角の英数＆丸括弧だけ半角にする
+function toHalfWidthAlnumParen(s) {
+  if (typeof s !== "string") return s;
+  return s.replace(/（|）|[０-９Ａ-Ｚａ-ｚ]/g, (ch) => {
+    if (ch === "（") return "(";
+    if (ch === "）") return ")";
+    const code = ch.charCodeAt(0);
+    // ０-９, Ａ-Ｚ, ａ-ｚ を半角へ（U+FEE0 差分）
+    if (
+      (code >= 0xff10 && code <= 0xff19) || // ０-９
+      (code >= 0xff21 && code <= 0xff3a) || // Ａ-Ｚ
+      (code >= 0xff41 && code <= 0xff5a) // ａ-ｚ
+    ) {
+      return String.fromCharCode(code - 0xfee0);
+    }
+    return ch;
+  });
+}
+
 export async function buildDb() {
   if (fs.existsSync(DB_PATH)) fs.unlinkSync(DB_PATH);
 
@@ -90,6 +109,7 @@ export async function buildDb() {
       (46, '鹿児島県'),
       (47, '沖縄県');
     `);
+
     for (const f of FILES) {
       const table = tableNameFrom(f);
       const rows = parse(fs.readFileSync(f), {
@@ -109,13 +129,27 @@ export async function buildDb() {
           .map(qIdent)
           .join(",")}) VALUES (${placeholders})`;
         const stmt = db.prepare(sql);
+
         for (const r of rows) {
-          stmt.bind(
-            cols.map((c) => (r[c] === "" || r[c] == null ? null : r[c]))
-          );
+          const values = cols.map((c) => {
+            let v = r[c];
+            if (v === "" || v == null) return null;
+
+            // ★ ここで対象列のみ正規化 ★
+            if (
+              (table === "lines" && c === "line_name") ||
+              (table === "stations" && c === "station_name")
+            ) {
+              v = toHalfWidthAlnumParen(v);
+            }
+            return v;
+          });
+
+          stmt.bind(values);
           stmt.step();
           stmt.reset();
         }
+
         stmt.finalize();
         db.exec("COMMIT");
       } catch (e) {
@@ -123,7 +157,6 @@ export async function buildDb() {
         throw e;
       }
     }
-
     db.exec(`UPDATE stations AS s
     SET station_list_name = CASE
       -- 1) 同名 & 同一都道府県内 で station_g_cd が異なる駅がある → 会社名を付与
