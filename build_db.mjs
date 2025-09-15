@@ -42,6 +42,85 @@ function toHalfWidthAlnumParen(s) {
   });
 }
 
+function foldMacronToASCII(s) {
+  return s
+    .replace(/Ā/g, "A")
+    .replace(/ā/g, "a")
+    .replace(/Ē/g, "E")
+    .replace(/ē/g, "e")
+    .replace(/Ī/g, "I")
+    .replace(/ī/g, "i")
+    .replace(/Ō/g, "O")
+    .replace(/ō/g, "o")
+    .replace(/Ū/g, "U")
+    .replace(/ū/g, "u");
+}
+
+function normalizeStationNameR(s) {
+  if (typeof s !== "string") return s;
+  const raw = s.trim();
+
+  // 完全大文字維持の例外
+  const keepAllUpper = new Set(["TOKYO SKYTREE", "TOBU WORLD SQUARE"]);
+  if (keepAllUpper.has(raw.toUpperCase())) {
+    return raw.toUpperCase();
+  }
+
+  // 記号と空白を除いた文字がすべて大文字かチェック
+  const lettersOnly = raw.replace(/[^A-Za-zĀĒĪŌŪāēīōū]/g, "");
+  if (!lettersOnly) return s;
+  if (lettersOnly !== lettersOnly.toUpperCase()) return s;
+
+  const lowerKeepWords = new Set([
+    "CHO",
+    "MACHI",
+    "MAE",
+    "KOUEN",
+    "KOEN",
+    "KOENMAE",
+    "DORI",
+    "GUCHI",
+    "BASHI",
+    "CHUO",
+    "KITA",
+    "MINAMI",
+    "NISHI",
+    "HIGASHI",
+  ]);
+
+  const parts = raw.split(/([ -])/); // 区切り保持
+
+  for (let i = 0; i < parts.length; i++) {
+    const token = parts[i];
+    if (token === " " || token === "-") continue;
+
+    const foldedUpper = foldMacronToASCII(token).toUpperCase();
+    const lowerToken = token.toLowerCase();
+
+    const isSentenceStart = i === 0; // 全体の先頭だけ特別扱い
+
+    if (lowerKeepWords.has(foldedUpper)) {
+      if (isSentenceStart) {
+        // 文頭は頭大文字＋残り小文字
+        parts[i] = lowerToken.replace(/^([A-Za-zĀĒĪŌŪāēīōū])/, (m) =>
+          m.toUpperCase()
+        );
+      } else {
+        // 文中はすべて小文字
+        parts[i] = lowerToken;
+      }
+      continue;
+    }
+
+    // 通常語はタイトルケース
+    parts[i] = lowerToken.replace(/^([A-Za-zĀĒĪŌŪāēīōū])/, (m) =>
+      m.toUpperCase()
+    );
+  }
+
+  return parts.join("");
+}
+
 export async function buildDb() {
   if (fs.existsSync(DB_PATH)) fs.unlinkSync(DB_PATH);
 
@@ -135,13 +214,19 @@ export async function buildDb() {
             let v = r[c];
             if (v === "" || v == null) return null;
 
-            // ★ ここで対象列のみ正規化 ★
+            // 既存の line_name / station_name の半角化（あなたの関数）
             if (
               (table === "lines" && c === "line_name") ||
               (table === "stations" && c === "station_name")
             ) {
               v = toHalfWidthAlnumParen(v);
             }
+
+            // ★ 追加：station_name_r の整形ルール
+            if (table === "stations" && c === "station_name_r") {
+              v = normalizeStationNameR(v);
+            }
+
             return v;
           });
 
@@ -157,6 +242,7 @@ export async function buildDb() {
         throw e;
       }
     }
+
     db.exec(`UPDATE stations AS s
     SET station_list_name = CASE
       -- 1) 同名 & 同一都道府県内 で station_g_cd が異なる駅がある → 会社名を付与
