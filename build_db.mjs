@@ -124,6 +124,41 @@ export async function buildDb() {
       }
     }
 
+    db.exec(`UPDATE stations AS s
+    SET station_list_name = CASE
+      -- 1) 同名 & 同一都道府県内 で station_g_cd が異なる駅がある → 会社名を付与
+      WHEN EXISTS (
+        SELECT 1
+        FROM stations AS s2
+        WHERE s2.station_name = s.station_name
+          AND s2.pref_cd     = s.pref_cd
+          AND s2.station_g_cd <> s.station_g_cd
+      ) THEN
+        s.station_name || '(' ||
+          (SELECT c.company_name
+          FROM lines AS l
+          JOIN companies AS c ON c.company_cd = l.company_cd
+          WHERE l.line_cd = s.line_cd
+          LIMIT 1) || ')'
+
+      -- 2) それ以外で、同名だが station_g_cd が異なる駅がどこかにある → 都道府県名を付与
+      WHEN EXISTS (
+        SELECT 1
+        FROM stations AS s3
+        WHERE s3.station_name = s.station_name
+          AND s3.station_g_cd <> s.station_g_cd
+      ) THEN
+        s.station_name || '(' ||
+          (SELECT p.pref_name
+          FROM prefs AS p
+          WHERE p.pref_cd = s.pref_cd
+          LIMIT 1) || ')'
+
+      -- 3) それ以外 → 駅名のみ
+      ELSE s.station_name
+    END;
+    `);
+
     db.exec("VACUUM");
 
     const bytes = sqlite3.capi.sqlite3_js_db_export(db);

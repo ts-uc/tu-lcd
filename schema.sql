@@ -62,6 +62,7 @@ BEGIN
         station_cd INTEGER primary key,
         station_g_cd INTEGER NOT NULL,
         station_name text NOT NULL,
+        station_list_name text,
         station_name_k text NOT NULL,
         station_name_r text,
         station_name_zh text,
